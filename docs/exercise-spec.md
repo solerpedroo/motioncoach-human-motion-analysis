@@ -308,5 +308,20 @@ Decisão: ADR-013. Configurações executáveis dos quatro IDs em
   seu incompleto usa o último timestamp válido e motivo explícito.
 
 O contrato de pausa esclarece/substitui a leitura de congelamento que
-permitiria continuar uma repetição antiga, conforme ADR-013. Feedback e voz
-continuam pertencendo à Onda 4; `feedback_candidates` está vazio nesta onda.
+permitiria continuar uma repetição antiga, conforme ADR-013. O contador puro mantém `feedback_candidates` vazio por compatibilidade com a
+Onda 2. Na Onda 4, `createFeedbackEngine` recebe esse snapshot e retorna
+candidatos/arbitragem separadamente, compondo a sessão sem alterar transições.
+
+## Política observacional — Onda 4
+
+Parâmetros normativos em `shared/exercise-configs/feedback.json` e seu schema,
+versão 0.1.0, unvalidated_seed. ADR-016 define precedência de classe antes da
+prioridade da regra e cooldown por classe. Comparações de consistência exigem
+histórico GOOD de completos da própria sessão e amostras suficientes; não se
+faz comparação com amplitude clínica. A rosca observa o vetor ombro→cotovelo
+em x/y normalizados do mesmo braço, sem derivar carga ou esforço.
+
+O [contrato de feedback](../frontend/features/exercise-engine/FEEDBACK.md)
+define gatilhos, metadados, espera de consistência e voz. Persistência agrega
+resumos sem landmarks; contratos de sessão em
+[session-store](../frontend/features/session-store/README.md).
