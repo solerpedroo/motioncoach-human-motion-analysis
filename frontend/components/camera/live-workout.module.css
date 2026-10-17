@@ -8,22 +8,27 @@
 .setup label {
   display: grid;
   gap: 0.45rem;
-  font-size: 0.8rem;
-  color: var(--muted-foreground, #aebbd0);
+  min-width: 11rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9aadc4;
 }
 .setup select {
-  padding: 0.7rem;
-  border: 1px solid #3b4a63;
-  border-radius: 0.6rem;
-  background: #142136;
-  color: #edf3fc;
-  max-width: 16rem;
+  width: 100%;
+  text-transform: none;
+  letter-spacing: 0;
 }
-.setup .mirror {
-  display: flex;
+.setup .mirror,
+.voice {
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
-  padding: 0.7rem;
+  align-self: end;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 13px;
+  color: #e7eef8;
 }
 .layout {
   display: grid;
@@ -139,9 +144,5 @@
 }
 
 .voice {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
 }
