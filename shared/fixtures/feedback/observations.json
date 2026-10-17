@@ -1,0 +1,3207 @@
+{
+  "cases": [
+    {
+      "id": "squat/left",
+      "exercise": "squat",
+      "camera_view": "side",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 0,
+                "exercise": "squat",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 40,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 80,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 120,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 160,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 280,
+                "exercise": "squat",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 1,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 400,
+                "exercise": "squat",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 520,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 560,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 640,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 680,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 680,
+                "exercise": "squat",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 2,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 800,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 800,
+                "exercise": "squat",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 840,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 880,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 920,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 960,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1040,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1080,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1080,
+                "exercise": "squat",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 3,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 1200,
+                "exercise": "squat",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1320,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 140
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1360,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1480,
+                "exercise": "squat",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 4,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 1600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 3000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        },
+        {
+          "timestamp_ms": 6000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_knee_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": []
+        }
+      ]
+    },
+    {
+      "id": "biceps_curl/left",
+      "exercise": "biceps_curl",
+      "camera_view": "side",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 0,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 40,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 80,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 120,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 160,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 280,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 1,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 400,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 520,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 560,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 640,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 680,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 680,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 2,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 800,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 800,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 840,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 880,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 920,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 960,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1040,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1080,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1080,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 3,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 1200,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1320,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1360,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1480,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 4,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 3000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 6000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "left"
+          },
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 13,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biceps_curl/right",
+      "exercise": "biceps_curl",
+      "camera_view": "side",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 0,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 40,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 80,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 120,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 160,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 0,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 280,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 1,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 400,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 520,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 560,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 640,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 1,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 680,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 680,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 2,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 800,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 800,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 840,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 880,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 920,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 960,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1040,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 2,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1080,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1080,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 3,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.3,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1200,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 140
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_STARTED",
+                "timestamp_ms": 1200,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.started",
+                "quality": "GOOD",
+                "rep_index": null,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1240,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1280,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1320,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 80
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1360,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1400,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1440,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 3,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1480,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [
+              {
+                "schema_version": "1.0.0",
+                "type": "REP_COMPLETED",
+                "timestamp_ms": 1480,
+                "exercise": "biceps_curl",
+                "rule_id": "rep.completed",
+                "quality": "GOOD",
+                "rep_index": 4,
+                "metadata": {
+                  "phase": "STANDING"
+                }
+              }
+            ],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 1600,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 3000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        },
+        {
+          "timestamp_ms": 6000,
+          "snapshot": {
+            "phase": "STANDING",
+            "completed_repetitions": 4,
+            "incomplete_repetitions": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "right_elbow_angle_deg": 170
+            },
+            "events": [],
+            "feedback_candidates": [],
+            "selected_side": "right"
+          },
+          "landmarks": [
+            {
+              "index": 12,
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            },
+            {
+              "index": 14,
+              "x": 0.5,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
