@@ -2,11 +2,12 @@
 
 ## Estado e início de sessão
 
-Ondas 0–2 e 4–7 concluídas. A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md)
-permanece em revisão (câmera física pendente; ADR-015). A Onda 7 entregou
-timeline, gráfico e exportação. Próxima tarefa:
-[Onda 8](docs/agentic/tasks/wave-8-evaluation.md). Estado:
-[docs/agentic/workboard.md](docs/agentic/workboard.md).
+Ondas 0–9 concluídas. A [Onda 8](docs/agentic/tasks/wave-8-evaluation.md)
+foi encerrada por pedido explícito (ADR-023): A–C continuam `not_evaluated`
+e o MAE humano é `null`. A aceitação está em
+[docs/mvp-acceptance.md](docs/mvp-acceptance.md). Não há onda seguinte.
+Estado: [docs/agentic/workboard.md](docs/agentic/workboard.md).
+Estado: [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
    e [o plano](docs/implementation-plan.md).
