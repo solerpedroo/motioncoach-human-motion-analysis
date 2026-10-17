@@ -1,11 +1,11 @@
 # Workboard
 
-Estado em 2026-10-17: Onda 0 concluída. Onda 1 disponível para assumir.
+Estado em 2026-10-17: Ondas 0 e 1 concluídas. Onda 2 disponível para assumir.
 Fonte única de progresso. Evidências ficam nos cartões.
 
 ## Próxima tarefa
 
-Assumir [Onda 1 — Geometria, tempo e quality gate](tasks/wave-1-kinematics.md)
+Assumir [Onda 2 — Máquinas de estado dos exercícios](tasks/wave-2-exercise-fsms.md)
 em um novo diff.
 
 Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
@@ -15,7 +15,7 @@ Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
 ## Ondas
 
 - **0 — Fundação executável e contratos:** `done`; [cartão](tasks/wave-0-foundation.md).
-- **1 — Geometria, tempo e quality gate:** `proposed`; [cartão](tasks/wave-1-kinematics.md).
+- **1 — Geometria, tempo e quality gate:** `done`; [cartão](tasks/wave-1-kinematics.md).
 - **2 — Máquinas de estado dos exercícios:** `proposed`; [cartão](tasks/wave-2-exercise-fsms.md).
 - **3 — Webcam e visualização da pose:** `proposed`; [cartão](tasks/wave-3-webcam-pose.md).
 - **4 — Feedback, voz e sessão ao vivo:** `proposed`; [cartão](tasks/wave-4-live-session.md).
