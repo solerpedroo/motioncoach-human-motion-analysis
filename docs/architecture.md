@@ -1,10 +1,11 @@
 # Arquitetura alvo
 
-Estado em 2026-10-17: fundação da Onda 0 implementada. O layout completo
+Estado em 2026-10-17: fundação da Onda 0 e cinemática da Onda 1 implementadas. O layout completo
 abaixo continua sendo o alvo das ondas. Hoje existem `motioncoach/contracts`,
 `backend/app/main.py`, testes Python, `shared/schemas`, fixtures de contratos
-e o shell Next.js. Os diretórios de algoritmos, worker, pesquisa e captura
-nascem nas ondas responsáveis.
+e o shell Next.js. A geometria, EMA e quality gate vivem em
+`frontend/features/exercise-engine`. Os algoritmos Python, FSM, worker,
+pesquisa e captura nascem nas ondas responsáveis.
 
 ## Fronteiras
 
@@ -154,3 +155,18 @@ nomeados são demonstrativos. Recharts entra com os gráficos na Onda 7.
 Instalação e comandos reais estão no [README](../README.md). Health e
 contratos têm testes Python; Vitest cobre contratos compartilhados, rotas,
 navegação e recuperação dos estados. CI não baixa modelo nem vídeo.
+
+
+## Cinemática implementada — Onda 1
+
+O módulo `frontend/features/exercise-engine` não depende de React ou HTTP.
+Consome parâmetros comuns compartilhados, landmarks e timestamp/relógio
+injetado. Retorna features anuláveis, qualidade e flags de continuidade para a
+futura FSM. Perda de pose, salto ou geometria necessária degenerada bloqueiam
+uso da amostra; gap longo reinicia suavização e referência espacial.
+
+A configuração comum tem schema que reutiliza os contratos da fundação.
+Fixtures sintéticas de geometria, EMA, qualidade e pipeline ficam em `shared/`.
+Não há ainda configuração operacional completa de exercício nem contagem.
+Regras de recuperação no ADR-012 e no
+[README do motor](../frontend/features/exercise-engine/README.md).
