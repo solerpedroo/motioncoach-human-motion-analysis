@@ -1,6 +1,11 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  SaveSession,
+  SessionSummaryView,
+} from "@/components/workout/session-summary";
+import { TrainerFeedback } from "@/components/workout/trainer-feedback";
 import { type ExerciseId, exercises } from "@/lib/exercises";
 import styles from "./live-workout.module.css";
 import { useLiveSession } from "./use-live-session";
@@ -197,6 +202,24 @@ export function LiveWorkout({
           </small>
         </aside>
       </div>
+      <p className={styles.note}>
+        Active session time: {(session.elapsedMs / 1000).toFixed(1)} s
+      </p>
+      <label className={styles.voice}>
+        <input
+          type="checkbox"
+          checked={session.voiceEnabled}
+          disabled={!session.voiceAvailable}
+          onChange={(event) => session.toggleVoice(event.target.checked)}
+        />
+        Enable voice feedback
+      </label>
+      <p className={styles.note}>
+        {session.voiceError ||
+          (session.voiceAvailable
+            ? "Voice is optional and uses a local English voice. No microphone is requested."
+            : "A local English speech voice is unavailable. Visual observations remain available.")}
+      </p>
       <div className={styles.controls}>
         <Button disabled={active} onClick={() => void session.start()}>
           {session.status === "error" ? "Retry camera" : "Start camera"}
@@ -215,6 +238,19 @@ export function LiveWorkout({
       <p className={styles.status} role="status">
         {message}
       </p>
+      <TrainerFeedback
+        feedback={session.feedback}
+        originMs={session.originMs}
+      />
+      {session.summary && (
+        <>
+          <SessionSummaryView session={session.summary} />
+          <SaveSession
+            key={session.summary.summary.id}
+            session={session.summary}
+          />
+        </>
+      )}
       <section className={styles.features} aria-label="Observed 2D features">
         {Object.entries(session.snapshot?.features ?? {})
           .filter(([key]) => key !== "interpolated")
