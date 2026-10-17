@@ -1,0 +1,139 @@
+.setup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.setup label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--muted-foreground, #aebbd0);
+}
+.setup select {
+  padding: 0.7rem;
+  border: 1px solid #3b4a63;
+  border-radius: 0.6rem;
+  background: #142136;
+  color: #edf3fc;
+  max-width: 16rem;
+}
+.setup .mirror {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.7rem;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 1.25rem;
+}
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #0a101c;
+  border: 1px solid #33435c;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.image {
+  position: absolute;
+  inset: 0;
+}
+.image video,
+.image canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.mirrored {
+  transform: scaleX(-1);
+}
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.65rem;
+  background: #0a101ce8;
+  border: 1px solid #43546e;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+}
+.placeholder {
+  position: absolute;
+  inset: 3rem 1rem 1rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #aebbd0;
+}
+.panel {
+  padding: 1.25rem;
+  border: 1px solid #33435c;
+  border-radius: 1rem;
+  background: #121e30;
+}
+.panel h2 {
+  margin: 0 0 1.2rem;
+  font-size: 1rem;
+}
+.panel dl {
+  margin: 0;
+}
+.panel dt {
+  color: #aebbd0;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+.panel dd {
+  margin: 0.3rem 0;
+  font-size: 1.2rem;
+  overflow-wrap: anywhere;
+}
+.panel small {
+  color: #aebbd0;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.status {
+  padding: 1rem;
+  border-left: 3px solid #75e5ca;
+  background: #142136;
+  border-radius: 0.4rem;
+}
+.note {
+  color: #aebbd0;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.features span {
+  padding: 0.6rem;
+  border: 1px solid #33435c;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+}
+@media (max-width: 850px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .panel dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+}
