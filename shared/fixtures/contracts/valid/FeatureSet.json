@@ -1,0 +1,8 @@
+{
+  "contract": "FeatureSet",
+  "data": {
+    "left_knee_angle_deg": 123.7,
+    "left_hip_angle_deg": 142.5,
+    "trunk_tilt_deg": null
+  }
+}
