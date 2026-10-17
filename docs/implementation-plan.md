@@ -1,6 +1,6 @@
 # MotionCoach — Plano de implementação
 
-Versão: 1.2 · Data: 2026-10-17 · Estado: Ondas 0–1 concluídas; Ondas 2–9 propostas.
+Versão: 1.3 · Data: 2026-10-17 · Estado: Ondas 0–2 concluídas; Ondas 3–9 propostas.
 Fonte de requisitos: [project-scope.md](project-scope.md).
 Interpretação: [scope-analysis.md](scope-analysis.md).
 
@@ -286,7 +286,10 @@ lockfiles e CI leve. Evidências e limitações estão no
 A Onda 1 acrescentou geometria 2D, EMA, quality gate, relógio injetável e
 fixtures compartilhadas no motor puro TypeScript. Decisão no ADR-012 e
 [evidências no cartão](agentic/tasks/wave-1-kinematics.md).
-Não há ainda FSM, captura ou upload.
+A Onda 2 acrescentou configurações executáveis e FSM dos quatro exercícios,
+eventos, pausa com readquisição e lado fixo. A regressão sintética inclui
+landmarks e eventos; ADR-013 e [cartão](agentic/tasks/wave-2-exercise-fsms.md).
+Não há ainda captura ou upload; a interface continua demonstrativa.
 
-Próxima ação: assumir o cartão da [Onda 2](agentic/tasks/wave-2-exercise-fsms.md)
-em novo diff: máquinas de estado dos quatro exercícios.
+Próxima ação: assumir o cartão da [Onda 3](agentic/tasks/wave-3-webcam-pose.md)
+em novo diff: webcam e visualização da pose conectadas ao motor testado.
