@@ -1,7 +1,7 @@
 # Contrato HTTP
 
-Estado: especificado em 2026-10-17. Nenhuma rota está implementada. A Onda 0
-pode publicar só `GET /api/health`. As demais esperam a onda indicada.
+Estado em 2026-10-17: `GET /api/health` implementado na Onda 0.
+As demais rotas continuam especificadas e esperam a onda indicada.
 
 Não criar endpoint que receba frames de webcam.
 
@@ -42,3 +42,18 @@ limite e arquivo que não decodifica.
 Pydantic v2, versão de schema no payload, campos extras rejeitados. O cliente
 TypeScript consome os mesmos exemplos de `shared/fixtures` usados nos testes
 da API.
+
+
+## Health implementado
+
+`GET /api/health` → `200 application/json`:
+
+```json
+{"schema_version":"1.0.0","status":"ok","service":"motioncoach-api","version":"0.1.0"}
+```
+
+Sem dependência de modelo, worker, filesystem de vídeo ou banco. O teste
+confere que `/openapi.json` só contém esse caminho e que `POST /api/videos`
+responde 404. A UI desta onda ainda não faz requests para a API; CORS não é
+necessário. A forma de health é um contrato HTTP local, separado do catálogo
+de domínio `shared/schemas/contracts.schema.json`.
