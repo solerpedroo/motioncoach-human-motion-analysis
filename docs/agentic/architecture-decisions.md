@@ -201,12 +201,58 @@ referenciar a anterior sem apagar o histórico.
   resultados no [cartão da Onda 1](tasks/wave-1-kinematics.md). Sem métrica
   humana ou execução de modelo.
 
+## ADR-013 — Execução declarativa das FSMs e recuperação
+
+- Data: 2026-10-17. Estado: aceito e implementado na Onda 2.
+- Contexto: executar as seeds dos quatro exercícios e resolver duas
+  ambiguidades da especificação antes de conectar a câmera.
+- Decisão: quatro configurações completas 0.1.0 com as seeds já previstas,
+  `unvalidated_seed`, no schema de domínio 1.0.0 existente. Transições,
+  condições, unidades, dwell e eventos vêm dos JSONs; validação semântica
+  confere referências, histerese e aquisição do estado inicial. O executor
+  TypeScript é puro. O Python só valida os contratos nesta onda.
+- Decisão: dwell contínuo para posições estáveis, saída intermediária conforme
+  `require_dwell: false`, uma transição por amostra. Completo exige o extremo,
+  retorno estável e ciclo com duração mínima desde `REP_STARTED`, além do
+  intervalo mínimo entre completos. Retorno curto demais vira incompleto.
+- Decisão: perda, gap longo, salto, dado interpolado/inválido ou pausa em ciclo
+  ativo emitem um incompleto, uma única vez, e exigem nova aquisição da posição
+  inicial. Pausa expõe `PAUSED`, exclui o intervalo do relógio ativo e retoma em
+  `UNCERTAIN`. Isso esclarece/substitui a cláusula de congelamento do ADR-005:
+  a fase pode ficar suspensa na UI, mas o ciclo antigo não continua.
+- Correção explícita: a spec permitia fallback de um braço no polichinelo,
+  contrariando os obrigatórios bilaterais e o ADR-010. O fallback foi removido
+  para a métrica conjunta: falta de um braço produz `null` e `INSUFFICIENT`
+  para contar. Punhos seguem opcionais. Esta correção não muda o escopo.
+- Decisão: a elevação conjunta é o mínimo dos ângulos observados no mesmo
+  frame, antes da EMA. Condições da FSM precisam valer também nas features
+  atuais não suavizadas, evitando contar braços/pernas que nunca abriram
+  juntos, mas aparentam sobreposição por memória de filtros separados.
+- Decisão: braços/pernas usam somente x/y; razão de pernas com quadril abaixo
+  da seed horizontal ou vista não frontal fica `null`. Agachamento/flexão
+  contam na vista lateral; rosca aceita lateral/frontal. Vista é fixa na sessão.
+- Decisão: lado anatômico por configuração canônica e `side-bindings.json`.
+  Rosca exige escolha do usuário. Agachamento/flexão usam maior visibilidade
+  média dos obrigatórios antes de adquirir a posição inicial; empate esquerdo,
+  mudança de candidato reinicia dwell; aquisição fixa o lado até reset.
+  `mirrored` não transforma os dados do motor.
+- Decisão: eventos mantêm o contrato 1.0.0. Índice só para completo; outros
+  eventos usam `null`. Timestamp inválido não entra no payload: um incompleto
+  por essa interrupção usa o último timestamp válido, com motivo explícito.
+  Feedback candidates fica vazio até a Onda 4.
+- Integração de build: `turbopack.root` aponta à raiz do repositório, porque
+  `shared/` fica fora de `frontend/`, onde está o lockfile npm. A documentação
+  instalada do Next 16.4.2 foi consultada em `dist/docs/.../turbopack.md`.
+- Evidências: fixtures de features com fases/eventos esperados e landmarks
+  sintéticos em `shared/fixtures/repetitions/`; testes e comandos no
+  [cartão da Onda 2](tasks/wave-2-exercise-fsms.md). Sem calibração humana.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
 - Onda 1 resolvida no ADR-012. One Euro permanece no experimento D.
-- Onda 2: seeds finais dos quatro exercícios, ainda não validadas. O
-  polichinelo já tem seeds próprias no ADR-010.
+- Onda 2 resolvida no ADR-013: seeds de desenvolvimento versionadas e ainda
+  não validadas. Avaliação empírica permanece na Onda 8.
 - Ondas 3 e 5: pacote MediaPipe, variante Lite como padrão candidato, hash do
   asset e o fallback documentado se Web Worker for inviável.
 - Onda 5: tolerância numérica da paridade TypeScript/Python e política de PTS.
