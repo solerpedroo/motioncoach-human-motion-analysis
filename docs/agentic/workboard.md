@@ -1,23 +1,28 @@
 # Workboard
 
-Estado em 2026-10-17: Ondas 0–2 concluídas. Onda 3 disponível para assumir.
+Estado em 2026-10-17: Ondas 0–2 concluídas. Onda 3 implementada em revisão, com smoke físico pendente.
 Fonte única de progresso. Evidências ficam nos cartões.
 
 ## Próxima tarefa
 
-Assumir [Onda 3 — Webcam e visualização da pose](tasks/wave-3-webcam-pose.md)
-em um novo diff.
+Concluir a inspeção qualitativa com câmera física da
+[Onda 3 — Webcam e visualização da pose](tasks/wave-3-webcam-pose.md).
+A implementação e os smokes sintéticos passaram; Onda 4 depende desse gate.
 
 Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
 [0B](tasks/wave-0b-frontend-shell.md) `done`,
 [0C](tasks/wave-0c-integration.md) `done`.
+
+Subtarefas da Onda 3 (desdobradas durante revisão):
+[3A — Runtime](tasks/wave-3a-capture-runtime.md) `done`;
+[3B — Integração](tasks/wave-3b-live-integration.md) `in_review`.
 
 ## Ondas
 
 - **0 — Fundação executável e contratos:** `done`; [cartão](tasks/wave-0-foundation.md).
 - **1 — Geometria, tempo e quality gate:** `done`; [cartão](tasks/wave-1-kinematics.md).
 - **2 — Máquinas de estado dos exercícios:** `done`; [cartão](tasks/wave-2-exercise-fsms.md).
-- **3 — Webcam e visualização da pose:** `proposed`; [cartão](tasks/wave-3-webcam-pose.md).
+- **3 — Webcam e visualização da pose:** `in_review`; [cartão](tasks/wave-3-webcam-pose.md).
 - **4 — Feedback, voz e sessão ao vivo:** `proposed`; [cartão](tasks/wave-4-live-session.md).
 - **5 — Vídeo e pose Python com paridade:** `proposed`; [cartão](tasks/wave-5-python-video.md).
 - **6 — API, worker e retenção:** `proposed`; [cartão](tasks/wave-6-jobs-api.md).
