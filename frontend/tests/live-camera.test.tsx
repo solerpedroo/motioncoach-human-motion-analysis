@@ -323,3 +323,46 @@ it("pause invalidates an active synthetic cycle and resume cannot complete it", 
     screen.getByText("Incomplete cycles").nextElementSibling,
   ).toHaveTextContent("1");
 });
+
+it("voice remains opt-in and muting the UI immediately cancels speech", async () => {
+  const synth = Object.assign(new EventTarget(), {
+    getVoices: () => [{ localService: true, lang: "en-US" }],
+    speak: vi.fn(),
+    cancel: vi.fn(),
+  });
+  vi.stubGlobal("speechSynthesis", synth);
+  vi.stubGlobal(
+    "SpeechSynthesisUtterance",
+    class {
+      constructor(public text: string) {}
+    },
+  );
+  render(<LiveWorkout />);
+  const toggle = screen.getByRole("checkbox", {
+    name: "Enable voice feedback",
+  });
+  expect(toggle).not.toBeChecked();
+  expect(toggle).toBeEnabled();
+  fireEvent.click(toggle);
+  expect(toggle).toBeChecked();
+  const worker = await start();
+  prepareVideo();
+  await tick(120);
+  act(() =>
+    worker.send({ type: "pose", timestamp: 120, latency: 5, landmarks: [] }),
+  );
+  expect(synth.speak).toHaveBeenCalledOnce();
+  expect(synth.speak).toHaveBeenCalledWith(
+    expect.objectContaining({
+      text: "Make sure your knees and hips are visible.",
+    }),
+  );
+  const previous = synth.cancel.mock.calls.length;
+  fireEvent.click(toggle);
+  expect(toggle).not.toBeChecked();
+  expect(synth.cancel).toHaveBeenCalledTimes(previous + 1);
+  await tick(320);
+  expect(
+    screen.getByRole("region", { name: "Trainer observation" }),
+  ).toBeVisible();
+});
