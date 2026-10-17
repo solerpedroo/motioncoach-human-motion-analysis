@@ -4,7 +4,8 @@
 
 As Ondas 0–2 estão concluídas: fundação, cinemática e FSM dos quatro exercícios.
 A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md) está implementada em revisão;
-falta smoke qualitativo com câmera física antes da Onda 4. Estado:
+falta smoke qualitativo com câmera física. A Onda 4 está concluída após avanço
+por pedido explícito do usuário (ADR-015). Próxima tarefa: Onda 5. Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
