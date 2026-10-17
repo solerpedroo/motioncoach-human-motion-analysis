@@ -1,16 +1,20 @@
 # Workboard
 
-Estado em 2026-10-17: planejamento aceito. Nenhuma onda de software iniciada.
+Estado em 2026-10-17: Onda 0 concluída. Onda 1 disponível para assumir.
 Fonte única de progresso. Evidências ficam nos cartões.
 
 ## Próxima tarefa
 
-Assumir [Onda 0 — Fundação](tasks/wave-0-foundation.md). Não iniciar a Onda 1
-no mesmo diff.
+Assumir [Onda 1 — Geometria, tempo e quality gate](tasks/wave-1-kinematics.md)
+em um novo diff.
+
+Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
+[0B](tasks/wave-0b-frontend-shell.md) `done`,
+[0C](tasks/wave-0c-integration.md) `done`.
 
 ## Ondas
 
-- **0 — Fundação executável e contratos:** `proposed`; [cartão](tasks/wave-0-foundation.md).
+- **0 — Fundação executável e contratos:** `done`; [cartão](tasks/wave-0-foundation.md).
 - **1 — Geometria, tempo e quality gate:** `proposed`; [cartão](tasks/wave-1-kinematics.md).
 - **2 — Máquinas de estado dos exercícios:** `proposed`; [cartão](tasks/wave-2-exercise-fsms.md).
 - **3 — Webcam e visualização da pose:** `proposed`; [cartão](tasks/wave-3-webcam-pose.md).
