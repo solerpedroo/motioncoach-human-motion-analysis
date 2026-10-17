@@ -151,7 +151,7 @@ Next.js App Router, React, TypeScript, Tailwind e primitivo de botão local
 compatível com shadcn/ui (Radix Slot). Tokens em `app/globals.css`, mensagens
 em `messages/en.ts`. Na fundação, o navegador controlava apenas seletores de
 exercício/estado em memória. A captura foi conectada na Onda 3; armazenamento
-de sessão segue para a Onda 4. Não há conexão de frames UI→API.
+de sessão foi implementado na Onda 4, por opt-in explícito. Não há conexão de frames UI→API.
 
 Oito rotas do escopo estão navegáveis. Sessões de qualquer ID mostram ausência
 de dados; `demo` identifica o preview. Upload e relatórios seguem demonstrativos;
@@ -195,3 +195,19 @@ O módulo continua fora do React e sem câmera/HTTP. A integração da UI na
 Onda 3 fica em `components/camera/use-live-session.ts`. O bundler usa a raiz do monorepo para resolver JSONs compartilhados.
 Fixtures de features e landmarks em `shared/fixtures/repetitions/` prepararam a
 regressão para o port Python; não substituem a paridade exigida na Onda 5.
+
+
+## Feedback e sessão local — Onda 4
+
+`exercise-engine/feedback.ts` consome snapshots do contador e produz candidatos,
+arbitragem e eventos de observação. A composição do hook da câmera mantém as
+transições da FSM intactas. Política compartilhada em feedback.json e ADR-016.
+`voice.ts` usa porta/relógio injetáveis; browser-speech adapta síntese local.
+
+`session-store/session-recorder.ts` agrega tempo, cobertura, contadores e eventos
+relativos, sem reter landmarks. O resumo volátil só entra no IndexedDB por
+Save explícito. Schema local referencia SessionSummary 1.0.0; Ajv valida escrita
+e leitura. Dashboard/detalhe carregam resumos, com exclusão individual/total.
+Nenhum frame, áudio ou evento vai para a API. Detalhes de tempo e armazenamento
+no README desse módulo. A exceção de sequência da Onda 4 está no ADR-015; o
+smoke físico da Onda 3 segue pendente.
