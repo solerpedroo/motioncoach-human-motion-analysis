@@ -1,0 +1,83 @@
+{
+  "contract": "ExerciseConfig",
+  "data": {
+    "schema_version": "1.0.0",
+    "id": "squat",
+    "version": "0.0.0-fixture",
+    "display_name": "Squat",
+    "validation_status": "unvalidated_seed",
+    "recommended_view": "side",
+    "side_selection": "best_visible",
+    "required_landmarks": [
+      11,
+      23,
+      25,
+      27
+    ],
+    "optional_landmarks": [],
+    "features": [
+      {
+        "id": "left_knee_angle_deg",
+        "kind": "angle_2d",
+        "landmarks": [
+          23,
+          25,
+          27
+        ],
+        "role": "transition"
+      }
+    ],
+    "states": [
+      "NOT_READY",
+      "STANDING",
+      "DESCENDING",
+      "BOTTOM",
+      "ASCENDING",
+      "UNCERTAIN",
+      "PAUSED"
+    ],
+    "thresholds": [
+      {
+        "name": "standing_enter_deg",
+        "unit": "degree",
+        "value": 160
+      }
+    ],
+    "quality": {
+      "min_visibility": 0.5,
+      "max_gap_ms": 200,
+      "max_jump_normalized": 0.2
+    },
+    "smoothing": {
+      "type": "ema",
+      "alpha": 0.4
+    },
+    "min_state_ms": 80,
+    "min_cycle_ms": 400,
+    "feedback_rules": [
+      {
+        "rule_id": "framing.joints_hidden",
+        "message_key": "framing.joints_hidden",
+        "priority": 0,
+        "cooldown_ms": 3000
+      }
+    ],
+    "initial_state": "NOT_READY",
+    "transitions": [
+      {
+        "from_state": "NOT_READY",
+        "to_state": "STANDING",
+        "conditions": [
+          {
+            "feature": "left_knee_angle_deg",
+            "operator": "gte",
+            "threshold": "standing_enter_deg"
+          }
+        ],
+        "match": "all",
+        "require_dwell": true,
+        "emit_event": null
+      }
+    ]
+  }
+}
