@@ -3,7 +3,7 @@ export const en = {
   tagline: "Understand your movement.",
   preview: "Interface preview",
   previewNotice:
-    "This is a demonstration of the interface. Camera capture and video analysis are not available yet.",
+    "This page includes demonstration content. Local camera sessions are available in Live Workout; video upload and exported reports are not available yet.",
   privacy: "Your movement. Your data.",
   privacyDetail:
     "Live analysis is designed to stay in your browser. Recording and saving a session require separate choices.",
