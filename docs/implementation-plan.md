@@ -1,6 +1,6 @@
 # MotionCoach — Plano de implementação
 
-Versão: 1.4 · Data: 2026-10-17 · Estado: Ondas 0–2 concluídas; Onda 3 em revisão; Ondas 4–9 propostas.
+Versão: 1.5 · Data: 2026-10-17 · Estado: Ondas 0–2 concluídas; Onda 3 em revisão; Onda 4 concluída por exceção ADR-015; Ondas 5–9 propostas.
 Fonte de requisitos: [project-scope.md](project-scope.md).
 Interpretação: [scope-analysis.md](scope-analysis.md).
 
@@ -162,7 +162,8 @@ modelo carregado uma vez. Smoke com câmera é manual e separado da CI.
 
 ### Onda 4 — Feedback, voz e sessão ao vivo
 
-Requisitos: RF-08, RF-09, sprint 4. Depende de 3.
+Requisitos: RF-08, RF-09, sprint 4. Depende de 3; ADR-015 autoriza iniciar
+a implementação com o runtime validado e o smoke físico da Onda 3 pendente.
 
 Entregar prioridade, cooldown, voz desligável, resumo, IndexedDB opt-in e
 apagar dados. Mensagens pelos `rule_id` da especificação. Sem nota de postura.
@@ -293,6 +294,12 @@ A Onda 3 implementou captura, inferência em worker, overlay, lifecycle e métri
 O smoke Chromium com câmera sintética e modelo real passou. ADR-014 registra
 versões e hash. Upload permanece planejado.
 
-Próxima ação: concluir o smoke qualitativo com câmera física do
-[cartão da Onda 3](agentic/tasks/wave-3-webcam-pose.md), ainda em revisão.
-Somente após esse gate, assumir a Onda 4 em novo diff.
+A Onda 4 fechou feedback/voz, resumo e histórico opt-in com exclusões,
+validada por relógio/alto-falante/IndexedDB de laboratório e smoke Chromium
+com modelo/IndexedDB reais e câmera sintética. ADR-016 e
+[cartão](agentic/tasks/wave-4-live-session.md) registram resultados.
+O usuário autorizou avanço com a Onda 3 em revisão (ADR-015); a inspeção
+física continua aberta, sem aprovação humana implícita.
+
+Próxima ação: assumir [Onda 5](agentic/tasks/wave-5-python-video.md) em novo
+diff. Manter a pendência física da Onda 3 visível.
