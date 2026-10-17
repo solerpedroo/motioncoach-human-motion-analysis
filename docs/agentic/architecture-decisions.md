@@ -447,17 +447,55 @@ referenciar a anterior sem apagar o histórico.
 - Consequência: PDF e consistency score continuam fora. A paridade da Onda 5
   não muda com esta camada.
 
+## ADR-021 — Avaliação humana bloqueada e filtro sintético (Onda 8)
+
+- Data: 2026-10-17. Estado: aceito. A onda permanece `blocked` para A–C.
+- Decisão: o pareamento de eventos é um a um, tolerância 500 ms, congelada
+  antes de qualquer ajuste. Sem `source=human_annotation`, o resultado é
+  `not_evaluated` e o MAE fica `null`. Fixture sintética da FSM não entra
+  nessa tabela. Pose e feedback continuam `not_evaluated` sem referência e sem
+  protocolo de revisão.
+- O experimento D compara ausência de filtro, EMA, média móvel e One Euro num
+  sinal sintético fixo. Os números medidos estão em `research/reports/wave8.json`.
+  Eles não autorizam trocar o filtro do motor nem citar acurácia de pessoa.
+- Consequência: a Onda 8 não fecha e a Onda 9 não pode publicar MAE. O próximo
+  passo é obter clipes anotados, com licença registrada e split por pessoa,
+  antes de olhar qualquer limiar.
+
+## ADR-022 — Inspeção física aceita pelo usuário (Onda 3)
+
+- Data: 2026-10-17. Estado: aceito.
+- Contexto: a Onda 3 estava `in_review` desde o ADR-015. O usuário testou
+  `/workout/live` na aplicação local e declarou a validação humana concluída.
+- Decisão: o critério visual de alinhamento com câmera física fica aceito com
+  essa declaração. Navegador, modelo de câmera e resolução não foram informados
+  e não são inventados.
+- Consequência: a Onda 3 passa a `done`. A declaração não mede contagem, pose
+  nem feedback. A Onda 8 continua `blocked`.
+
+## ADR-023 — Encerramento da Onda 8 por decisão do usuário
+
+- Data: 2026-10-17. Estado: aceito.
+- Contexto: A, B e C permanecem `not_evaluated` porque não há clipe anotado.
+  O experimento D é só um sinal sintético. O usuário pediu para concluir a onda
+  mesmo assim e seguir para a Onda 9.
+- Decisão: a Onda 8 fica `done` como exceção explícita. O relatório
+  `research/reports/wave8.json` não muda. MAE continua `null`. Nenhum limiar
+  foi ajustado.
+- Consequência: a Onda 9 pode descrever o produto. Ela não pode apresentar
+  acurácia humana. Pose e feedback seguem sem nota.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
 - Onda 1 resolvida no ADR-012. One Euro permanece no experimento D.
 - Onda 2 resolvida no ADR-013: seeds de desenvolvimento versionadas e ainda
   não validadas. Avaliação empírica permanece na Onda 8.
-- Onda 3: runtime Web decidido no ADR-014; inspeção física pendente.
+- Onda 3 resolvida no ADR-014 e fechada no ADR-022 pela confirmação do usuário.
 - Onda 5 resolvida nos ADR-017/018: pacote/modelo, port, PTS e paridade.
 - Onda 6 resolvida no ADR-019. Carga de CPU do worker não foi medida.
 - Onda 7 resolvida no ADR-020. O gráfico do relatório é SVG; o PNG é opcional.
-- Onda 8: existência de um conjunto consentido ou de um dataset cuja licença
-  permita a avaliação. Sem isso a onda não fecha.
+- Onda 8 encerrada no ADR-023 por pedido do usuário. A–C continuam
+  `not_evaluated`. Não há MAE humano.
 - Onda 9: LICENSE do repositório, depois do inventário real de dependências e
   de modelos. Não assumir compatibilidade.
