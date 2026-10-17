@@ -1,0 +1,1193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motioncoach.local/schemas/contracts-1.0.0.json",
+  "$defs": {
+    "DegreeThreshold": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "unit": {
+          "const": "degree",
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "maximum": 180,
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "unit",
+        "value"
+      ],
+      "title": "DegreeThreshold",
+      "type": "object"
+    },
+    "Evaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "not_evaluated",
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "reason"
+      ],
+      "title": "Evaluation",
+      "type": "object"
+    },
+    "EventMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "phase": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phase"
+        },
+        "feature": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Feature"
+        },
+        "observed_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Value"
+        },
+        "message_key": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message Key"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "title": "EventMetadata",
+      "type": "object"
+    },
+    "ExerciseConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "enum": [
+            "squat",
+            "push_up",
+            "biceps_curl",
+            "jumping_jack"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "display_name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Display Name",
+          "type": "string"
+        },
+        "validation_status": {
+          "const": "unvalidated_seed",
+          "title": "Validation Status",
+          "type": "string"
+        },
+        "recommended_view": {
+          "enum": [
+            "side",
+            "front",
+            "either"
+          ],
+          "title": "Recommended View",
+          "type": "string"
+        },
+        "side_selection": {
+          "enum": [
+            "best_visible",
+            "user_selected",
+            "bilateral"
+          ],
+          "title": "Side Selection",
+          "type": "string"
+        },
+        "required_landmarks": {
+          "items": {
+            "maximum": 32,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 33,
+          "minItems": 1,
+          "title": "Required Landmarks",
+          "type": "array"
+        },
+        "optional_landmarks": {
+          "items": {
+            "maximum": 32,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 33,
+          "title": "Optional Landmarks",
+          "type": "array"
+        },
+        "features": {
+          "items": {
+            "$ref": "#/$defs/FeatureDefinition"
+          },
+          "minItems": 1,
+          "title": "Features",
+          "type": "array"
+        },
+        "states": {
+          "items": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "States",
+          "type": "array"
+        },
+        "initial_state": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Initial State",
+          "type": "string"
+        },
+        "transitions": {
+          "items": {
+            "$ref": "#/$defs/TransitionDefinition"
+          },
+          "minItems": 1,
+          "title": "Transitions",
+          "type": "array"
+        },
+        "thresholds": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "degree": "#/$defs/DegreeThreshold",
+                "ms": "#/$defs/ScalarThreshold",
+                "normalized": "#/$defs/ScalarThreshold",
+                "ratio": "#/$defs/ScalarThreshold"
+              },
+              "propertyName": "unit"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/DegreeThreshold"
+              },
+              {
+                "$ref": "#/$defs/ScalarThreshold"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Thresholds",
+          "type": "array"
+        },
+        "quality": {
+          "$ref": "#/$defs/QualityConfig"
+        },
+        "smoothing": {
+          "$ref": "#/$defs/SmoothingConfig"
+        },
+        "min_state_ms": {
+          "exclusiveMinimum": 0,
+          "title": "Min State Ms",
+          "type": "number"
+        },
+        "min_cycle_ms": {
+          "exclusiveMinimum": 0,
+          "title": "Min Cycle Ms",
+          "type": "number"
+        },
+        "feedback_rules": {
+          "items": {
+            "$ref": "#/$defs/FeedbackRule"
+          },
+          "title": "Feedback Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "version",
+        "display_name",
+        "validation_status",
+        "recommended_view",
+        "side_selection",
+        "required_landmarks",
+        "optional_landmarks",
+        "features",
+        "states",
+        "initial_state",
+        "transitions",
+        "thresholds",
+        "quality",
+        "smoothing",
+        "min_state_ms",
+        "min_cycle_ms",
+        "feedback_rules"
+      ],
+      "title": "ExerciseConfig",
+      "type": "object"
+    },
+    "FeatureDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "angle_2d",
+            "ratio",
+            "offset"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "landmarks": {
+          "items": {
+            "maximum": 32,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "minItems": 2,
+          "title": "Landmarks",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "transition",
+            "observation"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "landmarks",
+        "role"
+      ],
+      "title": "FeatureDefinition",
+      "type": "object"
+    },
+    "FeatureSet": {
+      "additionalProperties": false,
+      "properties": {
+        "left_knee_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Left Knee Angle Deg"
+        },
+        "right_knee_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Right Knee Angle Deg"
+        },
+        "left_hip_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Left Hip Angle Deg"
+        },
+        "right_hip_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Right Hip Angle Deg"
+        },
+        "left_elbow_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Left Elbow Angle Deg"
+        },
+        "right_elbow_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Right Elbow Angle Deg"
+        },
+        "left_shoulder_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Left Shoulder Angle Deg"
+        },
+        "right_shoulder_angle_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Right Shoulder Angle Deg"
+        },
+        "trunk_tilt_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trunk Tilt Deg"
+        },
+        "arm_elevation_deg": {
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Arm Elevation Deg"
+        },
+        "leg_spread_ratio": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Leg Spread Ratio"
+        },
+        "interpolated": {
+          "default": false,
+          "title": "Interpolated",
+          "type": "boolean"
+        }
+      },
+      "title": "FeatureSet",
+      "type": "object"
+    },
+    "FeedbackRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "message_key": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Message Key",
+          "type": "string"
+        },
+        "priority": {
+          "minimum": 0,
+          "title": "Priority",
+          "type": "integer"
+        },
+        "cooldown_ms": {
+          "minimum": 0,
+          "title": "Cooldown Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "rule_id",
+        "message_key",
+        "priority",
+        "cooldown_ms"
+      ],
+      "title": "FeedbackRule",
+      "type": "object"
+    },
+    "Landmark": {
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "maximum": 32,
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "x": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        },
+        "visibility": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Visibility"
+        },
+        "presence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Presence"
+        }
+      },
+      "required": [
+        "index",
+        "x",
+        "y",
+        "z",
+        "visibility",
+        "presence"
+      ],
+      "title": "Landmark",
+      "type": "object"
+    },
+    "PoseFrame": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "timestamp_ms": {
+          "minimum": 0,
+          "title": "Timestamp Ms",
+          "type": "number"
+        },
+        "model": {
+          "const": "mediapipe-pose-landmarker",
+          "title": "Model",
+          "type": "string"
+        },
+        "model_version": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Version"
+        },
+        "model_variant": {
+          "enum": [
+            "lite",
+            "full",
+            "heavy"
+          ],
+          "title": "Model Variant",
+          "type": "string"
+        },
+        "pose_quality": {
+          "enum": [
+            "GOOD",
+            "LIMITED",
+            "INSUFFICIENT"
+          ],
+          "title": "Pose Quality",
+          "type": "string"
+        },
+        "landmarks": {
+          "items": {
+            "$ref": "#/$defs/Landmark"
+          },
+          "maxItems": 33,
+          "title": "Landmarks",
+          "type": "array"
+        },
+        "features": {
+          "$ref": "#/$defs/FeatureSet"
+        }
+      },
+      "required": [
+        "schema_version",
+        "timestamp_ms",
+        "model",
+        "model_version",
+        "model_variant",
+        "pose_quality",
+        "landmarks",
+        "features"
+      ],
+      "title": "PoseFrame",
+      "type": "object"
+    },
+    "QualityConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "min_visibility": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Min Visibility",
+          "type": "number"
+        },
+        "max_gap_ms": {
+          "exclusiveMinimum": 0,
+          "title": "Max Gap Ms",
+          "type": "number"
+        },
+        "max_jump_normalized": {
+          "exclusiveMinimum": 0,
+          "title": "Max Jump Normalized",
+          "type": "number"
+        }
+      },
+      "required": [
+        "min_visibility",
+        "max_gap_ms",
+        "max_jump_normalized"
+      ],
+      "title": "QualityConfig",
+      "type": "object"
+    },
+    "ScalarThreshold": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "ratio",
+            "normalized",
+            "ms"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "unit",
+        "value"
+      ],
+      "title": "ScalarThreshold",
+      "type": "object"
+    },
+    "SessionEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "CAMERA_PERMISSION_DENIED",
+            "POSE_LOST",
+            "POSE_RECOVERED",
+            "LOW_VISIBILITY",
+            "REP_STARTED",
+            "REP_COMPLETED",
+            "REP_INCOMPLETE",
+            "RANGE_VARIATION_OBSERVED",
+            "FEEDBACK_ISSUED",
+            "SESSION_PAUSED",
+            "SESSION_FINISHED"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "timestamp_ms": {
+          "minimum": 0,
+          "title": "Timestamp Ms",
+          "type": "number"
+        },
+        "exercise": {
+          "enum": [
+            "squat",
+            "push_up",
+            "biceps_curl",
+            "jumping_jack"
+          ],
+          "title": "Exercise",
+          "type": "string"
+        },
+        "rule_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "quality": {
+          "enum": [
+            "GOOD",
+            "LIMITED",
+            "INSUFFICIENT"
+          ],
+          "title": "Quality",
+          "type": "string"
+        },
+        "rep_index": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rep Index"
+        },
+        "metadata": {
+          "$ref": "#/$defs/EventMetadata"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "timestamp_ms",
+        "exercise",
+        "rule_id",
+        "quality",
+        "rep_index",
+        "metadata"
+      ],
+      "title": "SessionEvent",
+      "type": "object"
+    },
+    "SessionSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "exercise": {
+          "enum": [
+            "squat",
+            "push_up",
+            "biceps_curl",
+            "jumping_jack"
+          ],
+          "title": "Exercise",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "webcam",
+            "upload"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "duration_ms": {
+          "minimum": 0,
+          "title": "Duration Ms",
+          "type": "number"
+        },
+        "camera_view": {
+          "enum": [
+            "side",
+            "front",
+            "diagonal",
+            "unknown"
+          ],
+          "title": "Camera View",
+          "type": "string"
+        },
+        "selected_side": {
+          "anyOf": [
+            {
+              "enum": [
+                "left",
+                "right",
+                "bilateral"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Side"
+        },
+        "completed_repetitions": {
+          "minimum": 0,
+          "title": "Completed Repetitions",
+          "type": "integer"
+        },
+        "incomplete_repetitions": {
+          "minimum": 0,
+          "title": "Incomplete Repetitions",
+          "type": "integer"
+        },
+        "discarded_repetitions": {
+          "minimum": 0,
+          "title": "Discarded Repetitions",
+          "type": "integer"
+        },
+        "pose_coverage_ratio": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pose Coverage Ratio"
+        },
+        "algorithm_version": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Algorithm Version",
+          "type": "string"
+        },
+        "configuration_version": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Configuration Version",
+          "type": "string"
+        },
+        "configuration_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Configuration Sha256"
+        },
+        "model_variant": {
+          "enum": [
+            "lite",
+            "full",
+            "heavy"
+          ],
+          "title": "Model Variant",
+          "type": "string"
+        },
+        "model_version": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Version"
+        },
+        "model_asset_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Asset Sha256"
+        },
+        "evaluation": {
+          "$ref": "#/$defs/Evaluation"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/SessionEvent"
+          },
+          "title": "Events",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "exercise",
+        "source",
+        "started_at",
+        "duration_ms",
+        "camera_view",
+        "selected_side",
+        "completed_repetitions",
+        "incomplete_repetitions",
+        "discarded_repetitions",
+        "pose_coverage_ratio",
+        "algorithm_version",
+        "configuration_version",
+        "configuration_sha256",
+        "model_variant",
+        "model_version",
+        "model_asset_sha256",
+        "evaluation",
+        "events"
+      ],
+      "title": "SessionSummary",
+      "type": "object"
+    },
+    "SmoothingConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "ema",
+          "title": "Type",
+          "type": "string"
+        },
+        "alpha": {
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Alpha",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "alpha"
+      ],
+      "title": "SmoothingConfig",
+      "type": "object"
+    },
+    "TransitionCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Feature",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "gte",
+            "lte"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "threshold": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Threshold",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "operator",
+        "threshold"
+      ],
+      "title": "TransitionCondition",
+      "type": "object"
+    },
+    "TransitionDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "from_state": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "From State",
+          "type": "string"
+        },
+        "to_state": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "To State",
+          "type": "string"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/TransitionCondition"
+          },
+          "minItems": 1,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "match": {
+          "enum": [
+            "all",
+            "any"
+          ],
+          "title": "Match",
+          "type": "string"
+        },
+        "require_dwell": {
+          "title": "Require Dwell",
+          "type": "boolean"
+        },
+        "emit_event": {
+          "anyOf": [
+            {
+              "enum": [
+                "CAMERA_PERMISSION_DENIED",
+                "POSE_LOST",
+                "POSE_RECOVERED",
+                "LOW_VISIBILITY",
+                "REP_STARTED",
+                "REP_COMPLETED",
+                "REP_INCOMPLETE",
+                "RANGE_VARIATION_OBSERVED",
+                "FEEDBACK_ISSUED",
+                "SESSION_PAUSED",
+                "SESSION_FINISHED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Emit Event"
+        }
+      },
+      "required": [
+        "from_state",
+        "to_state",
+        "conditions",
+        "match",
+        "require_dwell",
+        "emit_event"
+      ],
+      "title": "TransitionDefinition",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Schema registry only; not an API request or response.",
+  "properties": {
+    "landmark": {
+      "$ref": "#/$defs/Landmark"
+    },
+    "pose_quality": {
+      "enum": [
+        "GOOD",
+        "LIMITED",
+        "INSUFFICIENT"
+      ],
+      "title": "Pose Quality",
+      "type": "string"
+    },
+    "feature_set": {
+      "$ref": "#/$defs/FeatureSet"
+    },
+    "pose_frame": {
+      "$ref": "#/$defs/PoseFrame"
+    },
+    "session_event": {
+      "$ref": "#/$defs/SessionEvent"
+    },
+    "session_summary": {
+      "$ref": "#/$defs/SessionSummary"
+    },
+    "exercise_config": {
+      "$ref": "#/$defs/ExerciseConfig"
+    }
+  },
+  "required": [
+    "landmark",
+    "pose_quality",
+    "feature_set",
+    "pose_frame",
+    "session_event",
+    "session_summary",
+    "exercise_config"
+  ],
+  "title": "ContractCatalog",
+  "type": "object"
+}
