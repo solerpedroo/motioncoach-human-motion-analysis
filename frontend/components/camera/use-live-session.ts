@@ -1,15 +1,28 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createBrowserSpeechPort } from "@/components/workout/browser-speech";
 import {
   type AnalyzerSnapshot,
   createExerciseAnalyzer,
 } from "@/features/exercise-engine/exercise-analyzer";
+import { getExerciseConfig } from "@/features/exercise-engine/exercise-config";
+import {
+  createFeedbackEngine,
+  type FeedbackDecision,
+  feedbackPolicy,
+} from "@/features/exercise-engine/feedback";
+import { createVoiceFeedback } from "@/features/exercise-engine/voice";
 import { cameraError, createCamera } from "@/features/pose-engine/camera";
 import { createSessionMetrics } from "@/features/pose-engine/metrics";
 import type { WorkerReply } from "@/features/pose-engine/protocol";
 import { createPoseClient } from "@/features/pose-engine/worker-client";
+import {
+  createSessionRecorder,
+  type LocalSession,
+} from "@/features/session-store/session-recorder";
 import type { Landmark } from "@/lib/contracts.generated";
 import type { ExerciseId } from "@/lib/exercises";
+import { en } from "@/messages/en";
 import { drawPose } from "../pose-overlay/draw";
 export type LiveStatus =
   | "idle"
@@ -32,6 +45,83 @@ export function useLiveSession(options: {
   const analyzer = useRef<ReturnType<typeof createExerciseAnalyzer> | null>(
     null,
   );
+  const recorder = useRef<ReturnType<typeof createSessionRecorder> | null>(
+    null,
+  );
+  const feedbackEngine = useRef<ReturnType<typeof createFeedbackEngine> | null>(
+    null,
+  );
+  const voice = useRef<ReturnType<typeof createVoiceFeedback> | null>(null);
+  const decision = useRef<FeedbackDecision | null>(null);
+  const feedbackUntil = useRef(0);
+  const [feedback, setFeedback] = useState<FeedbackDecision | null>(null);
+  const [summary, setSummary] = useState<LocalSession | null>(null);
+  const [elapsedMs, setElapsedMs] = useState(0);
+  const [originMs, setOriginMs] = useState(0);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
+  const [voiceAvailable, setVoiceAvailable] = useState(false);
+  const [voiceError, setVoiceError] = useState("");
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    const port = createBrowserSpeechPort();
+    if (!port) return;
+    voice.current = createVoiceFeedback(
+      port,
+      () => performance.now(),
+      () => {
+        setVoiceEnabled(false);
+        setVoiceError(
+          "Voice feedback failed. Visual observations remain available.",
+        );
+      },
+    );
+    const refresh = () => {
+      const available = port.available();
+      setVoiceAvailable(available);
+      if (!available) {
+        voice.current?.setEnabled(false);
+        setVoiceEnabled(false);
+      }
+    };
+    refresh();
+    synth.addEventListener("voiceschanged", refresh);
+    return () => {
+      synth.removeEventListener("voiceschanged", refresh);
+      voice.current?.setEnabled(false);
+      voice.current = null;
+    };
+  }, []);
+  const toggleVoice = (value: boolean) => {
+    setVoiceError("");
+    setVoiceEnabled(voice.current?.setEnabled(value) ?? false);
+  };
+  const observe = (
+    value: AnalyzerSnapshot,
+    timestamp: number,
+    points: Landmark[] = [],
+  ) => {
+    latest.current = value;
+    const outcome = feedbackEngine.current?.update(value, timestamp, points);
+    const next = outcome?.decision ?? null;
+    if (
+      next?.selected &&
+      (next.issued || next.selected.category === "capture")
+    ) {
+      decision.current = next;
+      feedbackUntil.current =
+        timestamp + feedbackPolicy.completed_rule.cooldown_ms;
+    } else if (timestamp > feedbackUntil.current) decision.current = null;
+    voice.current?.guard(next?.selected ?? null);
+    recorder.current?.consume(value, timestamp, [
+      ...(outcome?.observations ?? []),
+      ...(outcome?.decision.event ? [outcome.decision.event] : []),
+    ]);
+    if (outcome?.decision.issued && outcome.decision.selected) {
+      const item = outcome.decision.selected;
+      const text = en.feedback[item.message_key as keyof typeof en.feedback];
+      if (text) voice.current?.publish(item, text);
+    }
+  };
   const metrics = useRef(createSessionMetrics());
   const landmarks = useRef<Landmark[]>([]);
   const lastPose = useRef(-Infinity);
@@ -70,6 +160,14 @@ export function useLiveSession(options: {
       latest.current = analyzer.current.pause(performance.now());
       setSnapshot(latest.current);
     }
+    if (recorder.current) {
+      if (latest.current)
+        recorder.current.pause(latest.current, performance.now());
+      setSummary(recorder.current.finish(performance.now(), "user_stopped"));
+    }
+    voice.current?.cancel();
+    decision.current = null;
+    setFeedback(null);
     release();
     setCameraOn(false);
     changeState("stopped");
@@ -88,6 +186,11 @@ export function useLiveSession(options: {
     setError("");
     setSnapshot(null);
     latest.current = null;
+    recorder.current = null;
+    feedbackEngine.current = null;
+    setSummary(null);
+    setElapsedMs(0);
+    decision.current = null;
     lastPose.current = -Infinity;
     if (
       !navigator.mediaDevices?.getUserMedia ||
@@ -108,7 +211,16 @@ export function useLiveSession(options: {
       if (state.current === "running") {
         latest.current = analyzer.current?.pause(performance.now()) ?? null;
         setSnapshot(latest.current);
+        if (latest.current)
+          recorder.current?.pause(latest.current, performance.now());
       }
+      if (recorder.current)
+        setSummary(
+          recorder.current.finish(performance.now(), "capture_failed"),
+        );
+      voice.current?.cancel();
+      decision.current = null;
+      setFeedback(null);
       release();
       setCameraOn(false);
       setError(message);
@@ -159,6 +271,20 @@ export function useLiveSession(options: {
         if (reply.type === "ready") {
           barrier.current = performance.now();
           lastPose.current = barrier.current;
+          setOriginMs(barrier.current);
+          recorder.current = createSessionRecorder({
+            id: crypto.randomUUID(),
+            exercise: options.exercise,
+            camera_view: options.view,
+            started_at: new Date().toISOString(),
+            origin_ms: barrier.current,
+          });
+          feedbackEngine.current = createFeedbackEngine(
+            getExerciseConfig(options.exercise),
+            options.view,
+          );
+          if (latest.current)
+            recorder.current.consume(latest.current, barrier.current);
           changeState("running");
           return;
         }
@@ -168,11 +294,11 @@ export function useLiveSession(options: {
         landmarks.current = reply.landmarks;
         lastPose.current = performance.now();
         metrics.current.inference(lastPose.current, reply.latency);
-        latest.current =
-          analyzer.current?.update({
-            landmarks: reply.landmarks,
-            timestamp_ms: reply.timestamp,
-          }) ?? null;
+        const value = analyzer.current?.update({
+          landmarks: reply.landmarks,
+          timestamp_ms: reply.timestamp,
+        });
+        if (value) observe(value, reply.timestamp, reply.landmarks);
       };
       client.current = createPoseClient(
         new Worker(new URL("../../workers/pose.worker.ts", import.meta.url), {
@@ -224,11 +350,15 @@ export function useLiveSession(options: {
             stale = true;
             barrier.current = now;
             landmarks.current = [];
-            latest.current =
-              analyzer.current?.update({ landmarks: [], timestamp_ms: now }) ??
-              null;
+            const value = analyzer.current?.update({
+              landmarks: [],
+              timestamp_ms: now,
+            });
+            if (value) observe(value, now);
           }
           setSnapshot(latest.current);
+          setFeedback(decision.current);
+          setElapsedMs(recorder.current?.activeDuration(now) ?? 0);
           setRates(metrics.current.snapshot(now));
         }
         raf.current = requestAnimationFrame(tick);
@@ -243,6 +373,13 @@ export function useLiveSession(options: {
     barrier.current = performance.now();
     latest.current = analyzer.current?.pause(barrier.current) ?? null;
     setSnapshot(latest.current);
+    if (latest.current) {
+      recorder.current?.pause(latest.current, barrier.current);
+      feedbackEngine.current?.update(latest.current, barrier.current);
+    }
+    voice.current?.cancel();
+    decision.current = null;
+    setFeedback(null);
     changeState("paused");
     metrics.current = createSessionMetrics();
     setRates(metrics.current.snapshot(barrier.current));
@@ -252,10 +389,20 @@ export function useLiveSession(options: {
     barrier.current = performance.now();
     latest.current = analyzer.current?.resume(barrier.current) ?? null;
     lastPose.current = barrier.current;
+    if (latest.current)
+      recorder.current?.resume(latest.current, barrier.current);
     setSnapshot(latest.current);
     changeState("running");
   };
   return {
+    feedback,
+    originMs,
+    summary,
+    elapsedMs,
+    voiceEnabled,
+    voiceAvailable,
+    voiceError,
+    toggleVoice,
     video,
     canvas,
     status,
