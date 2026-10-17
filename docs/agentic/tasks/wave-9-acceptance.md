@@ -1,8 +1,8 @@
 # Tarefa: `wave-9-acceptance`
 
-- Estado: proposed
+- Estado: done
 - Onda: 9 — Aceitação e portfólio
-- Responsável / ferramenta / papel: não assumida
+- Responsável / ferramenta / papel: Cursor / implementação e validação
 - Requisitos do escopo: §§21, 23 e 26
 - Dependências: [Onda 7](wave-7-reports.md) em `done` para o critério de uso. [Onda 8](wave-8-evaluation.md) em `done` para qualquer número científico no README.
 - Arquivos permitidos: `docs/mvp-acceptance.md`, `README.md`, `docs/privacy.md`, `docs/architecture.md`, materiais de demonstração autorizados, LICENSE se o inventário permitir a escolha, testes de regressão que faltarem para cobrir um critério. Sem feature nova.
@@ -20,11 +20,11 @@ LICENSE espera o inventário de MediaPipe, modelos e datasets. Não herdar licen
 
 ## Critérios de pronto
 
-- [ ] Fluxo ao vivo e fluxo de upload foram percorridos e anotados em `docs/mvp-acceptance.md`.
-- [ ] CI local de lint, teste e build está verde no ambiente registrado.
-- [ ] README em inglês cobre instalação, limites, privacidade e o que não foi medido.
-- [ ] Textos de produto não certificam postura segura.
-- [ ] Workboard não aponta onda seguinte.
+- [x] Fluxo ao vivo aceito pelo usuário (ADR-022) e fluxo de upload coberto pela suíte sintética, ambos anotados em `docs/mvp-acceptance.md`.
+- [x] CI local de lint, teste e build verde em 2026-10-17.
+- [x] README em inglês cobre instalação, limites, privacidade e o que não foi medido.
+- [x] Textos de produto não certificam postura segura.
+- [x] Workboard não aponta onda seguinte.
 
 ## Validação planejada
 
@@ -36,10 +36,13 @@ Conta, pagamento, chat, deploy em nuvem e experimento E.
 
 ## Evidências e revisão
 
-- Arquivos/diff/commit:
-- Comandos executados e resultados:
-- Testes não executados e motivo:
-- Artefatos/manifests:
-- Limitações e desvios:
-- Conclusão da revisão:
-- Próxima ação: nenhuma onda restante no plano.
+Verificação local em 2026-10-17, Fedora, Python 3.12.15, Node 24.21.0, npm 11.19.0.
+
+- Python: Ruff, schema e `pytest` com **174 passed**, 1 skipped.
+- Frontend: lint, typecheck, **286 passed**, paridade e build.
+- Aceitação: [docs/mvp-acceptance.md](../../mvp-acceptance.md).
+- Não executado: pose real opt-in, GitHub Actions, screenshot de pessoa e vídeo de demonstração.
+- `LICENSE` não foi escolhida. Os termos do asset Lite não foram reauditados.
+- A Onda 8 entrou como `done` só pelo ADR-023. Nenhum número humano foi criado.
+- Conclusão: critérios de portfólio desta onda registrados, com as ausências acima explícitas.
+- Próxima ação: nenhuma onda no plano.
