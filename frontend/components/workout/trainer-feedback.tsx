@@ -1,12 +1,14 @@
 import type { FeedbackDecision } from "@/features/exercise-engine/feedback";
-import { en } from "@/messages/en";
+import { feedbackText, type VoiceLanguage } from "@/messages/catalog";
 import styles from "./session.module.css";
 export function TrainerFeedback({
   feedback,
   originMs,
+  language = "en",
 }: {
   feedback: FeedbackDecision | null;
   originMs: number;
+  language?: VoiceLanguage;
 }) {
   const item = feedback?.selected;
   if (!item) return null;
@@ -15,10 +17,12 @@ export function TrainerFeedback({
       className={`${styles.panel} ${styles.feedback}`}
       aria-label="Trainer observation"
     >
-      <h2>Movement observation</h2>
-      <p aria-live="polite">
-        {en.feedback[item.message_key as keyof typeof en.feedback]}
-      </p>
+      <h2>
+        {language === "pt-BR"
+          ? "Observação do movimento"
+          : "Movement observation"}
+      </h2>
+      <p aria-live="polite">{feedbackText(language, item.message_key)}</p>
       <details>
         <summary>Why this observation?</summary>
         <p>
