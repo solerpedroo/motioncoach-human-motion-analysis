@@ -1,10 +1,10 @@
 import { FilesetResolver, PoseLandmarker } from "@mediapipe/tasks-vision";
 import { normalizeLandmarks } from "@/features/pose-engine/landmarks";
-import manifest from "@/features/pose-engine/model-manifest.json";
 import type {
   WorkerReply,
   WorkerRequest,
 } from "@/features/pose-engine/protocol";
+import manifest from "../../shared/models/pose-landmarker-lite.json";
 
 let model: PoseLandmarker | null = null;
 const reply = (message: WorkerReply) => self.postMessage(message);
