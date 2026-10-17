@@ -435,6 +435,18 @@ referenciar a anterior sem apagar o histórico.
   [api-contract.md](../api-contract.md). Gráficos e exportação CSV ficam na
   Onda 7.
 
+## ADR-020 — Relatório e exportação sem frames (Onda 7)
+
+- Data: 2026-10-17. Estado: aceito e implementado.
+- Decisão: a tela lê `analysis.json` e `frames.jsonl`. O gráfico visível é SVG
+  com o tempo da mídia no eixo horizontal. Recharts não entrou: a série é uma
+  polilinha e o desenho fica fora da inferência. O PNG `angle.png` é derivado.
+  Falha ao gravá-lo produz `chart_warning` e não muda o job para `FAILED`.
+- Exportação `json` e `csv` omite landmarks e imagem. O player usa
+  `timestamp_ms / 1000` do mesmo evento listado na timeline.
+- Consequência: PDF e consistency score continuam fora. A paridade da Onda 5
+  não muda com esta camada.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
@@ -443,8 +455,8 @@ referenciar a anterior sem apagar o histórico.
   não validadas. Avaliação empírica permanece na Onda 8.
 - Onda 3: runtime Web decidido no ADR-014; inspeção física pendente.
 - Onda 5 resolvida nos ADR-017/018: pacote/modelo, port, PTS e paridade.
-- Onda 6 resolvida no ADR-019. Limites de CPU em hardware real continuam
-  sem medição de carga; tamanho, duração e TTL usam a partida do escopo.
+- Onda 6 resolvida no ADR-019. Carga de CPU do worker não foi medida.
+- Onda 7 resolvida no ADR-020. O gráfico do relatório é SVG; o PNG é opcional.
 - Onda 8: existência de um conjunto consentido ou de um dataset cuja licença
   permita a avaliação. Sem isso a onda não fecha.
 - Onda 9: LICENSE do repositório, depois do inventário real de dependências e
