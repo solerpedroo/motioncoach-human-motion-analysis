@@ -32,3 +32,12 @@ Regras de transporte:
 JSON não representa NaN/Infinity. A matriz em `fixtures/contracts/invalid`
 instrui os testes a injetá-los em memória, para também provar que adapters
 recusam essas entradas antes de serializar.
+
+
+## Envelope local da Onda 4
+
+`local-session.schema.json` versão de armazenamento 1 referencia o
+SessionSummary normativo 1.0.0 e acrescenta fase final/métricas agregadas.
+Não altera HTTP nem os adaptadores de contratos Python. O frontend valida o
+envelope inteiro em leitura/escrita. Propriedades extras são rejeitadas,
+incluindo imagens, frames ou landmarks. Detalhes no README de session-store.
