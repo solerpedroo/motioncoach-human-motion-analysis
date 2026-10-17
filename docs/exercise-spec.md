@@ -59,7 +59,8 @@ o exercício. Não é nota de execução.
   Amostra interpolada não completa sozinha uma repetição.
 - `min_state_ms` conta tempo de mídia ou de sessão, excluindo pausa.
 - `min_cycle_ms` separa dois completos.
-- Pausa congela o estado. Retomada não completa ciclo.
+- Pausa suspende o progresso e encerra ciclo ativo como incompleto. Retomada
+  entra em `UNCERTAIN` e exige readquirir a posição inicial (ADR-013).
 - Depois de `UNCERTAIN`, o estado estável precisa ser readquirido. A FSM não
   salta para a transição que incrementa o contador.
 
@@ -189,7 +190,9 @@ Métricas de transição, as duas obrigatórias ao mesmo tempo:
 
 - `arm_elevation_deg`: `angle(hip, shoulder, elbow)` de cada lado. Com os dois
   lados válidos, vale o mínimo. Um braço só não abre a fase. Com um lado
-  ausente, usa-se o lado visível e a qualidade fica no máximo `LIMITED`.
+  ausente, a elevação conjunta é `null` e a qualidade para transição fica
+  `INSUFFICIENT`. O fallback de braço isolado foi substituído no ADR-013 para
+  cumprir a exigência bilateral do ADR-010.
 - `leg_spread_ratio`: `|ankle_left.x - ankle_right.x| / |hip_left.x - hip_right.x|`.
   Só o eixo horizontal. Se `|hip_left.x - hip_right.x|` for menor que
   `min_hip_span_x`, a razão fica `null` e a qualidade do exercício vai a
@@ -267,3 +270,43 @@ contrato 1.0.0. A política não calibra limiares em vídeo humano.
 
 Detalhes da API e da recuperação em
 [frontend/features/exercise-engine](../frontend/features/exercise-engine/README.md).
+
+
+## Contrato operacional da FSM — Onda 2
+
+Decisão: ADR-013. Configurações executáveis dos quatro IDs em
+`shared/exercise-configs/`, versão 0.1.0, com `unvalidated_seed`.
+
+- O executor lê as transições, condições, limiares e flags `require_dwell` do
+  JSON. Entradas em posições estáveis exigem permanência contínua. Saídas
+  intermediárias sem dwell são explícitas no JSON. Um frame aplica no máximo
+  uma transição; não salta pelo fundo e retorno num mesmo timestamp.
+- O primeiro estado estável e sua readquisição não emitem repetição. O ciclo
+  começa em `REP_STARTED`; um completo precisa ter passado pelo extremo,
+  retornado à posição inicial e durado pelo menos `min_cycle_ms`, excluindo
+  pausa. O mesmo mínimo também separa completos. Retorno rápido demais vira
+  um único incompleto; permanecer no topo depois disso não o promove.
+- Jitter que quebra a condição reinicia o dwell candidato. `interpolated`,
+  feature ausente/não finita, qualidade insuficiente e quebra de continuidade
+  invalidam o ciclo uma vez e levam a `UNCERTAIN`.
+- Pausar em `BOTTOM`, `FLEXED`, `OPEN` ou em movimento emite um incompleto e
+  `SESSION_PAUSED`; a fase fica `PAUSED`. Retomar limpa filtro/dwell e exige
+  a posição inicial novamente. Não retoma o ciclo interrompido.
+- Agachamento e flexão escolhem o lado pela maior visibilidade média dos
+  obrigatórios antes de adquirir a posição inicial; empate escolhe esquerdo.
+  Trocar candidato antes da aquisição reinicia dwell. O lado fica fixo até
+  `reset`. Rosca exige braço explícito e não troca mesmo quando ele se oculta.
+- Mapeamento anatômico esquerdo/direito está em `side-bindings.json`; os
+  landmarks não são espelhados para análise. O flag de espelho é apresentação.
+- No polichinelo, suaviza-se o mínimo dos dois ângulos atuais e a abertura
+  horizontal. A transição precisa satisfazer condições tanto nos valores
+  suavizados quanto nos observados naquele frame, evitando sobreposição
+  aparente causada só pela memória dos filtros.
+- Eventos têm schema 1.0.0, exercício, regra, qualidade, fase e motivo quando
+  incompleto. `rep_index` é o índice do completo; nos demais eventos é `null`.
+  Timestamp inválido/fora de ordem não avança tempo; se interromper um ciclo,
+  seu incompleto usa o último timestamp válido e motivo explícito.
+
+O contrato de pausa esclarece/substitui a leitura de congelamento que
+permitiria continuar uma repetição antiga, conforme ADR-013. Feedback e voz
+continuam pertencendo à Onda 4; `feedback_candidates` está vazio nesta onda.
