@@ -18,7 +18,8 @@
     "contracts:check": "node scripts/generate-contracts.mjs --check",
     "test:smoke": "node scripts/smoke-http.mjs",
     "pose:prepare": "node scripts/prepare-pose.mjs",
-    "test:pose-browser": "node scripts/smoke-pose.mjs"
+    "test:pose-browser": "node scripts/smoke-pose.mjs",
+    "test:parity": "node scripts/parity-check.mjs"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "1.1.1",
