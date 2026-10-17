@@ -25,3 +25,5 @@ data/
 .DS_Store
 
 *.tsbuildinfo
+
+frontend/public/pose/
