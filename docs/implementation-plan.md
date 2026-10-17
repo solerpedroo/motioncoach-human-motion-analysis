@@ -1,6 +1,6 @@
 # MotionCoach — Plano de implementação
 
-Versão: 1.5 · Data: 2026-10-17 · Estado: Ondas 0–2 concluídas; Onda 3 em revisão; Onda 4 concluída por exceção ADR-015; Ondas 5–9 propostas.
+Versão: 1.6 · Data: 2026-10-17 · Estado: Ondas 0–9 concluídas. A Onda 8 não tem MAE humano (ADR-023).
 Fonte de requisitos: [project-scope.md](project-scope.md).
 Interpretação: [scope-analysis.md](scope-analysis.md).
 
@@ -298,17 +298,19 @@ A Onda 4 fechou feedback/voz, resumo e histórico opt-in com exclusões,
 validada por relógio/alto-falante/IndexedDB de laboratório e smoke Chromium
 com modelo/IndexedDB reais e câmera sintética. ADR-016 e
 [cartão](agentic/tasks/wave-4-live-session.md) registram resultados.
-O usuário autorizou avanço com a Onda 3 em revisão (ADR-015); a inspeção
-física continua aberta, sem aprovação humana implícita.
+O usuário autorizou avanço com a Onda 3 em revisão (ADR-015). Em 2026-10-17
+confirmou a inspeção física e a onda foi fechada no ADR-022, sem métrica.
 
 A Onda 5 entregou port Python do motor, paridade cruzada (`test:parity`),
 decode/probe PyAV, adaptador MediaPipe opcional e CLI `motioncoach probe|analyze`
 sobre `pipeline.analyze`. ADR-017/018 e [cartão](agentic/tasks/wave-5-python-video.md)
 registram tolerância e evidências. Smoke de pose real permanece opt-in.
 
-A Onda 7 ligou o relatório ao artefato: player, timeline, gráfico SVG e
-exportação JSON/CSV sem frames. ADR-020 e
-[cartão](agentic/tasks/wave-7-reports.md). A inspeção física da Onda 3
-continua aberta (ADR-015).
+A Onda 8 foi encerrada por pedido do usuário no ADR-023. A, B e C permanecem
+`not_evaluated` e o MAE permanece `null`.
 
-Próxima ação: assumir [Onda 8](agentic/tasks/wave-8-evaluation.md).
+A Onda 9 registrou a aceitação em [mvp-acceptance.md](mvp-acceptance.md) e o
+README em inglês. A regressão local de 2026-10-17 passou. Não há screenshot
+autorizado, vídeo de demonstração nem `LICENSE`.
+
+Não há onda seguinte.
