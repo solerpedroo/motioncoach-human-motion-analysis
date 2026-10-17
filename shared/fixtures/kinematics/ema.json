@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "common_config_version": "0.1.0",
+  "cases": [
+    {
+      "id": "known-ema-and-short-hold-expiry",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "value": 100,
+          "expected": {
+            "value": 100,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "value": 0,
+          "expected": {
+            "value": 60,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 100,
+          "value": 0,
+          "expected": {
+            "value": 36,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 150,
+          "value": null,
+          "expected": {
+            "value": 36,
+            "interpolated": true,
+            "can_transition": false,
+            "continuity_broken": false,
+            "reason": "HELD"
+          }
+        },
+        {
+          "timestamp_ms": 300,
+          "value": null,
+          "expected": {
+            "value": 36,
+            "interpolated": true,
+            "can_transition": false,
+            "continuity_broken": false,
+            "reason": "HELD"
+          }
+        },
+        {
+          "timestamp_ms": 301,
+          "value": null,
+          "expected": {
+            "value": null,
+            "interpolated": false,
+            "can_transition": false,
+            "continuity_broken": true,
+            "reason": "LONG_GAP"
+          }
+        },
+        {
+          "timestamp_ms": 350,
+          "value": 180,
+          "expected": {
+            "value": 180,
+            "interpolated": false,
+            "can_transition": false,
+            "continuity_broken": true,
+            "reason": "LONG_GAP"
+          }
+        },
+        {
+          "timestamp_ms": 400,
+          "value": 0,
+          "expected": {
+            "value": 108,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rejected-timestamps-do-not-advance-filter",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "value": 90,
+          "expected": {
+            "value": 90,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "value": 180,
+          "expected": {
+            "value": 126,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "value": 0,
+          "expected": {
+            "value": null,
+            "interpolated": false,
+            "can_transition": false,
+            "continuity_broken": true,
+            "reason": "NON_MONOTONIC_TIMESTAMP"
+          }
+        },
+        {
+          "timestamp_ms": 25,
+          "value": 0,
+          "expected": {
+            "value": null,
+            "interpolated": false,
+            "can_transition": false,
+            "continuity_broken": true,
+            "reason": "NON_MONOTONIC_TIMESTAMP"
+          }
+        },
+        {
+          "timestamp_ms": 100,
+          "value": 90,
+          "expected": {
+            "value": 111.6,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "max-gap-inclusive-then-reset",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "value": 100,
+          "expected": {
+            "value": 100,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 200,
+          "value": 50,
+          "expected": {
+            "value": 80,
+            "interpolated": false,
+            "can_transition": true,
+            "continuity_broken": false,
+            "reason": "OBSERVED"
+          }
+        },
+        {
+          "timestamp_ms": 401,
+          "value": 20,
+          "expected": {
+            "value": 20,
+            "interpolated": false,
+            "can_transition": false,
+            "continuity_broken": true,
+            "reason": "LONG_GAP"
+          }
+        }
+      ]
+    }
+  ]
+}
