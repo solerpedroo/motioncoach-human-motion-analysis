@@ -7,16 +7,17 @@ explicável, ângulos 2D e feedback condicionado à visibilidade.
 As **Ondas 0–2** estão concluídas: fundação, cinemática e contagem dos quatro
 exercícios em motor TypeScript puro, testado com fixtures sintéticas. Há
 contratos compartilhados, API de liveness, shell navegável, geometria 2D,
-EMA, quality gate e FSM declarativa. A interface permanece demonstrativa;
-a câmera será conectada ao motor na Onda 3. Pose real, upload e relatórios
-medidos seguem nas ondas responsáveis.
+EMA, quality gate e FSM declarativa. A **Onda 3 está implementada, em revisão**:
+captura local, worker de pose, overlay e contagem estão conectados. Falta o
+smoke manual com câmera física para fechar a onda. Upload e relatórios medidos
+seguem nas ondas responsáveis.
 
 ## Executar localmente
 
 Requisitos: **Python 3.12.15**, **uv 0.12.24**, **Node 24.21.0** e npm 11.
 As versões de dependências estão em `uv.lock` e
 `frontend/package-lock.json`. Não é necessário configurar `.env`, banco,
-modelo, FFmpeg ou serviço externo nesta onda.
+FFmpeg ou serviço externo. A captura requer o asset local do modelo.
 
 Na raiz:
 
@@ -29,6 +30,7 @@ Em outro terminal, também a partir da raiz:
 
 ```bash
 npm --prefix frontend ci
+npm --prefix frontend run pose:prepare
 npm --prefix frontend run dev
 ```
 
@@ -72,14 +74,25 @@ Navegação: `/`, `/dashboard`, `/workout/live`, `/workout/upload`, `/exercises`
 `/sessions/demo`, `/settings` e `/about/methodology`.
 `/sessions/[id]` reconhece a rota, mas ainda não carrega sessões.
 
-Em Live Workout e Video Analysis, o seletor **Preview state** mostra os 14
-estados de tela, incluindo permissão negada, baixa confiança, pausa, falha e
-cancelamento. Nenhum deles solicita permissão, transmite arquivo ou produz
-medição. Os números de desempenho e contagem permanecem indisponíveis.
+**Live Workout** solicita câmera somente em Start, sem microfone. Escolha
+exercício, vista e braço (rosca) antes de começar. Trocar câmera encerra a
+sessão; Start abre a nova câmera. Pause mantém vídeo e modelo; Resume exige
+readquisição da posição inicial. Stop ou sair da página encerra tracks e worker.
+Espelho afeta somente a apresentação. FPS/latência são medidos em janela de
+2 segundos. Nenhum frame vai para a API. HTTPS ou localhost e suporte a
+Worker, ImageBitmap e OffscreenCanvas são necessários.
+
+Modelo MediaPipe Lite `float16/1`, SDK `1.1.1`. O comando `pose:prepare` baixa
+uma vez, verifica SHA-256 e copia o WASM local; não roda na CI nem em install.
+Sem assets, o fluxo oferece retry e encerra a câmera. Detalhes no
+[README da captura](frontend/features/pose-engine/README.md) e ADR-014.
+
+**Video Analysis** continua demonstrativo: o seletor Preview state mostra
+estados sem solicitar permissão, transmitir arquivo ou produzir medição.
 
 ## Validação
 
-Comandos da CI, executados localmente nesta fundação:
+Comandos de regressão da CI, também executados localmente:
 
 ```bash
 uv run --locked ruff check .
@@ -100,8 +113,22 @@ e stylesheet, health, OpenAPI e ausência da rota de vídeo:
 npm --prefix frontend run test:smoke
 ```
 
-Ele não substitui inspeção visual em navegador. A inspeção visual não pôde
-ser executada neste ambiente, que não disponibiliza navegador conectado.
+O smoke HTTP não substitui inspeção visual. Há também um smoke **opt-in** de
+Chromium com câmera sintética, SDK e modelo reais, fora da CI. Depois de
+preparar os assets e servir o build na porta 3003:
+
+```bash
+npm --prefix frontend exec -- playwright install chromium
+npm --prefix frontend start -- --port 3003
+# Em outro terminal:
+npm --prefix frontend run test:pose-browser
+```
+
+`POSE_SMOKE_URL` altera a URL; `POSE_BROWSER_EXECUTABLE` aponta a um Chromium
+já instalado; `POSE_SMOKE_ARTIFACTS` grava capturas de tela. Esse smoke verifica
+inferência, tracks, pausa/retomada, espelho, dimensões mobile e requests GET
+locais. A inspeção qualitativa sobre uma pessoa permanece pendente no
+[cartão da Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md).
 
 Para servir o build de produção, depois do build:
 
@@ -126,7 +153,8 @@ Ela não inclui FastAPI. Para voltar ao ambiente completo, executar
 `uv sync --locked --extra api`. Evidências, resultados e limites dos checks
 estão nos cartões da [Onda 0](docs/agentic/tasks/wave-0-foundation.md) e
 [Onda 1](docs/agentic/tasks/wave-1-kinematics.md) e
-[Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md).
+[Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md) e
+[Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md).
 A execução remota do GitHub Actions depende de publicar este diff.
 
 ## Evoluir os contratos
@@ -154,6 +182,6 @@ A configuração descreve regras; ainda não executa a FSM. Veja
 - [Privacidade](docs/privacy.md) e [avaliação](docs/evaluation.md).
 
 MotionCoach não diagnostica lesão, não prescreve treino e não certifica
-segurança do movimento. Não há benchmark humano nem FPS medido nesta onda.
+segurança do movimento. Não há benchmark humano; FPS da câmera sintética não é benchmark de webcam.
 Métricas sem referência permanecem `not_evaluated`. Fixtures sintéticas não
 são validação biomecânica.
