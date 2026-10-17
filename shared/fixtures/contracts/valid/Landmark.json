@@ -1,0 +1,11 @@
+{
+  "contract": "Landmark",
+  "data": {
+    "index": 11,
+    "x": 0.42,
+    "y": 0.28,
+    "z": -0.08,
+    "visibility": 0.98,
+    "presence": 0.99
+  }
+}
