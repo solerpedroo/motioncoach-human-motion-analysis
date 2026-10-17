@@ -1,5 +1,7 @@
 """HTTP translation for upload jobs. Pose runs only in the worker process."""
 
+import csv
+import io
 import json
 import shutil
 import uuid
@@ -8,7 +10,7 @@ from typing import Literal
 
 from fastapi import FastAPI, File, Form, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
 from pydantic import BaseModel, ConfigDict
 
 from backend.app.settings import Settings, load_settings
@@ -20,7 +22,7 @@ from motioncoach.pipeline.errors import AnalysisError
 from motioncoach.video.decoder import VideoLimits, probe
 
 EXERCISES = ("squat", "push_up", "biceps_curl", "jumping_jack")
-ARTIFACTS = {"analysis.json", "frames.jsonl"}
+ARTIFACTS = {"analysis.json", "frames.jsonl", "angle.png"}
 JobStatus = Literal["QUEUED", "PROCESSING", "COMPLETED", "FAILED", "CANCELLED"]
 JobStage = Literal["validation", "probe", "pose", "analysis", "publication"]
 
@@ -64,6 +66,7 @@ class JobView(BaseModel):
     selected_side: str | None
     error_code: str | None
     error_message: str | None
+    chart_warning: str | None = None
 
 
 def error(status: int, code: str, message: str) -> JSONResponse:
@@ -71,7 +74,12 @@ def error(status: int, code: str, message: str) -> JSONResponse:
     return JSONResponse(body.model_dump(), status_code=status)
 
 
-def job_view(row) -> JobView:
+def job_view(row, settings: Settings | None = None) -> JobView:
+    warning = None
+    if settings is not None and row["status"] == "COMPLETED" and not row["files_deleted"]:
+        status_path = directory_for(settings, row["id"]) / "result" / "derivatives.json"
+        if status_path.is_file():
+            warning = json.loads(status_path.read_text(encoding="utf-8")).get("chart_error")
     return JobView(
         schema_version="1.0.0",
         id=row["id"],
@@ -82,6 +90,7 @@ def job_view(row) -> JobView:
         selected_side=row["selected_side"],
         error_code=row["error_code"],
         error_message=row["error_message"],
+        chart_warning=warning,
     )
 
 
@@ -188,14 +197,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         except Exception:
             shutil.rmtree(directory, ignore_errors=True)
             return error(422, "INVALID_VIDEO", "The file could not be read as a video.")
-        return job_view(current.store.get(job_id))
+        return job_view(current.store.get(job_id), current.settings)
 
     @app.get("/api/jobs/{job_id}", response_model=JobView, tags=["jobs"])
     def read_job(job_id: str, request: Request):
         row = request.app.state.store.get(job_id)
         if row is None:
             return error(404, "JOB_NOT_FOUND", "No job matches that identifier.")
-        return job_view(row)
+        return job_view(row, request.app.state.settings)
 
     @app.delete("/api/jobs/{job_id}", tags=["jobs"])
     def delete_job(job_id: str, request: Request):
@@ -207,7 +216,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             remove_job_files(current.settings, job_id, current.store)
         elif action == "terminal":
             remove_job_files(current.settings, job_id, current.store)
-        return job_view(current.store.get(job_id))
+        return job_view(current.store.get(job_id), current.settings)
 
     @app.get("/api/analyses/{job_id}", tags=["analyses"])
     def analysis(job_id: str, request: Request):
@@ -235,10 +244,50 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return error(404, "ARTIFACT_NOT_FOUND", "That result file is not available.")
         return FileResponse(path, filename=name)
 
+    @app.get("/api/jobs/{job_id}/media", tags=["jobs"])
+    def media(job_id: str, request: Request):
+        current = request.app.state
+        row = current.store.get(job_id)
+        if row is None or row["status"] != "COMPLETED" or row["files_deleted"]:
+            return error(404, "MEDIA_NOT_FOUND", "The uploaded video is not available.")
+        matches = [
+            path
+            for path in directory_for(current.settings, job_id).glob("source.*")
+            if path.is_file() and path.suffix.lower() in {".mp4", ".mov", ".webm"}
+        ]
+        if len(matches) != 1:
+            return error(404, "MEDIA_NOT_FOUND", "The uploaded video is not available.")
+        return FileResponse(matches[0], filename=matches[0].name)
+
+    @app.get("/api/analyses/{job_id}/export", tags=["analyses"])
+    def export_analysis(job_id: str, request: Request):
+        published = _load_summary(request, job_id)
+        if isinstance(published, JSONResponse):
+            return published
+        export_format = request.query_params.get("format", "json")
+        if export_format == "json":
+            return JSONResponse(published)
+        if export_format != "csv":
+            return error(422, "UNSUPPORTED_EXPORT", "Choose json or csv.")
+        buffer = io.StringIO()
+        writer = csv.DictWriter(
+            buffer,
+            fieldnames=["type", "timestamp_ms", "exercise", "rule_id", "quality", "rep_index"],
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        for event in published["events"]:
+            writer.writerow({name: event.get(name) for name in writer.fieldnames})
+        return Response(
+            buffer.getvalue(),
+            media_type="text/csv",
+            headers={"Content-Disposition": 'attachment; filename="events.csv"'},
+        )
+
     return app
 
 
-def _published_json(request: Request, job_id: str, field: str):
+def _load_summary(request: Request, job_id: str):
     current = request.app.state
     row = current.store.get(job_id)
     if row is None or row["files_deleted"]:
@@ -248,8 +297,14 @@ def _published_json(request: Request, job_id: str, field: str):
     path = directory_for(current.settings, job_id) / "result" / "analysis.json"
     if not path.is_file():
         return error(404, "ANALYSIS_NOT_FOUND", "No published analysis matches that identifier.")
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    body = payload["summary"] if field == "summary" else payload["summary"]["events"]
+    return json.loads(path.read_text(encoding="utf-8"))["summary"]
+
+
+def _published_json(request: Request, job_id: str, field: str):
+    published = _load_summary(request, job_id)
+    if isinstance(published, JSONResponse):
+        return published
+    body = published if field == "summary" else published["events"]
     return JSONResponse(body)
 
 
