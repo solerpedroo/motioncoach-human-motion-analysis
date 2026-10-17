@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0.0",
+  "version": "0.1.0",
+  "validation_status": "unvalidated_seed",
+  "quality": {
+    "min_visibility": 0.5,
+    "max_gap_ms": 200,
+    "max_jump_normalized": 0.2
+  },
+  "smoothing": {
+    "type": "ema",
+    "alpha": 0.4
+  },
+  "min_state_ms": 80,
+  "min_cycle_ms": 400,
+  "id": "squat",
+  "display_name": "Squat",
+  "recommended_view": "side",
+  "side_selection": "best_visible",
+  "required_landmarks": [
+    11,
+    23,
+    25,
+    27
+  ],
+  "optional_landmarks": [],
+  "features": [
+    {
+      "id": "left_knee_angle_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        23,
+        25,
+        27
+      ],
+      "role": "transition"
+    },
+    {
+      "id": "left_hip_angle_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        11,
+        23,
+        25
+      ],
+      "role": "observation"
+    }
+  ],
+  "states": [
+    "NOT_READY",
+    "STANDING",
+    "DESCENDING",
+    "BOTTOM",
+    "ASCENDING",
+    "UNCERTAIN",
+    "PAUSED"
+  ],
+  "initial_state": "NOT_READY",
+  "thresholds": [
+    {
+      "name": "standing_enter_deg",
+      "value": 160,
+      "unit": "degree"
+    },
+    {
+      "name": "standing_exit_deg",
+      "value": 150,
+      "unit": "degree"
+    },
+    {
+      "name": "bottom_enter_deg",
+      "value": 100,
+      "unit": "degree"
+    },
+    {
+      "name": "bottom_exit_deg",
+      "value": 110,
+      "unit": "degree"
+    }
+  ],
+  "transitions": [
+    {
+      "from_state": "NOT_READY",
+      "to_state": "STANDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "gte",
+          "threshold": "standing_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "UNCERTAIN",
+      "to_state": "STANDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "gte",
+          "threshold": "standing_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "STANDING",
+      "to_state": "DESCENDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "lte",
+          "threshold": "standing_exit_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": false,
+      "emit_event": "REP_STARTED"
+    },
+    {
+      "from_state": "DESCENDING",
+      "to_state": "BOTTOM",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "lte",
+          "threshold": "bottom_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "DESCENDING",
+      "to_state": "STANDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "gte",
+          "threshold": "standing_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_INCOMPLETE"
+    },
+    {
+      "from_state": "BOTTOM",
+      "to_state": "ASCENDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "gte",
+          "threshold": "bottom_exit_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": false,
+      "emit_event": null
+    },
+    {
+      "from_state": "ASCENDING",
+      "to_state": "STANDING",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "gte",
+          "threshold": "standing_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_COMPLETED"
+    },
+    {
+      "from_state": "ASCENDING",
+      "to_state": "BOTTOM",
+      "conditions": [
+        {
+          "feature": "left_knee_angle_deg",
+          "operator": "lte",
+          "threshold": "bottom_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    }
+  ],
+  "feedback_rules": [
+    {
+      "rule_id": "framing.joints_hidden",
+      "message_key": "framing.joints_hidden",
+      "priority": 0,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "rep.not_fully_observed",
+      "message_key": "rep.not_fully_observed",
+      "priority": 1,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "capture.unstable_view",
+      "message_key": "capture.unstable_view",
+      "priority": 2,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "consistency.smaller_range",
+      "message_key": "consistency.smaller_range",
+      "priority": 3,
+      "cooldown_ms": 3000
+    }
+  ]
+}
