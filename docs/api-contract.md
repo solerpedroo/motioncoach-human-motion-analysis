@@ -1,7 +1,6 @@
 # Contrato HTTP
 
-Estado em 2026-10-17: health e as rotas de job da Onda 6 estão implementadas.
-`GET /api/analyses/{id}/export` continua na Onda 7.
+Estado em 2026-10-17: health, jobs e exportação JSON/CSV estão implementados.
 
 Não criar endpoint que receba frames de webcam.
 
@@ -44,6 +43,15 @@ TypeScript consome os mesmos exemplos de `shared/fixtures` usados nos testes
 da API.
 
 
+## Exportação implementada
+
+`GET /api/analyses/{id}/export?format=json` devolve o resumo publicado.
+`format=csv` devolve só `type,timestamp_ms,exercise,rule_id,quality,rep_index`.
+Nenhum dos dois inclui landmarks, frames ou imagem.
+`GET /api/jobs/{job_id}/media` devolve o arquivo enviado, com nome fixo do job.
+`angle.png` é um derivado. Se a renderização falha, o job continua `COMPLETED`
+e `chart_warning` explica a ausência.
+
 ## Jobs implementados
 
 `POST /api/videos` recebe `multipart/form-data` com `file`, `exercise`,
@@ -54,8 +62,8 @@ da API.
 (`probe`, `pose`, `analysis`, `publication`).
 `DELETE /api/jobs/{job_id}` cancela um job na fila, pede cancelamento de um
 job em processamento ou apaga os arquivos de um job já terminado.
-`GET /api/jobs/{job_id}/artifacts/{name}` só aceita `analysis.json` e
-`frames.jsonl` de um job `COMPLETED`.
+`GET /api/jobs/{job_id}/artifacts/{name}` aceita `analysis.json`,
+`frames.jsonl` e `angle.png` de um job `COMPLETED`.
 
 Erros usam `{"error": {"code", "message"}}` sem stack trace. Códigos desta
 onda incluem `UNSUPPORTED_EXTENSION`, `FILE_TOO_LARGE`, `INVALID_VIDEO`,
