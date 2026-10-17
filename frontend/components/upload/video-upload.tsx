@@ -1,7 +1,9 @@
 "use client";
 
 import { type FormEvent, useEffect, useState } from "react";
+import { AnalysisReport } from "@/components/reports/analysis-report";
 import { Button } from "@/components/ui/button";
+import { type AngleSample, angleSamples } from "@/features/upload/series";
 import { exercises } from "@/lib/exercises";
 
 const apiBase = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
@@ -12,6 +14,14 @@ type JobView = {
   stage: string;
   error_code: string | null;
   error_message: string | null;
+  chart_warning: string | null;
+};
+
+type ReportSummary = {
+  completed_repetitions: number;
+  incomplete_repetitions: number;
+  duration_ms: number;
+  events: { type: string; timestamp_ms: number; rep_index: number | null }[];
 };
 
 const terminal = new Set(["COMPLETED", "FAILED", "CANCELLED"]);
@@ -21,6 +31,10 @@ export function VideoUpload() {
   const [cameraView, setCameraView] = useState("side");
   const [side, setSide] = useState("left");
   const [job, setJob] = useState<JobView | null>(null);
+  const [report, setReport] = useState<{
+    summary: ReportSummary;
+    samples: AngleSample[];
+  } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -31,6 +45,24 @@ export function VideoUpload() {
       if (response.ok) setJob((await response.json()) as JobView);
     }, 1000);
     return () => window.clearInterval(timer);
+  }, [job]);
+
+  useEffect(() => {
+    if (job?.status !== "COMPLETED") return undefined;
+    let active = true;
+    Promise.all([
+      fetch(`${apiBase}/api/analyses/${job.id}`).then((response) =>
+        response.json(),
+      ),
+      fetch(`${apiBase}/api/jobs/${job.id}/artifacts/frames.jsonl`).then(
+        (response) => (response.ok ? response.text() : ""),
+      ),
+    ]).then(([summary, frames]) => {
+      if (active) setReport({ summary, samples: angleSamples(frames) });
+    });
+    return () => {
+      active = false;
+    };
   }, [job]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -49,6 +81,7 @@ export function VideoUpload() {
     setPending(false);
     if (!response.ok) {
       setJob(null);
+      setReport(null);
       setError(body.error?.message ?? "The video could not be queued.");
       return;
     }
@@ -113,11 +146,34 @@ export function VideoUpload() {
         {pending ? "Checking file" : "Analyze video"}
       </Button>
       {error ? <p role="alert">{error}</p> : null}
-      {job ? (
+      {job && job.status !== "FAILED" && job.status !== "CANCELLED" ? (
         <p role="status">
           Job {job.status.toLowerCase()} during {job.stage}.
-          {job.error_message ? ` ${job.error_message}` : ""}
         </p>
+      ) : null}
+      {job?.status === "FAILED" || job?.status === "CANCELLED" ? (
+        <>
+          <p role="alert">{job.error_message ?? "This job did not finish."}</p>
+          <Button
+            type="button"
+            onClick={() => {
+              setJob(null);
+              setReport(null);
+            }}
+          >
+            Start another analysis
+          </Button>
+        </>
+      ) : null}
+      {job?.status === "COMPLETED" && report ? (
+        <AnalysisReport
+          chartWarning={job.chart_warning}
+          exportCsvUrl={`${apiBase}/api/analyses/${job.id}/export?format=csv`}
+          exportJsonUrl={`${apiBase}/api/analyses/${job.id}/export?format=json`}
+          mediaUrl={`${apiBase}/api/jobs/${job.id}/media`}
+          samples={report.samples}
+          summary={report.summary}
+        />
       ) : null}
     </form>
   );
