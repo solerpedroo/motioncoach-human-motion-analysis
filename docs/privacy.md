@@ -9,7 +9,9 @@ Deployment fora de localhost precisa revisar esta página contra o ambiente real
 - A permissão não grava e não envia vídeo.
 - O botão de desligar a câmera permanece visível e encerra os tracks ao parar,
   trocar de dispositivo ou sair da página.
-- Microfone não é solicitado. Voz opcional usa síntese do navegador.
+- Microfone não é solicitado. Voz opcional usa uma voz inglesa local do
+  navegador quando disponível; sem ela, o texto permanece ativo. Mudo, pausa,
+  parada e saída interrompem fala, sem fila para reproduzir depois.
 - Preferências locais não guardam imagem.
 
 ## Gravação
@@ -19,9 +21,16 @@ outra confirmação. O fluxo ao vivo do MVP funciona sem essas duas ações.
 
 ## Histórico
 
-Resumo da sessão só entra no IndexedDB com opt-in. O usuário pode apagar uma
-sessão e apagar todos os dados locais. `localStorage` guarda preferências de
-interface, idioma e toggles, sem frame e sem landmark.
+Implementado na Onda 4: resumo só entra no IndexedDB pelo clique “Save summary
+in this browser”. Recarregar ou sair sem salvar perde o resumo. Não se restaura
+câmera/sessão ativa. O usuário pode apagar uma sessão ou todos os resumos em
+My training. São guardados contadores, métricas, metadados e eventos; nenhum
+frame ou landmark. A confirmação de salvar ocorre somente após commit local.
+
+Preferências não são persistidas nesta versão; voz recomeça desligada ao abrir
+a página. Browser/origem controlam esse armazenamento, que pode ser apagado ou
+evicto. Uma cópia já aberta em outra aba pode continuar em memória até sair.
+Resumos não são backup nem sincronização de conta.
 
 ## Upload
 
