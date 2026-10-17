@@ -1,0 +1,15 @@
+---
+description: Captura local, pose no navegador e ciclo de vida da câmera.
+globs: "{frontend/app/workout/live,frontend/components/camera,frontend/components/pose-overlay,frontend/features/pose-engine,frontend/workers}/**/*"
+alwaysApply: false
+---
+
+# Webcam
+
+- Pedir vídeo sem áudio. Encerrar tracks em stop, troca de câmera e unmount.
+- Pose Landmarker em modo VIDEO, uma pose, modelo carregado uma vez por sessão.
+- Features usam o quadro original. O espelho altera só o desenho e o overlay.
+- Processar o frame mais recente. A fila de inferência tem um lugar.
+- Overlay em `requestAnimationFrame`. Gráfico não roda dentro do callback de pose.
+- Exemplo: `CAMERA_PERMISSION_DENIED` mostra instrução e um novo pedido, sem loader infinito.
+- Não criar `fetch` de frame para a API neste fluxo.
