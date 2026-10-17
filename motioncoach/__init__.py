@@ -1,3 +1,3 @@
-"""HTTP-independent MotionCoach contracts. Algorithms arrive in Wave 5."""
+"""HTTP-independent MotionCoach contracts and movement analysis."""
 
 __version__ = "0.1.0"
