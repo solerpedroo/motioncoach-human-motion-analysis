@@ -3,7 +3,7 @@ import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 const manifest = JSON.parse(
-  await readFile(new URL("features/pose-engine/model-manifest.json", root)),
+  await readFile(new URL("../shared/models/pose-landmarker-lite.json", root)),
 );
 const sdk = JSON.parse(
   await readFile(
