@@ -5,7 +5,10 @@ abaixo continua sendo o alvo das ondas. Hoje existem `motioncoach/contracts`,
 `backend/app/main.py`, testes Python, `shared/schemas`, fixtures de contratos
 e o shell Next.js. A geometria, EMA e quality gate vivem em
 `frontend/features/exercise-engine`, junto às FSMs dos quatro exercícios.
-Os algoritmos Python, worker, pesquisa e captura nascem nas ondas responsáveis.
+A Onda 3 conecta câmera, worker de inferência local e overlay ao motor; está em
+revisão até smoke com câmera física. `pose-engine/` possui lifecycle, transporte
+e métricas; `workers/pose.worker.ts` executa MediaPipe. Algoritmos Python, worker
+de jobs e pesquisa nascem nas ondas responsáveis.
 
 ## Fronteiras
 
@@ -112,9 +115,9 @@ Eventos de produto: `CAMERA_PERMISSION_DENIED`, `POSE_LOST`, `POSE_RECOVERED`,
 
 No ao vivo, a inferência consome o frame mais recente e descarta atrasados.
 Overlay usa `requestAnimationFrame`. Gráfico ao vivo não roda dentro do
-callback de inferência. Worker é a primeira tentativa na Onda 3; se o runtime
-do MediaPipe impedir, o fallback na main thread entra no ADR com throttling
-explícito.
+callback de inferência. A Onda 3 executa o MediaPipe em worker com carregador
+WASM clássico (ADR-014). Navegador incompatível recebe erro recuperável; não
+há fallback na main thread.
 
 No upload, o timestamp vem do PTS do vídeo. Recorte não renumera o tempo de
 origem. A política concreta de VFR fica na Onda 5.
@@ -135,8 +138,9 @@ estados de tela da seção 8.6 são obrigatórios no fluxo que cada onda tocar:
 
 ## O que esta arquitetura ainda não fixa
 
-Hash do modelo, alfa da EMA, seeds calibradas, tolerância de paridade, limites
-medidos de upload e o conjunto de avaliação. Esses itens têm onda dona no
+Seeds calibradas, tolerância de paridade, limites medidos de upload e conjunto
+de avaliação. Hash do modelo Web está no ADR-014; alfa de desenvolvimento no
+ADR-012 e configurações comuns, sem calibração humana. Esses itens têm onda dona no
 [plano](implementation-plan.md) e pendência no
 [registro de decisões](agentic/architecture-decisions.md).
 
@@ -145,12 +149,14 @@ medidos de upload e o conjunto de avaliação. Esses itens têm onda dona no
 
 Next.js App Router, React, TypeScript, Tailwind e primitivo de botão local
 compatível com shadcn/ui (Radix Slot). Tokens em `app/globals.css`, mensagens
-em `messages/en.ts`. O navegador só controla seletores de exercício e estado
-em memória; não há conexão UI→API, permissão de câmera ou armazenamento.
+em `messages/en.ts`. Na fundação, o navegador controlava apenas seletores de
+exercício/estado em memória. A captura foi conectada na Onda 3; armazenamento
+de sessão segue para a Onda 4. Não há conexão de frames UI→API.
 
 Oito rotas do escopo estão navegáveis. Sessões de qualquer ID mostram ausência
-de dados; `demo` identifica o preview. Métricas são indisponíveis e os estados
-nomeados são demonstrativos. Recharts entra com os gráficos na Onda 7.
+de dados; `demo` identifica o preview. Upload e relatórios seguem demonstrativos;
+a página ao vivo mostra medições da sessão desde a Onda 3. Recharts entra com
+os gráficos na Onda 7.
 
 Instalação e comandos reais estão no [README](../README.md). Health e
 contratos têm testes Python; Vitest cobre contratos compartilhados, rotas,
@@ -185,7 +191,7 @@ invalidam o ciclo ativo; retorno de dados exige a posição inicial. Polichinelo
 usa o mínimo dos dois ângulos atuais e abertura horizontal simultânea; a
 memória da EMA não pode criar essa simultaneidade. Detalhes no ADR-013.
 
-O módulo continua fora do React e sem câmera/HTTP. A UI recebe essa integração
-na Onda 3. O bundler usa a raiz do monorepo para resolver JSONs compartilhados.
+O módulo continua fora do React e sem câmera/HTTP. A integração da UI na
+Onda 3 fica em `components/camera/use-live-session.ts`. O bundler usa a raiz do monorepo para resolver JSONs compartilhados.
 Fixtures de features e landmarks em `shared/fixtures/repetitions/` prepararam a
 regressão para o port Python; não substituem a paridade exigida na Onda 5.
