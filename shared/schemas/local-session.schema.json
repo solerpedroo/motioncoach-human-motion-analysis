@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motioncoach.local/schemas/local-session-1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "storage_version",
+    "summary",
+    "final_phase",
+    "metrics"
+  ],
+  "properties": {
+    "storage_version": {
+      "const": 1
+    },
+    "summary": {
+      "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/SessionSummary"
+    },
+    "final_phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_duration_ms",
+        "paused_duration_ms",
+        "repetitions_per_minute",
+        "mean_repetition_duration_ms",
+        "mean_observed_range_deg",
+        "observed_range_feature",
+        "events_omitted"
+      ],
+      "properties": {
+        "active_duration_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "paused_duration_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "repetitions_per_minute": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mean_repetition_duration_ms": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mean_observed_range_deg": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 180
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observed_range_feature": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "events_omitted": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
