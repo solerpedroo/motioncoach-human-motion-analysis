@@ -57,6 +57,7 @@ export interface KinematicsResult {
     | "NON_MONOTONIC_TIMESTAMP"
     | "LONG_GAP"
     | "DEGENERATE_TRANSITION_ANGLE"
+    | "UNOBSERVABLE_TRANSITION_FEATURE"
     | "DEGENERATE_OBSERVATION_ANGLE"
   )[];
 }
