@@ -1,0 +1,91 @@
+{
+  "protocol": {
+    "match_tolerance_ms": 500,
+    "split_unit": "person_and_session",
+    "thresholds_adjusted_on_test": false
+  },
+  "git": {
+    "commit": "3ea8778a0ee27af419227913fedd2b908599aa76",
+    "dirty": true
+  },
+  "human": {
+    "experiments": {
+      "A": {
+        "status": "not_evaluated",
+        "reason": "no_annotated_clips",
+        "question": "threshold crossing versus smoothing versus FSM"
+      },
+      "B": {
+        "status": "not_evaluated",
+        "reason": "no_annotated_clips"
+      },
+      "C": {
+        "status": "not_evaluated",
+        "reason": "no_annotated_clips"
+      }
+    },
+    "count": {
+      "status": "not_evaluated",
+      "reason": "no_annotated_clips",
+      "mae": null,
+      "clips": []
+    },
+    "events": null,
+    "temporal_error_ms": null,
+    "feedback": {
+      "status": "not_evaluated",
+      "reason": "no_review_protocol"
+    },
+    "pose": {
+      "status": "not_evaluated",
+      "reason": "no_pose_reference"
+    },
+    "tolerance_ms": 500,
+    "acquisition": "No annotated clips were loaded. MM-Fit and RepCount were not downloaded and their licenses were not audited in this run."
+  },
+  "filter_d": {
+    "experiment": "D",
+    "signal": "synthetic_held_angle_plus_step",
+    "human_accuracy": {
+      "status": "not_evaluated",
+      "reason": "synthetic_signal_is_not_a_person"
+    },
+    "true_event_ms": 1000,
+    "threshold": 150.0,
+    "factors": {
+      "ema_alpha": 0.4,
+      "moving_average_window": 5,
+      "one_euro": {
+        "min_cutoff": 1.0,
+        "beta": 0.007,
+        "d_cutoff": 1.0
+      }
+    },
+    "filters": [
+      {
+        "filter": "none",
+        "stable_variability": 0.9156964562561115,
+        "event_ms": 1000,
+        "event_shift_ms": 0
+      },
+      {
+        "filter": "ema",
+        "stable_variability": 0.3109983370892568,
+        "event_ms": 1000,
+        "event_shift_ms": 0
+      },
+      {
+        "filter": "moving_average",
+        "stable_variability": 0.23535568531716483,
+        "event_ms": 1050,
+        "event_shift_ms": 50
+      },
+      {
+        "filter": "one_euro",
+        "stable_variability": 0.22245120331902216,
+        "event_ms": 1000,
+        "event_shift_ms": 0
+      }
+    ]
+  }
+}
