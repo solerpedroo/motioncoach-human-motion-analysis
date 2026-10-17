@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motioncoach.local/schemas/feedback-policy-1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "validation_status",
+    "classes",
+    "completed_rule",
+    "consistency",
+    "voice",
+    "session"
+  ],
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "validation_status": {
+      "const": "unvalidated_seed"
+    },
+    "classes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capture",
+        "observation",
+        "completed",
+        "consistency"
+      ],
+      "properties": {
+        "capture": {
+          "const": 0
+        },
+        "observation": {
+          "const": 1
+        },
+        "completed": {
+          "const": 2
+        },
+        "consistency": {
+          "const": 3
+        }
+      }
+    },
+    "completed_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "message_key",
+        "priority",
+        "cooldown_ms"
+      ],
+      "properties": {
+        "rule_id": {
+          "const": "rep.completed"
+        },
+        "message_key": {
+          "const": "rep.completed"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cooldown_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "consistency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_baseline_repetitions",
+        "observation_ttl_ms",
+        "history_limit",
+        "minimum_cycle_samples",
+        "smaller_range_ratio",
+        "elbow_offset_difference_normalized"
+      ],
+      "properties": {
+        "minimum_baseline_repetitions": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "observation_ttl_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "history_limit": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "minimum_cycle_samples": {
+          "type": "integer",
+          "minimum": 5
+        },
+        "smaller_range_ratio": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "elbow_offset_difference_normalized": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_interval_ms",
+        "window_ms",
+        "maximum_utterances"
+      ],
+      "properties": {
+        "minimum_interval_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "window_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum_utterances": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maximum_events"
+      ],
+      "properties": {
+        "maximum_events": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        }
+      }
+    }
+  }
+}
