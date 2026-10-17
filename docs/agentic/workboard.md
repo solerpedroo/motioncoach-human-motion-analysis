@@ -1,11 +1,11 @@
 # Workboard
 
-Estado em 2026-10-17: Ondas 0 e 1 concluídas. Onda 2 disponível para assumir.
+Estado em 2026-10-17: Ondas 0–2 concluídas. Onda 3 disponível para assumir.
 Fonte única de progresso. Evidências ficam nos cartões.
 
 ## Próxima tarefa
 
-Assumir [Onda 2 — Máquinas de estado dos exercícios](tasks/wave-2-exercise-fsms.md)
+Assumir [Onda 3 — Webcam e visualização da pose](tasks/wave-3-webcam-pose.md)
 em um novo diff.
 
 Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
@@ -16,7 +16,7 @@ Entregas da Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
 
 - **0 — Fundação executável e contratos:** `done`; [cartão](tasks/wave-0-foundation.md).
 - **1 — Geometria, tempo e quality gate:** `done`; [cartão](tasks/wave-1-kinematics.md).
-- **2 — Máquinas de estado dos exercícios:** `proposed`; [cartão](tasks/wave-2-exercise-fsms.md).
+- **2 — Máquinas de estado dos exercícios:** `done`; [cartão](tasks/wave-2-exercise-fsms.md).
 - **3 — Webcam e visualização da pose:** `proposed`; [cartão](tasks/wave-3-webcam-pose.md).
 - **4 — Feedback, voz e sessão ao vivo:** `proposed`; [cartão](tasks/wave-4-live-session.md).
 - **5 — Vídeo e pose Python com paridade:** `proposed`; [cartão](tasks/wave-5-python-video.md).
