@@ -17,3 +17,27 @@ localmente e valida a configuração, sem acesso à rede. `CommonEngineConfig`
 Mudança de seed requer nova versão de configuração e revisão explícita das
 fixtures; um resultado de teste não deve ser afrouxado para manter a suíte
 verde. O status só muda conforme o protocolo da avaliação.
+
+## Configurações executáveis — Onda 2
+
+`squat.json`, `push_up.json`, `biceps_curl.json` e `jumping_jack.json` têm o
+formato `ExerciseConfig` do schema normativo 1.0.0 e versão própria 0.1.0.
+Guardam as seeds resolvidas, landmarks, métricas, estados, transições,
+histerese, tempos e identificadores das mensagens. Não há ajuste em vídeo
+humano. `common.json` continua como referência de defaults; o polichinelo
+substitui tempo de estado/ciclo e salto conforme a spec.
+
+Os exercícios articulares usam o lado esquerdo como template canônico.
+`side-bindings.json` mapeia os índices anatômicos para o lado direito; IDs de
+features e condições são resolvidos em conjunto. Os índices bilaterais do
+polichinelo não são trocados. O espelho de apresentação não participa disso.
+
+A validação estrutural usa o JSON Schema nos testes TypeScript e o adaptador
+Pydantic. A validação semântica no executor TypeScript confere referências,
+unidades, dwell, ciclo, condições simultâneas de estado estável e separação de
+limiares. O port dessa execução e dessas validações fica na Onda 5.
+
+As três posições intermediárias de reversão e recuperação estão no próprio
+JSON: voltar ao início sem extremo emite incompleto; recuperar de `UNCERTAIN`
+exige novamente o início; voltar do retorno ao extremo não começa outro ciclo.
+O evento de completo também depende das regras temporais comuns do executor.
