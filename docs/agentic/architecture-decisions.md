@@ -170,11 +170,41 @@ referenciar a anterior sem apagar o histórico.
   [Tailwind com Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs),
   [botão shadcn/ui](https://ui.shadcn.com/docs/components/radix/button).
 
+## ADR-012 — Cinemática, EMA e descontinuidade temporal
+
+- Data: 2026-10-17. Estado: aceito e implementado na Onda 1.
+- Contexto: concretizar o contrato do filtro e do quality gate antes da FSM.
+  A especificação permitia retenção curta sem fixar seu prazo e recuperação.
+- Decisão: manter seeds comuns vigentes (EMA alfa 0,40, gap 200 ms, salto 0,20,
+  visibilidade 0,50) em JSON versionado 0.1.0, `unvalidated_seed`. Schema comum
+  referencia o contrato 1.0.0 existente. Sem alteração de payload de domínio.
+- Decisão: cálculo e deslocamento no plano x/y normalizado; vetor nulo ou dado
+  inválido produz `null`. Salto usa distância euclidiana, limite inclusivo.
+  Campos z/presence preservam contrato, sem entrar na geometria ou constituir
+  outro threshold. Landmark duplicado bloqueia por ambiguidade.
+- Decisão: timestamps injetados, finitos, não negativos e estritamente
+  crescentes. Duplicatas/fora de ordem não avançam a memória. A EMA inicia com
+  o primeiro valor observado; gap acima da seed reinicia a suavização.
+- Decisão: filtro isolado pode reter saída em lacuna curta, medida desde a
+  última observação finita, com `interpolated: true` e `can_transition: false`.
+  Repetir retenções não prolonga o prazo. O processador não retém ângulo de
+  landmark oculto: retorna `null` e limpa histórico após insuficiência.
+- Decisão: gap longo permite exibir novo ângulo, mas marca
+  `continuity_broken: true` e bloqueia a primeira amostra. Salto limpa referência
+  antiga, permitindo nova aquisição no frame válido seguinte. Geometria
+  necessária degenerada bloqueia; observação opcional degenerada só limita.
+- Consequências: consumidores precisam invalidar o ciclo e readquirir estado
+  após quebra de continuidade. Esse comportamento será provado com a FSM na
+  Onda 2. Agora os testes verificam amostra, flag e motivo; não contam reps.
+  Núcleo Python e interface permanecem nos contratos/shell da Onda 0.
+- Evidências: fixtures sintéticas em `shared/fixtures/kinematics/`; comandos e
+  resultados no [cartão da Onda 1](tasks/wave-1-kinematics.md). Sem métrica
+  humana ou execução de modelo.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
-- Onda 1: alfa da EMA e o contrato do filtro nomeado. One Euro permanece no
-  experimento D.
+- Onda 1 resolvida no ADR-012. One Euro permanece no experimento D.
 - Onda 2: seeds finais dos quatro exercícios, ainda não validadas. O
   polichinelo já tem seeds próprias no ADR-010.
 - Ondas 3 e 5: pacote MediaPipe, variante Lite como padrão candidato, hash do
