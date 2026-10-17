@@ -10,7 +10,8 @@ contratos compartilhados, API de liveness, shell navegável, geometria 2D,
 EMA, quality gate e FSM declarativa. A **Onda 3 está implementada, em revisão**:
 captura local, worker de pose, overlay e contagem estão conectados. Falta o
 smoke manual com câmera física para fechar a onda. Upload e relatórios medidos
-seguem nas ondas responsáveis.
+seguem nas ondas responsáveis. A **Onda 4 está concluída**: feedback com prioridade,
+voz opt-in interrompível, resumo e histórico local apagável.
 
 ## Executar localmente
 
@@ -87,6 +88,19 @@ uma vez, verifica SHA-256 e copia o WASM local; não roda na CI nem em install.
 Sem assets, o fluxo oferece retry e encerra a câmera. Detalhes no
 [README da captura](frontend/features/pose-engine/README.md) e ADR-014.
 
+Ao encerrar uma sessão, **Workout summary** mostra contagem, fase, cobertura,
+tempos, ritmo, amplitude observada e eventos explicáveis. Sem escolher
+**Save summary in this browser**, recarregar/sair perde o resumo. O botão salva
+somente métricas/eventos no IndexedDB; `/dashboard` e `/sessions/[id]` permitem
+reabrir e apagar um resumo ou todo o histórico. Não há salvamento automático.
+
+**Enable voice feedback** começa desligado, usa uma voz inglesa local quando
+existe e não pede microfone. Desligar, pausar ou parar cancela fala imediatamente.
+Mensagens seguem prioridade, cooldown por classe e limite de frequência. Sem
+suporte de voz, a observação em texto continua disponível. Veja
+[feedback](frontend/features/exercise-engine/FEEDBACK.md) e
+[sessão local](frontend/features/session-store/README.md).
+
 **Video Analysis** continua demonstrativo: o seletor Preview state mostra
 estados sem solicitar permissão, transmitir arquivo ou produzir medição.
 
@@ -127,7 +141,9 @@ npm --prefix frontend run test:pose-browser
 `POSE_SMOKE_URL` altera a URL; `POSE_BROWSER_EXECUTABLE` aponta a um Chromium
 já instalado; `POSE_SMOKE_ARTIFACTS` grava capturas de tela. Esse smoke verifica
 inferência, tracks, pausa/retomada, espelho, dimensões mobile e requests GET
-locais. A inspeção qualitativa sobre uma pessoa permanece pendente no
+locais, resumo sem opt-in perdido ao recarregar, persistência após salvar e
+exclusões individual/total após recarga. A inspeção qualitativa sobre uma pessoa
+permanece pendente no
 [cartão da Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md).
 
 Para servir o build de produção, depois do build:
@@ -154,7 +170,8 @@ Ela não inclui FastAPI. Para voltar ao ambiente completo, executar
 estão nos cartões da [Onda 0](docs/agentic/tasks/wave-0-foundation.md) e
 [Onda 1](docs/agentic/tasks/wave-1-kinematics.md) e
 [Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md) e
-[Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md).
+[Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md) e
+[Onda 4](docs/agentic/tasks/wave-4-live-session.md).
 A execução remota do GitHub Actions depende de publicar este diff.
 
 ## Evoluir os contratos
