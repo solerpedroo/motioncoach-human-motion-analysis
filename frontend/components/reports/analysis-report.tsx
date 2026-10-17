@@ -45,11 +45,11 @@ export function AnalysisReport({
     (event) => event.type === "REP_INCOMPLETE",
   );
   return (
-    <section aria-label="Video analysis report">
-      <p>
-        Complete repetitions {summary.completed_repetitions}. Incomplete
-        repetitions {summary.incomplete_repetitions}.
-      </p>
+    <section className="report panel" aria-label="Video analysis report">
+      <div className="report-metrics">
+        <span>Complete {summary.completed_repetitions}</span>
+        <span>Incomplete {summary.incomplete_repetitions}</span>
+      </div>
       {completed.length !== summary.completed_repetitions ||
       incomplete.length !== summary.incomplete_repetitions ? (
         <p role="alert">The timeline does not match the published summary.</p>
@@ -63,37 +63,46 @@ export function AnalysisReport({
           analysis file.
         </p>
       ) : null}
-      <video aria-label="Uploaded video" controls ref={player} src={mediaUrl}>
-        <track
-          default
-          kind="captions"
-          label="No spoken audio"
-          src="data:text/vtt,WEBVTT"
-          srcLang="en"
-        />
-      </video>
-      <AngleChart samples={samples} />
-      <ol aria-label="Repetition timeline">
-        {repetitions.map((event) => (
-          <li key={`${event.type}-${event.timestamp_ms}`}>
-            <Button
-              type="button"
-              onClick={() => {
-                if (player.current) {
-                  player.current.currentTime = event.timestamp_ms / 1000;
-                }
-              }}
-            >
-              {event.type === "REP_COMPLETED" ? "Complete" : "Incomplete"}{" "}
-              repetition at {event.timestamp_ms} ms
-            </Button>
-          </li>
-        ))}
-      </ol>
-      <p>
-        <a href={exportJsonUrl}>Export JSON</a>
-        <a href={exportCsvUrl}>Export CSV</a>
-      </p>
+      <div className="report-stage">
+        <video aria-label="Uploaded video" controls ref={player} src={mediaUrl}>
+          <track
+            default
+            kind="captions"
+            label="No spoken audio"
+            src="data:text/vtt,WEBVTT"
+            srcLang="en"
+          />
+        </video>
+        <div>
+          <AngleChart samples={samples} />
+          <ol aria-label="Repetition timeline">
+            {repetitions.map((event) => (
+              <li key={`${event.type}-${event.timestamp_ms}`}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    if (player.current) {
+                      player.current.currentTime = event.timestamp_ms / 1000;
+                    }
+                  }}
+                >
+                  {event.type === "REP_COMPLETED" ? "Complete" : "Incomplete"}{" "}
+                  repetition at {event.timestamp_ms} ms
+                </Button>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+      <div className="report-links">
+        <Button asChild variant="outline">
+          <a href={exportJsonUrl}>Export JSON</a>
+        </Button>
+        <Button asChild variant="outline">
+          <a href={exportCsvUrl}>Export CSV</a>
+        </Button>
+      </div>
     </section>
   );
 }
