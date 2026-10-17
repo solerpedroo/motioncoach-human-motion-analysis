@@ -1,11 +1,11 @@
 # Arquitetura alvo
 
-Estado em 2026-10-17: fundação da Onda 0 e cinemática da Onda 1 implementadas. O layout completo
+Estado em 2026-10-17: fundação, cinemática e FSM das Ondas 0–2 implementadas. O layout completo
 abaixo continua sendo o alvo das ondas. Hoje existem `motioncoach/contracts`,
 `backend/app/main.py`, testes Python, `shared/schemas`, fixtures de contratos
 e o shell Next.js. A geometria, EMA e quality gate vivem em
-`frontend/features/exercise-engine`. Os algoritmos Python, FSM, worker,
-pesquisa e captura nascem nas ondas responsáveis.
+`frontend/features/exercise-engine`, junto às FSMs dos quatro exercícios.
+Os algoritmos Python, worker, pesquisa e captura nascem nas ondas responsáveis.
 
 ## Fronteiras
 
@@ -167,6 +167,25 @@ uso da amostra; gap longo reinicia suavização e referência espacial.
 
 A configuração comum tem schema que reutiliza os contratos da fundação.
 Fixtures sintéticas de geometria, EMA, qualidade e pipeline ficam em `shared/`.
-Não há ainda configuração operacional completa de exercício nem contagem.
+Essa camada foi complementada na Onda 2 pelas configurações executáveis e FSMs.
 Regras de recuperação no ADR-012 e no
 [README do motor](../frontend/features/exercise-engine/README.md).
+
+
+## FSM e analisador de frames — Onda 2
+
+Configurações de exercício e binding anatômico vivem em `shared/`. O executor
+`createFeatureAnalyzer` avalia transições/dwell e emite eventos; o wrapper
+`createExerciseAnalyzer` seleciona/fixa lado, extrai features dos landmarks e
+combina qualidade, EMA, observações atuais e FSM. `feature-processor.ts`
+compartilha o pipeline temporal com a API angular da Onda 1.
+
+A repetição exige extremo e retorno estável com ciclo mínimo. Pausa e perda
+invalidam o ciclo ativo; retorno de dados exige a posição inicial. Polichinelo
+usa o mínimo dos dois ângulos atuais e abertura horizontal simultânea; a
+memória da EMA não pode criar essa simultaneidade. Detalhes no ADR-013.
+
+O módulo continua fora do React e sem câmera/HTTP. A UI recebe essa integração
+na Onda 3. O bundler usa a raiz do monorepo para resolver JSONs compartilhados.
+Fixtures de features e landmarks em `shared/fixtures/repetitions/` prepararam a
+regressão para o port Python; não substituem a paridade exigida na Onda 5.
