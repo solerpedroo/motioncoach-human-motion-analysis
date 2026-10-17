@@ -41,3 +41,16 @@ As três posições intermediárias de reversão e recuperação estão no próp
 JSON: voltar ao início sem extremo emite incompleto; recuperar de `UNCERTAIN`
 exige novamente o início; voltar do retorno ao extremo não começa outro ciclo.
 O evento de completo também depende das regras temporais comuns do executor.
+
+
+## Feedback — Onda 4
+
+`feedback.json` e `feedback.schema.json` fixam classes, regra de completo,
+comparações com a própria sessão, limites de voz e eventos. Versão 0.1.0,
+unvalidated_seed. Classe precede prioridade da regra do exercício; captura
+continua precedendo repetição mesmo quando seu número legado era maior.
+Cool-down é por classe. Nenhuma constante de regra vive no React.
+
+A política não modifica estados/transições ou seeds da Onda 2. Fixtures de
+arbitragem em shared/fixtures/feedback e casos de consistência em Vitest
+preparam a paridade Python. Ver ADR-016 e exercício-spec.
