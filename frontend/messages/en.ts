@@ -3,7 +3,7 @@ export const en = {
   tagline: "Understand your movement.",
   preview: "Interface preview",
   previewNotice:
-    "Live sessions stay in this browser. Video upload uses the local API; charts and file export are not available yet.",
+    "Live sessions stay in this browser. A finished video job can be reviewed and exported as JSON or CSV. Chart images are optional.",
   privacy: "Your movement. Your data.",
   privacyDetail:
     "Live analysis is designed to stay in your browser. Recording and saving a session require separate choices.",
