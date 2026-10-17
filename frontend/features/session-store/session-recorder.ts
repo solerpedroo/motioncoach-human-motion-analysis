@@ -1,12 +1,12 @@
 import type { AnalyzerSnapshot } from "@/features/exercise-engine/exercise-analyzer";
 import { getExerciseConfig } from "@/features/exercise-engine/exercise-config";
 import { feedbackPolicy } from "@/features/exercise-engine/feedback";
-import model from "@/features/pose-engine/model-manifest.json";
 import type {
   FeatureSet,
   SessionEvent,
   SessionSummary,
 } from "@/lib/contracts.generated";
+import model from "../../../shared/models/pose-landmarker-lite.json";
 export interface LocalSession {
   storage_version: 1;
   summary: SessionSummary;
