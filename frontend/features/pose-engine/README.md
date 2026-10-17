@@ -18,7 +18,7 @@ ImageBitmap ou OffscreenCanvas mostra uma saída antes de pedir câmera.
 
 ## Modelo
 
-Versões, origem e SHA-256 estão em `model-manifest.json` e no ADR-014.
+Versões, origem e SHA-256 estão em `shared/models/pose-landmarker-lite.json` (raiz do repositório) e no ADR-014.
 `npm --prefix frontend run pose:prepare` verifica o hash do modelo e copia o
 WASM do pacote travado para `public/pose/`. Sem `postinstall`, CDN em runtime ou
 download na CI. Os assets gerados são ignorados pelo Git e pelo Biome.
