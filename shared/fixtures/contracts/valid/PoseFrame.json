@@ -1,0 +1,26 @@
+{
+  "contract": "PoseFrame",
+  "data": {
+    "schema_version": "1.0.0",
+    "timestamp_ms": 1533,
+    "model": "mediapipe-pose-landmarker",
+    "model_version": null,
+    "model_variant": "lite",
+    "pose_quality": "GOOD",
+    "landmarks": [
+      {
+        "index": 11,
+        "x": 0.42,
+        "y": 0.28,
+        "z": -0.08,
+        "visibility": 0.98,
+        "presence": 0.99
+      }
+    ],
+    "features": {
+      "left_knee_angle_deg": 123.7,
+      "left_hip_angle_deg": 142.5,
+      "trunk_tilt_deg": null
+    }
+  }
+}
