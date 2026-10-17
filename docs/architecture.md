@@ -1,8 +1,10 @@
 # Arquitetura alvo
 
-Estado: especificação de planejamento em 2026-10-17. Pastas de aplicação ainda
-não existem. A estrutura abaixo é o alvo das ondas, não um inventário do
-repositório.
+Estado em 2026-10-17: fundação da Onda 0 implementada. O layout completo
+abaixo continua sendo o alvo das ondas. Hoje existem `motioncoach/contracts`,
+`backend/app/main.py`, testes Python, `shared/schemas`, fixtures de contratos
+e o shell Next.js. Os diretórios de algoritmos, worker, pesquisa e captura
+nascem nas ondas responsáveis.
 
 ## Fronteiras
 
@@ -84,9 +86,12 @@ Vídeo de pessoa, checkpoint, asset `.task` e banco local ficam fora do Git.
 
 ## Contratos
 
-Os exemplos do escopo, seções 10.1 a 10.3, são o formato alvo. Campos
-adicionais entram com versão de schema. Números precisam ser finitos.
-`null` significa dado indisponível, não zero.
+Os exemplos do escopo, seções 10.1 a 10.3, orientam o formato. A versão
+executável 1.0.0 está em `shared/schemas/contracts.schema.json`, com adaptadores
+Pydantic comparados estruturalmente e tipos TypeScript gerados. Os exemplos
+abreviados ganham `schema_version` e metadados obrigatórios, conforme ADR-011.
+Campos extras são recusados. Números precisam ser finitos; `null` significa
+dado indisponível, não zero. Detalhes em [shared/schemas](../shared/schemas/README.md).
 
 `PoseFrame` carrega `timestamp_ms` monotônico na sessão ao vivo e o tempo da
 mídia no vídeo enviado. Também carrega modelo, variante, `pose_quality`,
@@ -116,7 +121,7 @@ origem. A política concreta de VFR fica na Onda 5.
 ## API
 
 O contrato HTTP está em [api-contract.md](api-contract.md). A Onda 0 publica
-somente `GET /api/health`. Não existe rota de streaming de webcam.
+somente `GET /api/health`, já implementado. Não existe rota de streaming de webcam.
 
 ## Interface
 
@@ -133,3 +138,19 @@ Hash do modelo, alfa da EMA, seeds calibradas, tolerância de paridade, limites
 medidos de upload e o conjunto de avaliação. Esses itens têm onda dona no
 [plano](implementation-plan.md) e pendência no
 [registro de decisões](agentic/architecture-decisions.md).
+
+
+## Fundação implementada
+
+Next.js App Router, React, TypeScript, Tailwind e primitivo de botão local
+compatível com shadcn/ui (Radix Slot). Tokens em `app/globals.css`, mensagens
+em `messages/en.ts`. O navegador só controla seletores de exercício e estado
+em memória; não há conexão UI→API, permissão de câmera ou armazenamento.
+
+Oito rotas do escopo estão navegáveis. Sessões de qualquer ID mostram ausência
+de dados; `demo` identifica o preview. Métricas são indisponíveis e os estados
+nomeados são demonstrativos. Recharts entra com os gráficos na Onda 7.
+
+Instalação e comandos reais estão no [README](../README.md). Health e
+contratos têm testes Python; Vitest cobre contratos compartilhados, rotas,
+navegação e recuperação dos estados. CI não baixa modelo nem vídeo.
