@@ -118,6 +118,20 @@ def test_upload_worker_and_artifact_catalog(tmp_path):
     assert summary["completed_repetitions"] == 1
     assert summary["source"] == "upload"
     assert summary["evaluation"]["status"] == "not_evaluated"
+    exported = request(application, "GET", f"/api/analyses/{job['id']}/export")
+    assert exported.json()["completed_repetitions"] == summary["completed_repetitions"]
+    assert "landmarks" not in exported.text
+    csv_export = request(application, "GET", f"/api/analyses/{job['id']}/export?format=csv")
+    header = csv_export.text.splitlines()[0]
+    assert header == "type,timestamp_ms,exercise,rule_id,quality,rep_index"
+    assert "landmark" not in header and "frame" not in header
+    completed = [line for line in csv_export.text.splitlines() if line.startswith("REP_COMPLETED")]
+    assert len(completed) == summary["completed_repetitions"]
+    chart = request(application, "GET", f"/api/jobs/{job['id']}/artifacts/angle.png")
+    assert chart.status_code == 200 and chart.content.startswith(b"\x89PNG")
+    assert request(application, "GET", f"/api/jobs/{job['id']}").json()["chart_warning"] is None
+    media = request(application, "GET", f"/api/jobs/{job['id']}/media")
+    assert media.status_code == 200 and media.content.startswith(video.read_bytes()[:12])
     events = request(application, "GET", f"/api/analyses/{job['id']}/events").json()
     assert events[-1]["type"] == "SESSION_FINISHED"
     artifact = request(application, "GET", f"/api/jobs/{job['id']}/artifacts/analysis.json")
@@ -192,6 +206,28 @@ def test_stale_worker_becomes_failed_not_completed(tmp_path):
     row = store.get("stale")
     assert row["status"] == "FAILED"
     assert row["error_code"] == "WORKER_INTERRUPTED"
+
+
+def test_chart_failure_keeps_the_published_summary(tmp_path):
+    video = make_video(tmp_path / "synthetic.mp4", range(len(SQUAT["frames"])), rate=25)
+    application = create_app(settings_for(tmp_path))
+    job_id = upload(application, video).json()["id"]
+
+    def fail(_frames, _destination):
+        raise RuntimeError("render failed")
+
+    run_once(
+        application.state.store,
+        application.state.settings,
+        pose_factory=FixturePose,
+        chart_writer=fail,
+    )
+    stored = request(application, "GET", f"/api/jobs/{job_id}").json()
+    assert stored["status"] == "COMPLETED"
+    assert stored["chart_warning"] == "CHART_RENDER_FAILED"
+    summary = request(application, "GET", f"/api/analyses/{job_id}").json()
+    assert summary["completed_repetitions"] == 1
+    assert request(application, "GET", f"/api/jobs/{job_id}/artifacts/angle.png").status_code == 404
 
 
 def test_retention_skips_active_jobs(tmp_path):
