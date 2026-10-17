@@ -1,5 +1,5 @@
-import { PageHeading, PreviewNotice } from "@/components/page-parts";
-import { WorkoutPreview } from "@/components/workout-preview";
+import { LiveWorkout } from "@/components/camera/live-workout";
+import { PageHeading } from "@/components/page-parts";
 import { exercises } from "@/lib/exercises";
 export default async function Live({
   searchParams,
@@ -14,10 +14,9 @@ export default async function Live({
       <PageHeading
         eyebrow="LIVE WORKOUT"
         title="Your space to move."
-        description="Set up your view, find your framing, and get to know the session experience."
+        description="Observe your movement with local camera processing and a live 2D pose overlay."
       />
-      <PreviewNotice />
-      <WorkoutPreview mode="live" initialExercise={selected} />
+      <LiveWorkout initialExercise={selected} />
     </>
   );
 }
