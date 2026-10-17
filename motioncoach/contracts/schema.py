@@ -7,6 +7,8 @@ from pathlib import Path
 from motioncoach.contracts import ContractCatalog
 
 SCHEMA_PATH = Path(__file__).resolve().parents[2] / "shared/schemas/contracts.schema.json"
+if not SCHEMA_PATH.is_file():
+    SCHEMA_PATH = Path(__file__).resolve().parents[1] / "_shared/schemas/contracts.schema.json"
 
 
 def adapter_schema() -> dict:
