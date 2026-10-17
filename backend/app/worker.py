@@ -4,6 +4,7 @@ import shutil
 import time
 from pathlib import Path
 
+from backend.app.chart import render_angle_chart, write_derivative_status
 from backend.app.settings import Settings, load_settings
 from backend.app.store import JobStore
 from motioncoach.pipeline.analysis import analyze
@@ -40,6 +41,7 @@ def process_job(store: JobStore, settings: Settings, job, **analyze_kwargs) -> N
         stage = "analysis" if payload.get("stage") == "analyzing" else "pose"
         store.heartbeat(job["id"], stage)
 
+    chart_writer = analyze_kwargs.pop("chart_writer", render_angle_chart)
     store.heartbeat(job["id"], "pose")
     try:
         with OutputBundle(directory / "result") as output:
@@ -57,6 +59,12 @@ def process_job(store: JobStore, settings: Settings, job, **analyze_kwargs) -> N
             )
             store.heartbeat(job["id"], "publication")
             output.publish(result)
+        result_dir = directory / "result"
+        try:
+            chart_writer(result_dir / "frames.jsonl", result_dir / "angle.png")
+            write_derivative_status(result_dir, None)
+        except Exception:
+            write_derivative_status(result_dir, "CHART_RENDER_FAILED")
         store.finish(job["id"], "COMPLETED", None, None)
     except AnalysisError as error:
         status = "CANCELLED" if error.code == "CANCELLED" else "FAILED"
