@@ -1,0 +1,15 @@
+---
+description: Métricas, datasets e limite do que um resultado pode afirmar.
+globs: "{research,shared/fixtures}/**/*"
+alwaysApply: false
+---
+
+# Validação
+
+- Separar erro de pose, de contagem e de feedback.
+- Sem anotação, publicar `not_evaluated` e o motivo. Não publicar zero no lugar.
+- Split por pessoa e sessão. Ajustar seed só no desenvolvimento, antes do teste.
+- Tolerância de evento segue `docs/evaluation.md` e fica congelada antes da medição.
+- Fixture sintética prova a FSM. Ela não é MAE em pessoa.
+- Exemplo: vídeo sem contagem manual não recebe F1 calculado.
+- Manifest com hash de vídeo, anotação, configuração, modelo, hardware e commit.
