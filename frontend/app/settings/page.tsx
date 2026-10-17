@@ -7,21 +7,21 @@ const preferences = [
     title: "Camera",
     state: "Off",
     description:
-      "Camera access is not available in this preview. Future sessions will request video only, by your action.",
+      "Live Workout requests video only when you press Start. Stop or leaving that page releases the camera.",
   },
   {
     icon: VolumeX,
     title: "Voice feedback",
     state: "Off",
     description:
-      "Optional synthesized speech will be available in live sessions. It will not require microphone access.",
+      "Live sessions offer optional synthesized speech with a local English voice. Disabling voice interrupts speech immediately; no microphone is requested.",
   },
   {
     icon: Database,
     title: "Local session history",
-    state: "Not enabled",
+    state: "Opt-in only",
     description:
-      "No session data is persisted in this foundation. Future saving will require an explicit choice and include deletion controls.",
+      "Save a finished summary explicitly in Live Workout. My training lists saved summaries and offers individual and bulk deletion. Video and landmarks are never stored.",
   },
   {
     icon: ShieldCheck,
@@ -37,7 +37,7 @@ export default function Settings() {
       <PageHeading
         eyebrow="PREFERENCES & PRIVACY"
         title="You decide what stays."
-        description="Understand each permission and what happens to your data. These are preview defaults; nothing is saved."
+        description="Understand each permission and your local data choices. Voice starts off and summaries are saved only by your action."
       />
       <section className="panel preference-list">
         {preferences.map(({ icon: Icon, title, state, description }) => (
