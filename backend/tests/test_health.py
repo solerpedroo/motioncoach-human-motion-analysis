@@ -30,5 +30,5 @@ def test_openapi_publishes_health_and_job_routes():
     paths = set(request("GET", "/openapi.json").json()["paths"])
     assert "/api/health" in paths
     assert "/api/videos" in paths
-    assert "/api/analyses/{job_id}/export" not in paths
+    assert "/api/analyses/{job_id}/export" in paths
     assert request("POST", "/api/videos").status_code == 422
