@@ -1,0 +1,6236 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "id": "squat/complete",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/partial",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 520,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/jitter",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 101,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/pose-loss",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_LOST",
+            "timestamp_ms": 320,
+            "rule_id": "pose.lost",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 400,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/pause-at-extreme",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "pause",
+          "timestamp_ms": 300
+        },
+        {
+          "timestamp_ms": 700,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "resume",
+          "timestamp_ms": 1000
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 300,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "SESSION_PAUSED",
+            "timestamp_ms": 300,
+            "rule_id": "session.paused",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/long-gap",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 800,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 840,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/too-fast",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 100,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 220,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 100,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/complete",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/partial",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 520,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/jitter",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 91,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/pose-loss",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_LOST",
+            "timestamp_ms": 320,
+            "rule_id": "pose.lost",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 400,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/pause-at-extreme",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "pause",
+          "timestamp_ms": 300
+        },
+        {
+          "timestamp_ms": 700,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "resume",
+          "timestamp_ms": 1000
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 300,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "SESSION_PAUSED",
+            "timestamp_ms": 300,
+            "rule_id": "session.paused",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/long-gap",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 800,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 840,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/too-fast",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 100,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 220,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 100,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.not_fully_observed",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/complete",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/partial",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 520,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/jitter",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 61,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/pose-loss",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.partial_movement",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_LOST",
+            "timestamp_ms": 320,
+            "rule_id": "pose.lost",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 400,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/pause-at-extreme",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "pause",
+          "timestamp_ms": 300
+        },
+        {
+          "timestamp_ms": 700,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "resume",
+          "timestamp_ms": 1000
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 300,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "SESSION_PAUSED",
+            "timestamp_ms": 300,
+            "rule_id": "session.paused",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/long-gap",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 800,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 840,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/too-fast",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 100,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 220,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 100,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/complete",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 480,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/partial",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 480,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/jitter",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 139,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 1,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 480,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/pose-loss",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {},
+          "pose_quality": "INSUFFICIENT",
+          "reasons": [
+            "POSE_LOST"
+          ]
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.partial_movement",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_LOST",
+            "timestamp_ms": 320,
+            "rule_id": "pose.lost",
+            "quality": "INSUFFICIENT",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 400,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/pause-at-extreme",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "pause",
+          "timestamp_ms": 300
+        },
+        {
+          "timestamp_ms": 700,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "action": "resume",
+          "timestamp_ms": 1000
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 300,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "SESSION_PAUSED",
+            "timestamp_ms": 300,
+            "rule_id": "session.paused",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/long-gap",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 800,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "POSE_RECOVERED",
+            "timestamp_ms": 840,
+            "rule_id": "pose.recovered",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/too-fast",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 100,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 220,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 100,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 320,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/arms-only",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 480,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/legs-only",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 480,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/non-overlapping-signals",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 480,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/one-open-sample",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 0,
+        "incomplete_repetitions": 1,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_INCOMPLETE",
+            "timestamp_ms": 480,
+            "rule_id": "rep.partial_movement",
+            "quality": "GOOD",
+            "rep_index": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "squat/two-cycles",
+      "exercise": "squat",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 640,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 680,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 720,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 760,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_knee_angle_deg": 140,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "DESCENDING"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_knee_angle_deg": 80,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 1000,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_knee_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "ASCENDING"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 1200,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        },
+        {
+          "timestamp_ms": 1240,
+          "features": {
+            "left_knee_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "STANDING"
+        }
+      ],
+      "expected": {
+        "phase": "STANDING",
+        "completed_repetitions": 2,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          },
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 760,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 1160,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "push_up/two-cycles",
+      "exercise": "push_up",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 640,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 680,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 720,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 760,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_elbow_angle_deg": 135,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "LOWERING"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_elbow_angle_deg": 70,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "BOTTOM"
+        },
+        {
+          "timestamp_ms": 1000,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_elbow_angle_deg": 120,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "RISING"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 1200,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        },
+        {
+          "timestamp_ms": 1240,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "TOP"
+        }
+      ],
+      "expected": {
+        "phase": "TOP",
+        "completed_repetitions": 2,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          },
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 760,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 1160,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "biceps_curl/two-cycles",
+      "exercise": "biceps_curl",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 640,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 680,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 720,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 760,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "left_elbow_angle_deg": 130,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXING"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "left_elbow_angle_deg": 40,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "FLEXED"
+        },
+        {
+          "timestamp_ms": 1000,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "left_elbow_angle_deg": 100,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDING"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 1200,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        },
+        {
+          "timestamp_ms": 1240,
+          "features": {
+            "left_elbow_angle_deg": 170,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "EXTENDED"
+        }
+      ],
+      "expected": {
+        "phase": "EXTENDED",
+        "completed_repetitions": 2,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 520,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          },
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 760,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 1160,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "jumping_jack/two-cycles",
+      "exercise": "jumping_jack",
+      "configuration_version": "0.1.0",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "NOT_READY"
+        },
+        {
+          "timestamp_ms": 40,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 80,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 120,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 160,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 200,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 240,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 280,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 320,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 360,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 400,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 440,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 480,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 520,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 560,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 600,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 640,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 680,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 720,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 760,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 800,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 840,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPENING"
+        },
+        {
+          "timestamp_ms": 880,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 920,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 960,
+          "features": {
+            "arm_elevation_deg": 160,
+            "leg_spread_ratio": 2.2,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "OPEN"
+        },
+        {
+          "timestamp_ms": 1000,
+          "features": {
+            "arm_elevation_deg": 100,
+            "leg_spread_ratio": 1.6,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 1040,
+          "features": {
+            "arm_elevation_deg": 80,
+            "leg_spread_ratio": 1.5,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 1080,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSING"
+        },
+        {
+          "timestamp_ms": 1120,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 1160,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 1200,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        },
+        {
+          "timestamp_ms": 1240,
+          "features": {
+            "arm_elevation_deg": 20,
+            "leg_spread_ratio": 1,
+            "interpolated": false
+          },
+          "pose_quality": "GOOD",
+          "expected_phase": "CLOSED"
+        }
+      ],
+      "expected": {
+        "phase": "CLOSED",
+        "completed_repetitions": 2,
+        "incomplete_repetitions": 0,
+        "events": [
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 120,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 480,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 1
+          },
+          {
+            "type": "REP_STARTED",
+            "timestamp_ms": 760,
+            "rule_id": "rep.started",
+            "quality": "GOOD",
+            "rep_index": null
+          },
+          {
+            "type": "REP_COMPLETED",
+            "timestamp_ms": 1120,
+            "rule_id": "rep.completed",
+            "quality": "GOOD",
+            "rep_index": 2
+          }
+        ]
+      }
+    }
+  ]
+}
