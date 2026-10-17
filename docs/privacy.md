@@ -38,8 +38,10 @@ Resumos não são backup nem sincronização de conta.
 - Não há listagem pública nem URL estável adivinhável tratada como autenticação
   forte. O identificador é não sequencial; em localhost de usuário único isso
   ainda é um controle limitado, e a interface deve dizer isso.
-- Partida de retenção, a confirmar na Onda 6: apagar em até 24 horas após a
-  conclusão, com exclusão antecipada.
+- O worker apaga arquivos de jobs `COMPLETED`, `FAILED` e `CANCELLED` 24 horas
+  depois de `finished_at` (`MOTIONCOACH_TTL_HOURS`). Jobs na fila ou em
+  processamento não entram nessa limpeza. `DELETE /api/jobs/{id}` remove o
+  arquivo antes disso.
 - Vídeo enviado não entra em treino de modelo.
 - Exportação padrão traz JSON, CSV e gráficos. Frames brutos ficam de fora.
 - Log de erro não inclui imagem, caminho absoluto do usuário nem stack para o
