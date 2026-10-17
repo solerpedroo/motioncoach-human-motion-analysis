@@ -1,15 +1,15 @@
-import { PageHeading, PreviewNotice } from "@/components/page-parts";
-import { WorkoutPreview } from "@/components/workout-preview";
+import { PageHeading } from "@/components/page-parts";
+import { VideoUpload } from "@/components/upload/video-upload";
+
 export default function Upload() {
   return (
     <>
       <PageHeading
         eyebrow="VIDEO ANALYSIS"
         title="See the bigger picture."
-        description="A workspace for reviewing recorded movement, one observation at a time."
+        description="Queue a local video. Pose runs in a separate worker, and the file stays private until you delete it or it expires."
       />
-      <PreviewNotice />
-      <WorkoutPreview mode="upload" />
+      <VideoUpload />
     </>
   );
 }
