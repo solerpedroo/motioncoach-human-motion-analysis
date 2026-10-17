@@ -83,7 +83,11 @@ export function AppShell({ children }: { children: ReactNode }) {
             <strong>{current?.label ?? "Session report"}</strong>
           </span>
           <div className="topbar-right">
-            <span className="preview-badge">{en.preview}</span>
+            <span className="preview-badge">
+              {pathname === "/workout/live"
+                ? "Local camera · development seeds"
+                : en.preview}
+            </span>
             <Link
               href="/about/methodology"
               aria-label="Help and methodology"
