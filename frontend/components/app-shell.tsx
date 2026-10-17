@@ -86,7 +86,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             <span className="preview-badge">
               {pathname === "/workout/live"
                 ? "Local camera · development seeds"
-                : en.preview}
+                : pathname === "/dashboard" || pathname.startsWith("/sessions/")
+                  ? "Local summaries · opt-in history"
+                  : en.preview}
             </span>
             <Link
               href="/about/methodology"
