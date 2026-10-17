@@ -240,3 +240,30 @@ fina entre os lados não são conclusões desta vista.
 - Mensagem concorrente perde para a prioridade: captura e visibilidade,
   observabilidade da repetição, repetição concluída, consistência.
 - Voz obedece cooldown por classe de mensagem e um interruptor imediato.
+
+
+## Contrato operacional da cinemática — Onda 1
+
+Decisão implementada: ADR-012. Seeds comuns versionadas em
+`shared/exercise-configs/common.json`; o schema reutiliza as definições do
+contrato 1.0.0. A política não calibra limiares em vídeo humano.
+
+- O relógio é injetado, ou o chamador fornece o timestamp da mídia. Amostras
+  duplicadas/fora de ordem são recusadas sem avançar estado temporal.
+- O limite de gap é inclusivo; acima dele a EMA reinicia, e a primeira amostra
+  após a lacuna sinaliza quebra de continuidade e bloqueia transição.
+- Retenção curta do filtro isolado é marcada `interpolated: true` e nunca
+  autoriza transição. O prazo é contado desde a última observação finita.
+- No processador de landmarks, falta de dado necessário resulta em `null`,
+  sem retenção. Perda de pose e salto limpam filtro e referência espacial.
+- Salto é distância euclidiana em x/y normalizados; z não altera o gate.
+  Pontos duplicados são ambíguos. O gate usa `visibility`; `presence` anulável
+  não é um segundo threshold independente nesta onda.
+- Geometria necessária degenerada dá `INSUFFICIENT`. Observação opcional
+  degenerada dá `LIMITED`, sem bloquear a métrica necessária disponível.
+- `can_transition` e `continuity_broken` são sinais internos para a futura FSM,
+  não eventos de repetição. A Onda 2 precisa readquirir o estado inicial após
+  quebra de continuidade. O lado e as transições continuam fora da Onda 1.
+
+Detalhes da API e da recuperação em
+[frontend/features/exercise-engine](../frontend/features/exercise-engine/README.md).
