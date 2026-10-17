@@ -3,6 +3,7 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { AnalysisReport } from "@/components/reports/analysis-report";
 import { Button } from "@/components/ui/button";
+import { MenuSelect } from "@/components/ui/menu-select";
 import { type AngleSample, angleSamples } from "@/features/upload/series";
 import { exercises } from "@/lib/exercises";
 
@@ -113,43 +114,34 @@ export function VideoUpload() {
           />
           <span className="file-face">{fileName}</span>
         </label>
-        <label>
-          Exercise
-          <select
-            aria-label="Exercise"
-            value={exercise}
-            onChange={(event) => setExercise(event.target.value)}
-          >
-            {exercises.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Camera view
-          <select
-            aria-label="Camera view"
-            value={cameraView}
-            onChange={(event) => setCameraView(event.target.value)}
-          >
-            <option value="side">Side</option>
-            <option value="front">Front</option>
-          </select>
-        </label>
+        <MenuSelect
+          label="Exercise"
+          value={exercise}
+          options={exercises.map((item) => ({
+            value: item.id,
+            label: item.name,
+          }))}
+          onChange={setExercise}
+        />
+        <MenuSelect
+          label="Camera view"
+          value={cameraView}
+          options={[
+            { value: "side", label: "Side" },
+            { value: "front", label: "Front" },
+          ]}
+          onChange={setCameraView}
+        />
         {exercise === "biceps_curl" ? (
-          <label>
-            Arm
-            <select
-              aria-label="Arm"
-              value={side}
-              onChange={(event) => setSide(event.target.value)}
-            >
-              <option value="left">Left</option>
-              <option value="right">Right</option>
-            </select>
-          </label>
+          <MenuSelect
+            label="Arm"
+            value={side}
+            options={[
+              { value: "left", label: "Left" },
+              { value: "right", label: "Right" },
+            ]}
+            onChange={setSide}
+          />
         ) : null}
         <div className="composer-actions">
           <Button type="submit" disabled={pending}>
