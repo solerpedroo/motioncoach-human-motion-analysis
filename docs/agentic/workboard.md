@@ -1,20 +1,19 @@
 # Workboard
 
-Estado em 2026-10-17: Ondas 0–2 e 4–7 concluídas. Onda 3 em `in_review`
-(inspeção física pendente). Próxima: Onda 8.
+Estado em 2026-10-17: Ondas 0–9 concluídas. Não há onda seguinte.
 
 ## Próxima tarefa
 
-Assumir [Onda 8 — Avaliação e experimentos](tasks/wave-8-evaluation.md).
-A inspeção com câmera física continua em
-[Onda 3](tasks/wave-3-webcam-pose.md) (ADR-015).
+Nenhuma onda no plano. A, B e C continuam `not_evaluated` no
+[relatório da Onda 8](../research/reports/wave8.json). Não publicar esses
+campos como acurácia humana. Não há `LICENSE`.
 
 Entregas Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
 [0B](tasks/wave-0b-frontend-shell.md) `done`,
 [0C](tasks/wave-0c-integration.md) `done`.
 
 Subtarefas Onda 3: [3A](tasks/wave-3a-capture-runtime.md) `done`;
-[3B](tasks/wave-3b-live-integration.md) `in_review`.
+[3B](tasks/wave-3b-live-integration.md) `done`.
 
 Subtarefas Onda 4: [4A](tasks/wave-4a-feedback-voice.md) `done`,
 [4B](tasks/wave-4b-summary-history.md) `done`,
@@ -29,13 +28,13 @@ Subtarefas Onda 5: [5A](tasks/wave-5a-python-engine.md) `done`,
 - **0 — Fundação executável e contratos:** `done`; [cartão](tasks/wave-0-foundation.md).
 - **1 — Geometria, tempo e quality gate:** `done`; [cartão](tasks/wave-1-kinematics.md).
 - **2 — Máquinas de estado dos exercícios:** `done`; [cartão](tasks/wave-2-exercise-fsms.md).
-- **3 — Webcam e visualização da pose:** `in_review`; [cartão](tasks/wave-3-webcam-pose.md).
+- **3 — Webcam e visualização da pose:** `done`; [cartão](tasks/wave-3-webcam-pose.md).
 - **4 — Feedback, voz e sessão ao vivo:** `done`; [cartão](tasks/wave-4-live-session.md).
 - **5 — Vídeo e pose Python com paridade:** `done`; [cartão](tasks/wave-5-python-video.md).
 - **6 — API, worker e retenção:** `done`; [cartão](tasks/wave-6-jobs-api.md).
 - **7 — Timeline, relatórios e exportação:** `done`; [cartão](tasks/wave-7-reports.md).
-- **8 — Avaliação e experimentos:** `proposed`; [cartão](tasks/wave-8-evaluation.md).
-- **9 — Aceitação e portfólio:** `proposed`; [cartão](tasks/wave-9-acceptance.md).
+- **8 — Avaliação e experimentos:** `done` por exceção ADR-023; A–C `not_evaluated`; [cartão](tasks/wave-8-evaluation.md).
+- **9 — Aceitação e portfólio:** `done`; [cartão](tasks/wave-9-acceptance.md).
 
 ## Convenções
 
