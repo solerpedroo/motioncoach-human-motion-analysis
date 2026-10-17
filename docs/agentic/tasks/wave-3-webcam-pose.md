@@ -97,4 +97,6 @@ Voz, IndexedDB, relatório exportável e qualquer rota de upload.
 5. Stop, troca e navegação devem apagar o indicador físico de câmera; Start
    inicia nova contagem. Conferir DevTools Network sem requests com frames.
 6. Anexar observações no cartão, marcar critério visual e só então mudar para
-   `done`. Próxima onda depois desse gate: Onda 4, em novo diff.
+   `done`. Exceção posterior: o usuário pediu avanço para a Onda 4,
+   registrada no ADR-015 e concluída em diff separado. A inspeção física
+   da Onda 3 continua aberta; esse avanço não conta como smoke.
