@@ -11,7 +11,9 @@ EMA, quality gate e FSM declarativa. A **Onda 3 está implementada, em revisão*
 captura local, worker de pose, overlay e contagem estão conectados. Falta o
 smoke manual com câmera física para fechar a onda. Upload e relatórios medidos
 seguem nas ondas responsáveis. A **Onda 4 está concluída**: feedback com prioridade,
-voz opt-in interrompível, resumo e histórico local apagável.
+voz opt-in interrompível, resumo e histórico local apagável. A **Onda 5**
+implementa o port Python com paridade, probe/decode com PTS e análise local
+pela CLI, ainda sem rota de upload.
 
 ## Executar localmente
 
@@ -66,14 +68,15 @@ EMA e quality gate, sem dependência de React. Seeds comuns estão em
 As máquinas de estado já contam ciclos sintéticos em `squat`, `push_up`,
 `biceps_curl` e `jumping_jack`, com configurações JSON e fixtures de repetição.
 Pausa/perda invalidam o ciclo e exigem readquisição; o lado fica fixo na sessão.
-Algoritmos Python só entram na Onda 5, antes da API de upload. Veja o
+O port Python da Onda 5 consome os mesmos JSONs e passou na comparação cruzada,
+incluindo feedback. CLI/pipeline em `motioncoach/` precedem a API de upload. Veja o
 [contrato operacional do motor](frontend/features/exercise-engine/README.md).
 
 ## Interface disponível
 
 Navegação: `/`, `/dashboard`, `/workout/live`, `/workout/upload`, `/exercises`,
 `/sessions/demo`, `/settings` e `/about/methodology`.
-`/sessions/[id]` reconhece a rota, mas ainda não carrega sessões.
+`/sessions/[id]` carrega somente resumos salvos neste navegador por opt-in.
 
 **Live Workout** solicita câmera somente em Start, sem microfone. Escolha
 exercício, vista e braço (rosca) antes de começar. Trocar câmera encerra a
@@ -104,9 +107,39 @@ suporte de voz, a observação em texto continua disponível. Veja
 **Video Analysis** continua demonstrativo: o seletor Preview state mostra
 estados sem solicitar permissão, transmitir arquivo ou produzir medição.
 
+## Vídeo local pela CLI
+
+Extras opcionais: `video` instala PyAV 19.0.1 + NumPy 2.5.4; `pose` instala
+MediaPipe Python 1.1.1. O core não depende desses runtimes nem de FastAPI.
+Nenhum executável ffprobe/ffmpeg é necessário: probe e decode usam libavformat
+pelo PyAV. A preparação do asset é explícita, com SHA-256 verificado.
+
+```bash
+uv sync --locked --extra video --extra pose
+uv run --locked motioncoach prepare-model
+uv run --locked motioncoach probe data/input.mp4
+uv run --locked motioncoach analyze data/input.mp4 --exercise squat --view side --output data/analysis-1
+```
+
+Esses caminhos são exemplos para um arquivo local escolhido por você. Rosca
+exige `--side left` ou `--side right`; polichinelo exige `--view front`.
+`--model` pode apontar ao mesmo asset preparado pelo frontend.
+O diretório de saída deve ser novo e só é publicado após sucesso: analysis.json
+com resumo/proveniência e frames.jsonl com PoseFrame, sem imagens brutas.
+Ctrl+C/cancelamento e falha removem saída parcial e fecham recursos.
+
+Limites iniciais configuráveis: `--max-bytes 200000000`,
+`--max-duration-ms 300000`, `--max-pixels 8294400`,
+`--max-decoded-frames 36000`, `--sample-fps 30`. PTS é preservado, inclusive VFR;
+sem PTS há rejeição explícita, sem reconstruir pelo FPS médio. Rotação/display
+matrix e pixels não quadrados precisam de normalização prévia.
+[Contrato operacional Python](motioncoach/README.md) e ADRs 017/018.
+
 ## Validação
 
-Comandos de regressão da CI, também executados localmente:
+Comandos de regressão da CI, também executados localmente. Para incluir decode
+real de vídeos sintéticos, instalar `uv sync --locked --extra api --extra video`.
+A CI não instala `pose` nem baixa modelo/vídeo de pessoa.
 
 ```bash
 uv run --locked ruff check .
@@ -117,8 +150,20 @@ npm --prefix frontend run contracts:check
 npm --prefix frontend run lint
 npm --prefix frontend run typecheck
 npm --prefix frontend test
+npm --prefix frontend run test:parity
 npm --prefix frontend run build
 ```
+
+O smoke Python com modelo real é **opt-in** e não baixa o asset. Após preparar
+o modelo e instalar os extras, o comando usa um vídeo sintético gerado em teste:
+
+```bash
+uv run --locked --extra video --extra pose pytest motioncoach/tests/test_pose.py -m pose --run-pose --model-path frontend/public/pose/pose_landmarker_lite.task -q -s
+```
+
+O caminho também pode ser `data/models/pose_landmarker_lite.task`, criado pelo
+prepare-model. O teste registra hash, versões e máquina, sem afirmar acurácia
+humana. A suíte padrão pula esse teste por design.
 
 Com API e frontend rodando, o smoke HTTP verifica as oito páginas, seus links
 e stylesheet, health, OpenAPI e ausência da rota de vídeo:
@@ -171,7 +216,8 @@ estão nos cartões da [Onda 0](docs/agentic/tasks/wave-0-foundation.md) e
 [Onda 1](docs/agentic/tasks/wave-1-kinematics.md) e
 [Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md) e
 [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md) e
-[Onda 4](docs/agentic/tasks/wave-4-live-session.md).
+[Onda 4](docs/agentic/tasks/wave-4-live-session.md) e
+[Onda 5](docs/agentic/tasks/wave-5-python-video.md).
 A execução remota do GitHub Actions depende de publicar este diff.
 
 ## Evoluir os contratos
