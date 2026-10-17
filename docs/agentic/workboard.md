@@ -1,12 +1,12 @@
 # Workboard
 
-Estado em 2026-10-17: Ondas 0–2 e 4–6 concluídas. Onda 3 em `in_review`
-(inspeção física pendente). Próxima: Onda 7.
+Estado em 2026-10-17: Ondas 0–2 e 4–7 concluídas. Onda 3 em `in_review`
+(inspeção física pendente). Próxima: Onda 8.
 
 ## Próxima tarefa
 
-Assumir [Onda 7 — Timeline, relatórios e exportação](tasks/wave-7-reports.md)
-em diff separado. A inspeção com câmera física continua em
+Assumir [Onda 8 — Avaliação e experimentos](tasks/wave-8-evaluation.md).
+A inspeção com câmera física continua em
 [Onda 3](tasks/wave-3-webcam-pose.md) (ADR-015).
 
 Entregas Onda 0: [0A](tasks/wave-0a-contracts-api.md) `done`,
@@ -33,7 +33,7 @@ Subtarefas Onda 5: [5A](tasks/wave-5a-python-engine.md) `done`,
 - **4 — Feedback, voz e sessão ao vivo:** `done`; [cartão](tasks/wave-4-live-session.md).
 - **5 — Vídeo e pose Python com paridade:** `done`; [cartão](tasks/wave-5-python-video.md).
 - **6 — API, worker e retenção:** `done`; [cartão](tasks/wave-6-jobs-api.md).
-- **7 — Timeline, relatórios e exportação:** `proposed`; [cartão](tasks/wave-7-reports.md).
+- **7 — Timeline, relatórios e exportação:** `done`; [cartão](tasks/wave-7-reports.md).
 - **8 — Avaliação e experimentos:** `proposed`; [cartão](tasks/wave-8-evaluation.md).
 - **9 — Aceitação e portfólio:** `proposed`; [cartão](tasks/wave-9-acceptance.md).
 
