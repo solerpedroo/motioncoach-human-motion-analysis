@@ -44,9 +44,15 @@ Fixtures sintéticas provam a FSM. Elas não são benchmark de acurácia humana.
 
 A comparação TypeScript/Python usa a mesma sequência de landmarks e a mesma
 configuração. O gate da Onda 5 é igualdade de contagem, tipos de evento e
-timestamps dentro da tolerância que aquela onda registrar. Diferença de
+timestamps exatos nas fixtures determinísticas. Desde a Onda 5, features e
+valores contínuos usam tolerância absoluta 1e-9 e relativa 1e-9, por valor;
+null, fase, qualidade, regra, motivo, contadores e estrutura são exatos. Diferença de
 variante de modelo ou de amostragem de frames entra no manifest e impede
-chamar as saídas de equivalentes.
+chamar as saídas de pose real de equivalentes. O gate compara rastros completos
+das fixtures comuns, incluindo filtros, ações de pausa, lados, espelho e
+feedback. Comando reproduzível: `npm --prefix frontend run test:parity`.
+A tolerância não é a tolerância de 500 ms do pareamento com anotação humana e
+não produz MAE/F1 de pessoas. Decisão no ADR-018.
 
 ## Experimentos do MVP
 
