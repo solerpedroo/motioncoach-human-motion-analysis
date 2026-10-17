@@ -4,10 +4,11 @@ Assistente educacional de observação de movimento por webcam e vídeo.
 O MVP prevê agachamento, flexão, rosca bíceps e polichinelo, com contagem
 explicável, ângulos 2D e feedback condicionado à visibilidade.
 
-A **Onda 0** entrega a fundação: contratos compartilhados, API de liveness e
-shell navegável. A interface está em inglês, em tema escuro, com estados
-explicitamente demonstrativos. Câmera, modelo de pose, contagem, upload,
-relatórios medidos e histórico serão implementados nas ondas seguintes.
+As **Ondas 0 e 1** estão concluídas: fundação instalável e cinemática
+TypeScript testada em fixtures sintéticas. Há contratos compartilhados, API
+de liveness, shell navegável, geometria 2D, EMA e quality gate. A interface
+está em inglês, em tema escuro, com estados demonstrativos. Contagem, câmera,
+modelo de pose, upload e relatórios medidos seguem nas ondas responsáveis.
 
 ## Executar localmente
 
@@ -55,8 +56,12 @@ worker disponível ou análise de vídeo. O OpenAPI publica somente esse endpoin
 - `.github/workflows/ci.yml`: lint, contratos, testes e build leves.
 - `docs/`: escopo, arquitetura, decisões, plano e cartões de trabalho.
 
-O motor TypeScript nascerá em `frontend/features/exercise-engine/` na Onda 1.
-Algoritmos Python só entram na Onda 5, antes da API de upload.
+O motor TypeScript em `frontend/features/exercise-engine/` já contém geometria,
+EMA e quality gate, sem dependência de React. Seeds comuns estão em
+`shared/exercise-configs/` e fixtures em `shared/fixtures/kinematics/`.
+As máquinas de estado e a contagem entram na Onda 2. Algoritmos Python só
+entram na Onda 5, antes da API de upload. Veja o
+[contrato operacional do motor](frontend/features/exercise-engine/README.md).
 
 ## Interface disponível
 
@@ -101,6 +106,12 @@ Para servir o build de produção, depois do build:
 npm --prefix frontend start
 ```
 
+A suíte cinemática pode ser executada isoladamente:
+
+```bash
+npm --prefix frontend test -- tests/kinematics.test.ts
+```
+
 A instalação do núcleo sem o extra `api` também é suportada:
 
 ```bash
@@ -109,7 +120,8 @@ uv sync --locked --no-dev
 
 Ela não inclui FastAPI. Para voltar ao ambiente completo, executar
 `uv sync --locked --extra api`. Evidências, resultados e limites dos checks
-estão no [cartão da Onda 0](docs/agentic/tasks/wave-0-foundation.md).
+estão nos cartões da [Onda 0](docs/agentic/tasks/wave-0-foundation.md) e
+[Onda 1](docs/agentic/tasks/wave-1-kinematics.md).
 A execução remota do GitHub Actions depende de publicar este diff.
 
 ## Evoluir os contratos
