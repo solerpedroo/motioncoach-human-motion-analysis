@@ -115,7 +115,7 @@ export function LiveWorkout({
             </select>
           </label>
         )}
-        <label className={styles.mirror}>
+        <label className={`${styles.mirror} toggle`}>
           <input
             type="checkbox"
             checked={mirrored}
@@ -205,7 +205,7 @@ export function LiveWorkout({
       <p className={styles.note}>
         Active session time: {(session.elapsedMs / 1000).toFixed(1)} s
       </p>
-      <label className={styles.voice}>
+      <label className={`${styles.voice} toggle`}>
         <input
           type="checkbox"
           checked={session.voiceEnabled}
