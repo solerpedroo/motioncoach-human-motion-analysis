@@ -22,7 +22,7 @@ import {
 } from "@/features/session-store/session-recorder";
 import type { Landmark } from "@/lib/contracts.generated";
 import type { ExerciseId } from "@/lib/exercises";
-import { en } from "@/messages/en";
+import { feedbackText, type VoiceLanguage } from "@/messages/catalog";
 import { drawPose } from "../pose-overlay/draw";
 export type LiveStatus =
   | "idle"
@@ -52,6 +52,7 @@ export function useLiveSession(options: {
     null,
   );
   const voice = useRef<ReturnType<typeof createVoiceFeedback> | null>(null);
+  const speech = useRef<ReturnType<typeof createBrowserSpeechPort>>(null);
   const decision = useRef<FeedbackDecision | null>(null);
   const feedbackUntil = useRef(0);
   const [feedback, setFeedback] = useState<FeedbackDecision | null>(null);
@@ -61,9 +62,19 @@ export function useLiveSession(options: {
   const [voiceEnabled, setVoiceEnabled] = useState(false);
   const [voiceAvailable, setVoiceAvailable] = useState(false);
   const [voiceError, setVoiceError] = useState("");
+  const [voiceLanguage, setVoiceLanguage] = useState<VoiceLanguage>("en");
+  const language = useRef<VoiceLanguage>("en");
+  useEffect(() => {
+    const stored = window.localStorage.getItem("motioncoach.voice_language");
+    if (stored === "en" || stored === "pt-BR") {
+      language.current = stored;
+      setVoiceLanguage(stored);
+    }
+  }, []);
   useEffect(() => {
     const synth = window.speechSynthesis;
-    const port = createBrowserSpeechPort();
+    const port = createBrowserSpeechPort(() => language.current);
+    speech.current = port;
     if (!port) return;
     voice.current = createVoiceFeedback(
       port,
@@ -89,8 +100,27 @@ export function useLiveSession(options: {
       synth.removeEventListener("voiceschanged", refresh);
       voice.current?.setEnabled(false);
       voice.current = null;
+      speech.current = null;
     };
   }, []);
+  const chooseVoiceLanguage = (value: VoiceLanguage) => {
+    language.current = value;
+    setVoiceLanguage(value);
+    window.localStorage.setItem("motioncoach.voice_language", value);
+    voice.current?.cancel();
+    const available = speech.current?.available() ?? false;
+    setVoiceAvailable(available);
+    if (!available) {
+      voice.current?.setEnabled(false);
+      setVoiceEnabled(false);
+      setVoiceError(
+        "No local voice is available for this language. The written observation stays on screen.",
+      );
+      return;
+    }
+    setVoiceError("");
+    if (voiceEnabled) voice.current?.setEnabled(true);
+  };
   const toggleVoice = (value: boolean) => {
     setVoiceError("");
     setVoiceEnabled(voice.current?.setEnabled(value) ?? false);
@@ -118,7 +148,7 @@ export function useLiveSession(options: {
     ]);
     if (outcome?.decision.issued && outcome.decision.selected) {
       const item = outcome.decision.selected;
-      const text = en.feedback[item.message_key as keyof typeof en.feedback];
+      const text = feedbackText(language.current, item.message_key);
       if (text) voice.current?.publish(item, text);
     }
   };
@@ -402,6 +432,8 @@ export function useLiveSession(options: {
     voiceEnabled,
     voiceAvailable,
     voiceError,
+    voiceLanguage,
+    chooseVoiceLanguage,
     toggleVoice,
     video,
     canvas,
