@@ -3,7 +3,8 @@
 ## Estado e início de sessão
 
 As Ondas 0–2 estão concluídas: fundação, cinemática e FSM dos quatro exercícios.
-A próxima tarefa é a [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md). Estado:
+A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md) está implementada em revisão;
+falta smoke qualitativo com câmera física antes da Onda 4. Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
