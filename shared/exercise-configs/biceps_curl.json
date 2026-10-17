@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "version": "0.1.0",
+  "validation_status": "unvalidated_seed",
+  "quality": {
+    "min_visibility": 0.5,
+    "max_gap_ms": 200,
+    "max_jump_normalized": 0.2
+  },
+  "smoothing": {
+    "type": "ema",
+    "alpha": 0.4
+  },
+  "min_state_ms": 80,
+  "min_cycle_ms": 400,
+  "id": "biceps_curl",
+  "display_name": "Biceps curl",
+  "recommended_view": "either",
+  "side_selection": "user_selected",
+  "required_landmarks": [
+    11,
+    13,
+    15
+  ],
+  "optional_landmarks": [],
+  "features": [
+    {
+      "id": "left_elbow_angle_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        11,
+        13,
+        15
+      ],
+      "role": "transition"
+    }
+  ],
+  "states": [
+    "NOT_READY",
+    "EXTENDED",
+    "FLEXING",
+    "FLEXED",
+    "EXTENDING",
+    "UNCERTAIN",
+    "PAUSED"
+  ],
+  "initial_state": "NOT_READY",
+  "thresholds": [
+    {
+      "name": "extended_enter_deg",
+      "value": 150,
+      "unit": "degree"
+    },
+    {
+      "name": "extended_exit_deg",
+      "value": 140,
+      "unit": "degree"
+    },
+    {
+      "name": "flexed_enter_deg",
+      "value": 60,
+      "unit": "degree"
+    },
+    {
+      "name": "flexed_exit_deg",
+      "value": 75,
+      "unit": "degree"
+    }
+  ],
+  "transitions": [
+    {
+      "from_state": "NOT_READY",
+      "to_state": "EXTENDED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "gte",
+          "threshold": "extended_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "UNCERTAIN",
+      "to_state": "EXTENDED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "gte",
+          "threshold": "extended_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "EXTENDED",
+      "to_state": "FLEXING",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "lte",
+          "threshold": "extended_exit_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": false,
+      "emit_event": "REP_STARTED"
+    },
+    {
+      "from_state": "FLEXING",
+      "to_state": "FLEXED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "lte",
+          "threshold": "flexed_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "FLEXING",
+      "to_state": "EXTENDED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "gte",
+          "threshold": "extended_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_INCOMPLETE"
+    },
+    {
+      "from_state": "FLEXED",
+      "to_state": "EXTENDING",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "gte",
+          "threshold": "flexed_exit_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": false,
+      "emit_event": null
+    },
+    {
+      "from_state": "EXTENDING",
+      "to_state": "EXTENDED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "gte",
+          "threshold": "extended_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_COMPLETED"
+    },
+    {
+      "from_state": "EXTENDING",
+      "to_state": "FLEXED",
+      "conditions": [
+        {
+          "feature": "left_elbow_angle_deg",
+          "operator": "lte",
+          "threshold": "flexed_enter_deg"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    }
+  ],
+  "feedback_rules": [
+    {
+      "rule_id": "framing.arm_hidden",
+      "message_key": "framing.arm_hidden",
+      "priority": 0,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "rep.partial_movement",
+      "message_key": "rep.partial_movement",
+      "priority": 1,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "consistency.elbow_drift",
+      "message_key": "consistency.elbow_drift",
+      "priority": 2,
+      "cooldown_ms": 3000
+    }
+  ]
+}
