@@ -105,10 +105,12 @@ suporte de voz, a observação em texto continua disponível. Veja
 [sessão local](frontend/features/session-store/README.md).
 
 **Video Analysis** envia o arquivo para a API local. O processo HTTP só valida
-e enfileira. A pose roda em `uv run --locked python -m backend.app.worker`,
-com o extra `video` e, para um modelo real, o extra `pose` e
-`motioncoach prepare-model`. A página mostra o estágio do job. Gráficos e
-exportação CSV ainda não existem.
+e enfileira. A pose roda em `uv run --locked python -m backend.app.worker`.
+Quando o job termina, a página mostra o vídeo, a timeline e o gráfico de
+ângulo no tempo da mídia. Um clique numa repetição move o player para o mesmo
+`timestamp_ms`. JSON e CSV saem de
+`/api/analyses/{id}/export` e não incluem landmarks. Se o PNG do gráfico falhar,
+os números publicados permanecem.
 
 ## Vídeo local pela CLI
 
