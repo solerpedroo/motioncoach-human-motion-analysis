@@ -1,0 +1,45 @@
+name: Lightweight checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          version: "0.12.24"
+          enable-cache: true
+      - run: uv sync --locked --extra api
+      - run: uv run --locked ruff check .
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked python -m motioncoach.contracts.schema --check
+      - run: uv run --locked pytest
+      - name: Import core without API dependencies
+        run: |
+          UV_PROJECT_ENVIRONMENT=/tmp/motioncoach-core uv sync --locked --no-dev
+          /tmp/motioncoach-core/bin/python -I -c "import importlib.util; from motioncoach.contracts import PoseFrame; assert all(importlib.util.find_spec(name) is None for name in ('fastapi', 'cv2', 'mediapipe'))"
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.21.0"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run contracts:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
