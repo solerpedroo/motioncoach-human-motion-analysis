@@ -420,6 +420,21 @@ referenciar a anterior sem apagar o histórico.
   Smoke real registra hash, versões, máquina e limites do que não foi avaliado.
 - Fonte primária: [Pose Landmarker Python](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/python).
 
+## ADR-019 — Fila local de jobs (Onda 6)
+
+- Data: 2026-10-17. Estado: aceito e implementado.
+- Decisão: SQLite em `MOTIONCOACH_DATA_DIR`, um worker e um job em
+  `PROCESSING`. `POST /api/videos` responde 202 depois do probe e não chama
+  pose. Claim usa `BEGIN IMMEDIATE`. Cancelamento de job em execução é lido
+  a cada frame. Heartbeat antigo vira `FAILED` / `WORKER_INTERRUPTED`.
+  Reprocessar cria outro id.
+- Retenção padrão: 24 horas após `finished_at`, só para jobs terminados.
+  `QUEUED` e `PROCESSING` não são apagados. Cota padrão: 8 jobs ativos.
+  Artefatos publicados: `analysis.json` e `frames.jsonl`.
+- Consequência: não há Redis nem vários workers. O contrato está em
+  [api-contract.md](../api-contract.md). Gráficos e exportação CSV ficam na
+  Onda 7.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
@@ -428,8 +443,8 @@ referenciar a anterior sem apagar o histórico.
   não validadas. Avaliação empírica permanece na Onda 8.
 - Onda 3: runtime Web decidido no ADR-014; inspeção física pendente.
 - Onda 5 resolvida nos ADR-017/018: pacote/modelo, port, PTS e paridade.
-- Onda 6: limites medidos de tamanho, duração, CPU e TTL. Partida sugerida pelo
-  escopo: 200 MB, 5 minutos e exclusão em até 24 horas.
+- Onda 6 resolvida no ADR-019. Limites de CPU em hardware real continuam
+  sem medição de carga; tamanho, duração e TTL usam a partida do escopo.
 - Onda 8: existência de um conjunto consentido ou de um dataset cuja licença
   permita a avaliação. Sem isso a onda não fecha.
 - Onda 9: LICENSE do repositório, depois do inventário real de dependências e
