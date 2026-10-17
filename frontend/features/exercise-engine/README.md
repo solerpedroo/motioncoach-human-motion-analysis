@@ -1,9 +1,9 @@
-# Motor puro — fundação cinemática
+# Motor puro — cinemática e exercícios
 
 Implementação TypeScript independente de React, câmera e HTTP. A especificação
 é `docs/exercise-spec.md`; seeds em `shared/exercise-configs/common.json` e
-fixtures em `shared/fixtures/kinematics/`. Nesta onda não há fase, repetição,
-seleção de lado, pausa nem emissão de `SessionEvent`.
+fixtures em `shared/fixtures/kinematics/`. A Onda 2 acrescenta FSM, lado fixo,
+pausa e eventos, usando as configurações executáveis de cada exercício.
 
 ## Entradas e tempo
 
@@ -68,8 +68,8 @@ mostrar ângulo, mas não autoriza transição. Um salto não mantém o motor pr
 à posição antiga: a amostra válida seguinte estabelece uma nova referência.
 
 O resultado inclui `features`, `pose_quality`, `reasons`, `can_transition` e
-`continuity_broken`. A futura FSM deve invalidar o ciclo ao receber quebra de
-continuidade e readquirir seu estado inicial; `can_transition` autoriza apenas
+`continuity_broken`. A FSM invalida o ciclo ao receber quebra de
+continuidade e readquire seu estado inicial; `can_transition` autoriza apenas
 usar uma amostra. Não equivale a uma repetição nem dispensa a permanência
 mínima. O processador não interpola landmarks e sua flag `interpolated` é falsa.
 
@@ -83,3 +83,68 @@ npm --prefix frontend test -- tests/kinematics.test.ts
 
 Regressão, lint, typecheck e build usam os comandos já documentados no README
 raiz. Nenhum teste desta área exige modelo ou navegador.
+
+
+## Analisadores de exercício — Onda 2
+
+`createExerciseAnalyzer(idOrConfig, { camera_view, selected_side?, mirrored?,
+clock })` é a entrada para frames de pose. `update({ landmarks, timestamp_ms })`
+passa pelo gate, extrai e suaviza features, seleciona/fixa lado e executa a
+FSM. `snapshot()`, `pause(timestamp?)`, `resume(timestamp?)` e `reset()`
+completam a API. Snapshot mostra fase, totais, qualidade, features, lado e
+batch de eventos da última operação. Consumir eventos uma vez por update ou
+comando; não tratar leituras repetidas de snapshot como novos eventos.
+
+`getExerciseConfig(id)` carrega cópia do JSON versionado; `resolveSide` faz o
+mapeamento anatômico. Configurações customizadas já tipadas precisam passar
+pelo schema de domínio antes da validação semântica do executor. O catálogo
+embutido é validado no schema pela regressão. Configs e opções são copiadas;
+alterar o objeto de origem não muda uma sessão existente.
+
+`createFeatureAnalyzer(config, clock)` permite testar/reexecutar a FSM com
+features já calculadas. Essa entrada não substitui o gate de landmarks; o
+chamador fornece qualidade, flags de continuidade/interpolação e, quando há
+suavização, as observações atuais em `observed_features`. O wrapper de frames
+faz isso automaticamente. Condições precisam valer tanto nos valores filtrados
+quanto nas observações atuais. Features angulares inválidas ficam `null`.
+
+As fases, condições e limiares são do JSON. Entradas estáveis têm dwell
+contínuo; trocar a condição reinicia a espera. Saídas intermediárias sem dwell
+estão declaradas. Cada frame aplica no máximo uma transição. Ciclo completo
+precisa do extremo, retorno estável, duração mínima desde o início e intervalo
+mínimo desde o completo anterior. Ciclo curto é incompleto; ficar parado no
+estado inicial não o transforma em completo depois.
+
+Uma pausa em ciclo ativo emite incompleto uma vez e `SESSION_PAUSED`, congela
+progresso em `PAUSED` e retoma em `UNCERTAIN`. Não preserva o ciclo antigo;
+readquire a posição inicial. Pausa não entra no tempo ativo. Comandos aceitam
+tempo finito não decrescente; frames exigem tempo estritamente crescente.
+Timestamp ruim não avança memória e pode invalidar o ciclo, emitindo o
+incompleto no último timestamp válido, com motivo.
+
+Rosca exige braço explícito. Agachamento/flexão escolhem pela média de
+visibilidade dos obrigatórios e fixam após dwell inicial; empate esquerdo.
+Mudança antes de fixar reinicia dwell. Perder o lado escolhido bloqueia, sem
+usar o outro. `reset()` inicia outra sessão; rosca mantém a escolha explícita.
+O flag de espelho é apresentação e não transforma x/y nem índices.
+
+Polichinelo exige os dois braços e pernas no mesmo frame: `arm_elevation_deg`
+é o mínimo dos dois ângulos atuais antes da EMA; `leg_spread_ratio` usa somente
+x, dividido pelo span horizontal dos quadris. Braço ausente ou span pequeno
+bloqueia; punhos são opcionais. Não mede salto ou saída dos pés do chão.
+
+Eventos seguem `SessionEvent` 1.0.0: regra, fase, qualidade, motivo e tempo.
+Só `REP_COMPLETED` usa índice positivo; os demais têm índice `null`.
+`POSE_LOST` e `LOW_VISIBILITY` são deduplicados durante a perda;
+`POSE_RECOVERED` sinaliza retorno dos dados, sem completar ciclo antigo.
+`feedback_candidates` segue vazio; prioridade/cooldown/voz são da Onda 4.
+
+`feature-processor.ts` compartilha qualidade, continuidade e EMA entre ângulos
+e métricas derivadas. `kinematics.ts` preserva a API e as fixtures da Onda 1.
+Não há modelo, câmera, HTTP ou persistência neste pacote.
+
+Regressão das FSMs:
+
+```bash
+npm --prefix frontend test -- tests/exercise-fsms.test.ts
+```
