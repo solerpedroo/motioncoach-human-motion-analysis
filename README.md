@@ -104,8 +104,11 @@ suporte de voz, a observação em texto continua disponível. Veja
 [feedback](frontend/features/exercise-engine/FEEDBACK.md) e
 [sessão local](frontend/features/session-store/README.md).
 
-**Video Analysis** continua demonstrativo: o seletor Preview state mostra
-estados sem solicitar permissão, transmitir arquivo ou produzir medição.
+**Video Analysis** envia o arquivo para a API local. O processo HTTP só valida
+e enfileira. A pose roda em `uv run --locked python -m backend.app.worker`,
+com o extra `video` e, para um modelo real, o extra `pose` e
+`motioncoach prepare-model`. A página mostra o estágio do job. Gráficos e
+exportação CSV ainda não existem.
 
 ## Vídeo local pela CLI
 
