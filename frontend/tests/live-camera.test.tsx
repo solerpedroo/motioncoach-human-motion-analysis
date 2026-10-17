@@ -143,9 +143,8 @@ it("starts a VIDEO worker session, pauses, resumes UNCERTAIN, and releases on st
 it("switching camera stops the session before requesting the new device", async () => {
   render(<LiveWorkout />);
   const worker = await start();
-  fireEvent.change(screen.getByRole("combobox", { name: "Camera" }), {
-    target: { value: "usb" },
-  });
+  fireEvent.click(screen.getByRole("combobox", { name: "Camera" }));
+  fireEvent.click(screen.getByRole("option", { name: "USB camera" }));
   expect(stopTrack).toHaveBeenCalledOnce();
   expect(worker.terminate).toHaveBeenCalledOnce();
   expect(media.getUserMedia).toHaveBeenCalledTimes(1);
