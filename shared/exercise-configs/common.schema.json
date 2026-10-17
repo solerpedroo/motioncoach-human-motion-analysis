@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motioncoach.local/schemas/common-config-1.0.0.json",
+  "title": "CommonEngineConfig",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "version", "validation_status", "quality", "smoothing", "min_state_ms", "min_cycle_ms"],
+  "properties": {
+    "schema_version": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/ExerciseConfig/properties/schema_version" },
+    "version": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/ExerciseConfig/properties/version" },
+    "validation_status": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/ExerciseConfig/properties/validation_status" },
+    "quality": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/QualityConfig" },
+    "smoothing": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/SmoothingConfig" },
+    "min_state_ms": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/ExerciseConfig/properties/min_state_ms" },
+    "min_cycle_ms": { "$ref": "https://motioncoach.local/schemas/contracts-1.0.0.json#/$defs/ExerciseConfig/properties/min_cycle_ms" }
+  }
+}
