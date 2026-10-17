@@ -26,9 +26,9 @@ const preferences = [
   {
     icon: ShieldCheck,
     title: "Recording & uploads",
-    state: "Unavailable",
+    state: "Temporary",
     description:
-      "Recording will require a separate action. Uploaded videos will use temporary storage and an explicit retention policy.",
+      "Live recording stays off. An uploaded video is a separate local job, kept out of public folders and removed after the retention window or when you delete it.",
   },
 ];
 export default function Settings() {
