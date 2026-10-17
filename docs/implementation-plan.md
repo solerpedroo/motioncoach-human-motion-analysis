@@ -306,8 +306,9 @@ decode/probe PyAV, adaptador MediaPipe opcional e CLI `motioncoach probe|analyze
 sobre `pipeline.analyze`. ADR-017/018 e [cartão](agentic/tasks/wave-5-python-video.md)
 registram tolerância e evidências. Smoke de pose real permanece opt-in.
 
-A Onda 6 entregou upload, fila SQLite, worker separado, cancelamento, retenção
-e a página de progresso. ADR-019 e [cartão](agentic/tasks/wave-6-jobs-api.md).
-A inspeção física da Onda 3 continua aberta (ADR-015).
+A Onda 7 ligou o relatório ao artefato: player, timeline, gráfico SVG e
+exportação JSON/CSV sem frames. ADR-020 e
+[cartão](agentic/tasks/wave-7-reports.md). A inspeção física da Onda 3
+continua aberta (ADR-015).
 
-Próxima ação: assumir [Onda 7](agentic/tasks/wave-7-reports.md).
+Próxima ação: assumir [Onda 8](agentic/tasks/wave-8-evaluation.md).
