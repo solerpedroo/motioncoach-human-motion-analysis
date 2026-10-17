@@ -1,0 +1,15 @@
+---
+description: Geometria, FSM e configuração compartilhada dos exercícios.
+globs: "{frontend/features/exercise-engine,motioncoach,shared}/**/*"
+alwaysApply: false
+---
+
+# Motor de movimento
+
+- Regras vivem no motor e na configuração JSON, não em componente React nem na rota HTTP.
+- Ângulo 2D pela fórmula da spec. Vetor nulo ou baixa visibilidade produz `null`.
+- EMA é o filtro padrão. Lacuna acima de `max_gap_ms` não é interpolada.
+- Histerese, `min_state_ms` e `min_cycle_ms` vêm do exercício versionado.
+- `UNCERTAIN` e pausa não completam repetição. Espelho não altera feature.
+- Exemplo: joelho oscilando em torno de `bottom_enter_deg` gera um completo, não dois.
+- Seed permanece `unvalidated_seed` até o protocolo de avaliação tratar o split.
