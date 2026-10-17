@@ -1,0 +1,15 @@
+---
+description: Upload, worker separado e retenção de vídeo.
+globs: "{backend,motioncoach/pipeline,motioncoach/video,frontend/features/upload,frontend/app/workout/upload}/**/*"
+alwaysApply: false
+---
+
+# Jobs de vídeo
+
+- A rota valida e responde 202. Pose e FSM rodam no worker, via `motioncoach`.
+- Claim transacional, um job ativo, progresso por etapa real.
+- Arquivo com nome opaco, fora de pasta pública. Download por nome permitido.
+- Decoder fecha em erro e cancelamento. Publicar artefato por escrita temporária e rename.
+- Limpeza preserva job `QUEUED` e `PROCESSING`. Crash vira `FAILED` com motivo.
+- Exemplo: MIME de vídeo com conteúdo que não decodifica é recusado antes da fila.
+- Log sem frame, sem caminho arbitrário do cliente e sem stack na resposta.
