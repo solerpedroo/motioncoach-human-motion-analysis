@@ -23,3 +23,5 @@ data/
 *.task
 *.onnx
 .DS_Store
+
+*.tsbuildinfo
