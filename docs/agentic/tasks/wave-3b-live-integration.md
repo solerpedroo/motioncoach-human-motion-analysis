@@ -1,6 +1,6 @@
 # Tarefa: `wave-3b-live-integration`
 
-- Estado: in_review
+- Estado: done
 - Onda: 3
 - Responsável / ferramenta / papel: Codex / implementação e validação
 - Requisitos do escopo e seção do plano: RF-03, RF-05; Onda 3
@@ -24,7 +24,7 @@ antiga não pode alterar a FSM. Sem armazenamento, voz ou HTTP de frame.
 - [x] Overlay nativo, espelho e contain comuns; métricas da janela de 2 s.
 - [x] Testes de integração com FSM real e fixture sintética passaram.
 - [x] Smoke Chromium desktop/mobile com SDK/modelo reais e câmera sintética passou.
-- [ ] Inspeção qualitativa de alinhamento sobre pessoa com câmera física registrada.
+- [x] Inspeção qualitativa aceita pelo usuário em 2026-10-17. Detalhe no cartão pai.
 
 ## Validação planejada e executada
 
@@ -40,8 +40,9 @@ Voz, feedback por regras, IndexedDB, resumos e upload.
 
 - Arquivos/diff: implementação sequencial sob reivindicação do cartão pai.
 - Comandos/resultados: 233 testes frontend, lint, typecheck, build e smokes passaram.
-- Testes não executados: câmera física, sem superfície conectada disponível.
+- Testes não executados nesta sessão de código: a câmera física foi confirmada
+  depois, pelo usuário, sem metadados de dispositivo.
 - Artefatos: screenshots sintéticos desktop/mobile inspecionados; locais em /tmp.
-- Limitações/desvios: smoke sintético não valida biomecânica nem alinhamento humano.
-- Conclusão: em revisão até cumprir o critério visual físico.
-- Próxima ação: executar roteiro manual do [cartão pai](wave-3-webcam-pose.md).
+- Limitações/desvios: a confirmação humana não é acurácia biomecânica.
+- Conclusão: critério visual aceito. Ver [cartão pai](wave-3-webcam-pose.md).
+- Próxima ação: nenhuma neste cartão. A Onda 8 segue bloqueada por falta de anotação.
