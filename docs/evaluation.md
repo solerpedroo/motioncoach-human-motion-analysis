@@ -72,6 +72,29 @@ não produz MAE/F1 de pessoas. Decisão no ADR-018.
 A, B e C fecham a Onda 8 somente com material anotado e autorizado. D não
 substitui esse gate. Não declarar significância com poucas sessões.
 
+## Resultado da execução de 2026-10-17
+
+Comando: `python scripts/evaluate.py`, sem `--annotations`. Árvore Git suja no
+commit `3ea8778a0ee27af419227913fedd2b908599aa76`. Relatório:
+[research/reports/wave8.json](../research/reports/wave8.json).
+
+A, B e C e o MAE de contagem ficaram `not_evaluated`, motivo
+`no_annotated_clips`. Pose e feedback também ficaram `not_evaluated`. Nenhum
+dataset foi baixado.
+
+O experimento D, no sinal sintético de ângulo estável mais um degrau, mediu:
+
+| Filtro | Variabilidade no trecho estável | Deslocamento do limiar |
+| --- | ---: | ---: |
+| nenhum | 0.916 | 0 ms |
+| EMA | 0.311 | 0 ms |
+| média móvel | 0.235 | 50 ms |
+| One Euro | 0.222 | 0 ms |
+
+Isso não é acurácia humana. O degrau era grande o bastante para EMA e One Euro
+cruzarem o limiar no mesmo instante do sinal cru. A média móvel atrasou uma
+amostra de 50 ms.
+
 ## Manifest de uma medição
 
 Hash do vídeo, hash da anotação, configuração resolvida, versão do algoritmo,
