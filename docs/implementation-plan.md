@@ -1,6 +1,6 @@
 # MotionCoach — Plano de implementação
 
-Versão: 1.0 · Data: 2026-10-17 · Estado: ondas 0–9 especificadas; nenhuma iniciada.
+Versão: 1.1 · Data: 2026-10-17 · Estado: Onda 0 concluída; Ondas 1–9 propostas.
 Fonte de requisitos: [project-scope.md](project-scope.md).
 Interpretação: [scope-analysis.md](scope-analysis.md).
 
@@ -279,8 +279,11 @@ Critérios da seção 21:
 
 ## 10. Estado atual e próximo passo
 
-Há escopo, análise, plano, ADRs, especificação de exercício, protocolo,
-privacidade, contrato HTTP, cartões e regras. Não há aplicação.
+A Onda 0 entregou contratos compartilhados 1.0.0, pacote Python independente
+de HTTP, health FastAPI, shell Next.js com oito rotas e estados demonstrativos,
+lockfiles e CI leve. Evidências e limitações estão no
+[cartão da Onda 0](agentic/tasks/wave-0-foundation.md); comandos no README.
+Não há ainda captura, motor temporal ou upload.
 
-Próxima ação: assumir o cartão da [Onda 0](agentic/tasks/wave-0-foundation.md).
-Não implementar câmera nem FSM nesse diff.
+Próxima ação: assumir o cartão da [Onda 1](agentic/tasks/wave-1-kinematics.md)
+em novo diff: geometria, EMA, tempo e quality gate no TypeScript.
