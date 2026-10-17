@@ -1,6 +1,6 @@
 # Tarefa: `wave-3-webcam-pose`
 
-- Estado: in_review
+- Estado: done
 - Onda: 3 — Webcam e visualização da pose
 - Responsável / ferramenta / papel: Codex / implementação e validação
 - Requisitos do escopo: RF-03, RF-05, sprint 2
@@ -27,7 +27,7 @@ Modo VIDEO do Pose Landmarker. Uma pose. Coordenadas de desenho acompanham o esp
 ## Critérios de pronto
 
 - [x] Permissão, troca, negação e desligamento liberam tracks.
-- [ ] Overlay permanece alinhado com e sem espelho sobre pessoa real. Caixas, projeção e espelho sintético passaram; inspeção física pendente.
+- [x] Overlay conferido pelo usuário em câmera física, com e sem espelho. Caixas, projeção e espelho sintético já tinham passado. Sem navegador, dispositivo ou resolução registrados.
 - [x] FPS exibido vem da sessão, com janela de medição documentada.
 - [x] Start, pause e stop não corrompem a FSM já testada.
 - [x] CI segue sem câmera real; smoke manual descrito à parte.
@@ -80,8 +80,8 @@ Voz, IndexedDB, relatório exportável e qualquer rota de upload.
 - Testes não executados: câmera física/permissão real do usuário e alinhamento
   sobre pessoa. O navegador conectado à sessão não oferece essa superfície;
   Chromium headless com câmera sintética não substitui essa evidência.
-- Conclusão: implementação e regressões automatizadas aprovadas; `in_review`
-  até completar o critério visual físico. Não fechar a onda com smoke sintético.
+- Conclusão da revisão automatizada: regressões aprovadas; o critério visual
+  ficou aberto até a confirmação humana abaixo.
 
 ## Roteiro manual pendente para fechar a onda
 
@@ -98,5 +98,12 @@ Voz, IndexedDB, relatório exportável e qualquer rota de upload.
    inicia nova contagem. Conferir DevTools Network sem requests com frames.
 6. Anexar observações no cartão, marcar critério visual e só então mudar para
    `done`. Exceção posterior: o usuário pediu avanço para a Onda 4,
-   registrada no ADR-015 e concluída em diff separado. A inspeção física
-   da Onda 3 continua aberta; esse avanço não conta como smoke.
+   registrada no ADR-015 e concluída em diff separado.
+
+## Confirmação humana
+
+Em 2026-10-17 o usuário informou que a validação humana do treino ao vivo
+estava feita, com a aplicação em `http://127.0.0.1:3000/workout/live`, e pediu
+para concluir o critério. Não foram informados navegador, câmera nem resolução.
+A confirmação é qualitativa. Não produz MAE, F1 nem aprovação biomecânica.
+Decisão no ADR-022.
