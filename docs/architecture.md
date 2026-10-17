@@ -5,8 +5,8 @@ abaixo continua sendo o alvo das ondas. Hoje existem `motioncoach/contracts`,
 `backend/app/main.py`, testes Python, `shared/schemas`, fixtures de contratos
 e o shell Next.js. A geometria, EMA e quality gate vivem em
 `frontend/features/exercise-engine`, junto às FSMs dos quatro exercícios.
-A Onda 3 conecta câmera, worker de inferência local e overlay ao motor; está em
-revisão até smoke com câmera física. `pose-engine/` possui lifecycle, transporte
+A Onda 3 conecta câmera, worker de inferência local e overlay ao motor. A
+inspeção física foi aceita pelo usuário no ADR-022. `pose-engine/` possui lifecycle, transporte
 e métricas; `workers/pose.worker.ts` executa MediaPipe. O port Python e pipeline/CLI foram implementados na Onda 5. Worker de jobs e
 pesquisa continuam nas ondas responsáveis.
 
@@ -209,8 +209,8 @@ relativos, sem reter landmarks. O resumo volátil só entra no IndexedDB por
 Save explícito. Schema local referencia SessionSummary 1.0.0; Ajv valida escrita
 e leitura. Dashboard/detalhe carregam resumos, com exclusão individual/total.
 Nenhum frame, áudio ou evento vai para a API. Detalhes de tempo e armazenamento
-no README desse módulo. A exceção de sequência da Onda 4 está no ADR-015; o
-smoke físico da Onda 3 segue pendente.
+no README desse módulo. A exceção de sequência da Onda 4 está no ADR-015. O
+critério visual da Onda 3 foi aceito depois, no ADR-022.
 
 
 ## Vídeo e port Python — Onda 5
