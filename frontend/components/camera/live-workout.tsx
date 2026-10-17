@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MenuSelect } from "@/components/ui/menu-select";
 import {
   SaveSession,
   SessionSummaryView,
@@ -52,69 +53,57 @@ export function LiveWorkout({
   return (
     <section aria-label="Live camera session">
       <div className={styles.setup}>
-        <label>
-          Exercise
-          <select
-            value={exercise}
+        <MenuSelect
+          label="Exercise"
+          value={exercise}
+          disabled={active}
+          options={exercises.map((item) => ({
+            value: item.id,
+            label: item.name,
+          }))}
+          onChange={(id) => {
+            const next = id as ExerciseId;
+            setExercise(next);
+            setView(next === "jumping_jack" ? "front" : "side");
+          }}
+        />
+        <MenuSelect
+          label="Camera"
+          value={deviceId}
+          options={[
+            { value: "", label: "Default camera" },
+            ...session.devices.map((device, index) => ({
+              value: device.deviceId,
+              label: device.label || `Camera ${index + 1}`,
+            })),
+          ]}
+          onChange={(id) => {
+            session.stop();
+            setDeviceId(id);
+          }}
+        />
+        <MenuSelect
+          label="Camera view"
+          value={view}
+          disabled={active || exercise !== "biceps_curl"}
+          options={[
+            { value: "side", label: "Side view" },
+            { value: "front", label: "Front view" },
+          ]}
+          onChange={(id) => setView(id as "front" | "side")}
+        />
+        {exercise === "biceps_curl" ? (
+          <MenuSelect
+            label="Selected arm"
+            value={side}
             disabled={active}
-            onChange={(event) => {
-              const id = event.target.value as ExerciseId;
-              setExercise(id);
-              setView(id === "jumping_jack" ? "front" : "side");
-            }}
-          >
-            {exercises.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Camera
-          <select
-            value={deviceId}
-            onChange={(event) => {
-              session.stop();
-              setDeviceId(event.target.value);
-            }}
-          >
-            <option value="">Default camera</option>
-            {session.devices.map((device, index) => (
-              <option key={device.deviceId} value={device.deviceId}>
-                {device.label || `Camera ${index + 1}`}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Camera view
-          <select
-            value={view}
-            disabled={active || exercise !== "biceps_curl"}
-            onChange={(event) =>
-              setView(event.target.value as "front" | "side")
-            }
-          >
-            <option value="side">Side view</option>
-            <option value="front">Front view</option>
-          </select>
-        </label>
-        {exercise === "biceps_curl" && (
-          <label>
-            Selected arm
-            <select
-              value={side}
-              disabled={active}
-              onChange={(event) =>
-                setSide(event.target.value as "left" | "right")
-              }
-            >
-              <option value="left">Left arm</option>
-              <option value="right">Right arm</option>
-            </select>
-          </label>
-        )}
+            options={[
+              { value: "left", label: "Left arm" },
+              { value: "right", label: "Right arm" },
+            ]}
+            onChange={(id) => setSide(id as "left" | "right")}
+          />
+        ) : null}
         <label className={`${styles.mirror} toggle`}>
           <input
             type="checkbox"
@@ -205,20 +194,33 @@ export function LiveWorkout({
       <p className={styles.note}>
         Active session time: {(session.elapsedMs / 1000).toFixed(1)} s
       </p>
-      <label className={`${styles.voice} toggle`}>
-        <input
-          type="checkbox"
-          checked={session.voiceEnabled}
-          disabled={!session.voiceAvailable}
-          onChange={(event) => session.toggleVoice(event.target.checked)}
+      <div className={styles.voiceRow}>
+        <label className={`${styles.voice} toggle`}>
+          <input
+            type="checkbox"
+            checked={session.voiceEnabled}
+            disabled={!session.voiceAvailable}
+            onChange={(event) => session.toggleVoice(event.target.checked)}
+          />
+          Enable voice feedback
+        </label>
+        <MenuSelect
+          label="Voice language"
+          value={session.voiceLanguage}
+          options={[
+            { value: "en", label: "English" },
+            { value: "pt-BR", label: "Português" },
+          ]}
+          onChange={(value) =>
+            session.chooseVoiceLanguage(value as "en" | "pt-BR")
+          }
         />
-        Enable voice feedback
-      </label>
+      </div>
       <p className={styles.note}>
         {session.voiceError ||
           (session.voiceAvailable
-            ? "Voice is optional and uses a local English voice. No microphone is requested."
-            : "A local English speech voice is unavailable. Visual observations remain available.")}
+            ? "Voice reads the same observation shown on screen, in the selected language. No microphone is requested."
+            : "This browser cannot speak. The written observation stays on screen.")}
       </p>
       <div className={styles.controls}>
         <Button disabled={active} onClick={() => void session.start()}>
@@ -241,6 +243,7 @@ export function LiveWorkout({
       <TrainerFeedback
         feedback={session.feedback}
         originMs={session.originMs}
+        language={session.voiceLanguage}
       />
       {session.summary && (
         <>
