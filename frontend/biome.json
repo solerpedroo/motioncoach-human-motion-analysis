@@ -10,6 +10,7 @@
       "**",
       "!!**/.next",
       "!!**/node_modules",
+      "!!**/public/pose",
       "!**/lib/contracts.generated.ts",
       "!**/next-env.d.ts",
       "!**/package-lock.json"
