@@ -37,6 +37,7 @@ export function VideoUpload() {
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [fileName, setFileName] = useState("Choose MP4, MOV, or WebM");
 
   useEffect(() => {
     if (!job || terminal.has(job.status)) return undefined;
@@ -89,82 +90,95 @@ export function VideoUpload() {
   }
 
   return (
-    <form className="setup-bar panel" onSubmit={onSubmit}>
-      <p className="page-description">
-        The identifier is unguessable but this local API is still a single-user
-        workspace. Uploaded files are temporary and are not used to train a
-        model.
-      </p>
-      <label>
-        Video file
-        <input
-          name="file"
-          type="file"
-          accept=".mp4,.mov,.webm,video/mp4,video/quicktime,video/webm"
-          required
-        />
-      </label>
-      <label>
-        Exercise
-        <select
-          aria-label="Exercise"
-          value={exercise}
-          onChange={(event) => setExercise(event.target.value)}
-        >
-          {exercises.map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Camera view
-        <select
-          aria-label="Camera view"
-          value={cameraView}
-          onChange={(event) => setCameraView(event.target.value)}
-        >
-          <option value="side">Side</option>
-          <option value="front">Front</option>
-        </select>
-      </label>
-      {exercise === "biceps_curl" ? (
+    <div>
+      <form className="composer panel" onSubmit={onSubmit}>
+        <p className="page-description">
+          The identifier is unguessable but this local API is still a
+          single-user workspace. Uploaded files are temporary and are not used
+          to train a model.
+        </p>
+        <label className="file-field">
+          Video file
+          <input
+            name="file"
+            type="file"
+            aria-label="Video file"
+            accept=".mp4,.mov,.webm,video/mp4,video/quicktime,video/webm"
+            required
+            onChange={(event) =>
+              setFileName(
+                event.target.files?.[0]?.name ?? "Choose MP4, MOV, or WebM",
+              )
+            }
+          />
+          <span className="file-face">{fileName}</span>
+        </label>
         <label>
-          Arm
+          Exercise
           <select
-            aria-label="Arm"
-            value={side}
-            onChange={(event) => setSide(event.target.value)}
+            aria-label="Exercise"
+            value={exercise}
+            onChange={(event) => setExercise(event.target.value)}
           >
-            <option value="left">Left</option>
-            <option value="right">Right</option>
+            {exercises.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            ))}
           </select>
         </label>
-      ) : null}
-      <Button type="submit" disabled={pending}>
-        {pending ? "Checking file" : "Analyze video"}
-      </Button>
-      {error ? <p role="alert">{error}</p> : null}
-      {job && job.status !== "FAILED" && job.status !== "CANCELLED" ? (
-        <p role="status">
-          Job {job.status.toLowerCase()} during {job.stage}.
-        </p>
-      ) : null}
-      {job?.status === "FAILED" || job?.status === "CANCELLED" ? (
-        <>
-          <p role="alert">{job.error_message ?? "This job did not finish."}</p>
-          <Button
-            type="button"
-            onClick={() => {
-              setJob(null);
-              setReport(null);
-            }}
+        <label>
+          Camera view
+          <select
+            aria-label="Camera view"
+            value={cameraView}
+            onChange={(event) => setCameraView(event.target.value)}
           >
-            Start another analysis
+            <option value="side">Side</option>
+            <option value="front">Front</option>
+          </select>
+        </label>
+        {exercise === "biceps_curl" ? (
+          <label>
+            Arm
+            <select
+              aria-label="Arm"
+              value={side}
+              onChange={(event) => setSide(event.target.value)}
+            >
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+        ) : null}
+        <div className="composer-actions">
+          <Button type="submit" disabled={pending}>
+            {pending ? "Checking file" : "Analyze video"}
           </Button>
-        </>
-      ) : null}
+        </div>
+        {error ? <p role="alert">{error}</p> : null}
+        {job && job.status !== "FAILED" && job.status !== "CANCELLED" ? (
+          <p role="status">
+            Job {job.status.toLowerCase()} during {job.stage}.
+          </p>
+        ) : null}
+        {job?.status === "FAILED" || job?.status === "CANCELLED" ? (
+          <>
+            <p role="alert">
+              {job.error_message ?? "This job did not finish."}
+            </p>
+            <Button
+              type="button"
+              onClick={() => {
+                setJob(null);
+                setReport(null);
+              }}
+            >
+              Start another analysis
+            </Button>
+          </>
+        ) : null}
+      </form>
       {job?.status === "COMPLETED" && report ? (
         <AnalysisReport
           chartWarning={job.chart_warning}
@@ -175,6 +189,6 @@ export function VideoUpload() {
           summary={report.summary}
         />
       ) : null}
-    </form>
+    </div>
   );
 }
