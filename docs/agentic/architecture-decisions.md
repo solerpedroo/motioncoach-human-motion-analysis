@@ -283,6 +283,67 @@ referenciar a anterior sem apagar o histórico.
   acurácia humana ou alinhamento sobre uma pessoa. Onda 3 permanece em revisão
   até a inspeção física registrada; a Onda 4 depende desse gate.
 
+## ADR-015 — Avanço para sessão local com revisão física pendente (2026-10-17)
+
+- Estado: aceito para implementação por instrução do usuário.
+- Contexto: após receber o estado `in_review` da Onda 3 e a pendência física,
+  o usuário pediu “va para a próxima onda”. Runtime, FSM e smoke sintético com
+  modelo real já passaram; a câmera física permanece sem evidência.
+- Decisão: iniciar a implementação da Onda 4 neste novo diff, mantendo a
+  Onda 3 em revisão. Esta é uma exceção explícita à dependência `done` do
+  plano; não marca inspeção humana como realizada. Substitui a restrição de
+  início da Onda 4 no ADR-014. O gate físico continua aberto na Onda 3.
+- Consequência: nenhuma conclusão de acurácia, benchmark humano ou aceitação
+  biomecânica decorre deste avanço. CI e validação local seguem sintéticas.
+
+## ADR-016 — Feedback, voz e resumo local (2026-10-17)
+
+- Estado: aceito e implementado na Onda 4.
+- Contexto: fechar sessão ao vivo sem alterar transições da FSM, com mensagens
+  explicáveis e persistência somente por ação do usuário.
+- Decisão: compor contador, `createFeedbackEngine` e recorder na camada de sessão.
+  O contador puro mantém sua saída da Onda 2; candidatos/arbitragem são uma
+  saída separada do motor de feedback, ainda fora do React. Regras numéricas
+  ficam em `shared/exercise-configs/feedback.json` 0.1.0 e schema próprio,
+  status unvalidated_seed. Nenhum parâmetro é calibração humana.
+- Arbitragem: classe precede prioridade da regra: captura/visibilidade,
+  observabilidade, completo, consistência. Isso esclarece o capture priority 2
+  legado do squat: ele não perde para repetição. Cooldown compartilhado por
+  classe; não há fallback para mensagem inferior durante bloqueio da superior.
+- Consistência: pelo menos três completos anteriores GOOD e cinco amostras no
+  ciclo atual, sem gaps/pausa/perda. Comparar amplitudes com mediana da própria
+  sessão, seed de razão 0,8. Rosca compara vetor ombro→cotovelo médio em x/y
+  normalizados com medianas anteriores, seed de distância 0,08, sempre mesmo
+  braço. Históricos limitados a 20 completos. Sem suporte observacional, omitir.
+  Observação pendente espera 1.500 ms pelo completo, expira em 4.000 ms e exige
+  dado atual GOOD. Metadados registram feature, valor, motivo, fase e qualidade.
+- Voz: porta injetável, opt-in por página, uma fala ativa e nenhuma fila.
+  Mute/pausa/stop/unmount cancelam imediatamente. Classe superior cancela fala
+  antiga, mesmo quando novo início é limitado. Mínimo de 1.500 ms entre inícios,
+  até três em 15 s; liga/desliga não reinicia esse limite. Adaptador escolhe
+  somente voz inglesa com localService; falta de voz/falha mantém texto.
+  Referências: [cancel](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/cancel)
+  e [localService](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService).
+- Tempo: início quando modelo pronto; eventos relativos ao início, preservando
+  pausas no eixo temporal. Summary.duration_ms é decorrido; envelope local
+  separa ativo/pausado. Cobertura usa intervalos entre duas observações
+  analisáveis adjacentes até max_gap_ms, sem extrapolação nem pausas.
+  Descartados por dado indisponível são subconjunto de incompletos, não uma
+  estimativa de repetições invisíveis.
+- Contrato: SessionSummary 1.0.0 preservado, envelope LocalSession versão 1 em
+  `shared/schemas/local-session.schema.json`, validado em leitura/escrita por
+  Ajv. Algoritmo 0.4.0, versões de exercício/feedback, versão e hash de modelo.
+  Config hash null, avaliação not_evaluated. Eventos limitados aos 5.000 mais
+  recentes com omissão explícita; agregados continuam completos.
+- Persistência: IndexedDB versão 1, object store summaries, chave summary.id.
+  Save só no clique explícito; aguardar commit antes de confirmar. Sem frame,
+  landmark, gravação ou localStorage. Leitura inválida mostra erro e permite
+  apagar. Exclusões individual/total testadas após reabrir banco/recarregar.
+  Fonte: [Using IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB).
+- Evidência: relógio/alto-falante falsos, fake-indexeddb 6.2.6 na CI e smoke
+  opt-in de Chromium com modelo real/câmera sintética e IndexedDB real.
+  A pendência física da Onda 3 permanece visível; nenhuma acurácia foi inferida.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
