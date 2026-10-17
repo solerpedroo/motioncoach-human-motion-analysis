@@ -1,0 +1,372 @@
+[
+  {
+    "id": "extra-root",
+    "contract": "PoseFrame",
+    "path": [
+      "extra"
+    ],
+    "operation": "set",
+    "value": true
+  },
+  {
+    "id": "extra-landmark",
+    "contract": "PoseFrame",
+    "path": [
+      "landmarks",
+      0,
+      "extra"
+    ],
+    "operation": "set",
+    "value": 1
+  },
+  {
+    "id": "unknown-quality",
+    "contract": "PoseFrame",
+    "path": [
+      "pose_quality"
+    ],
+    "operation": "set",
+    "value": "EXCELLENT"
+  },
+  {
+    "id": "unknown-exercise",
+    "contract": "SessionSummary",
+    "path": [
+      "exercise"
+    ],
+    "operation": "set",
+    "value": "lunge"
+  },
+  {
+    "id": "negative-timestamp",
+    "contract": "PoseFrame",
+    "path": [
+      "timestamp_ms"
+    ],
+    "operation": "set",
+    "value": -1
+  },
+  {
+    "id": "coerced-timestamp",
+    "contract": "PoseFrame",
+    "path": [
+      "timestamp_ms"
+    ],
+    "operation": "set",
+    "value": "1533"
+  },
+  {
+    "id": "boolean-number",
+    "contract": "Landmark",
+    "path": [
+      "x"
+    ],
+    "operation": "set",
+    "value": true
+  },
+  {
+    "id": "landmark-index",
+    "contract": "Landmark",
+    "path": [
+      "index"
+    ],
+    "operation": "set",
+    "value": 33
+  },
+  {
+    "id": "landmark-coordinate",
+    "contract": "Landmark",
+    "path": [
+      "x"
+    ],
+    "operation": "set",
+    "value": 1.1
+  },
+  {
+    "id": "visibility-range",
+    "contract": "Landmark",
+    "path": [
+      "visibility"
+    ],
+    "operation": "set",
+    "value": -0.1
+  },
+  {
+    "id": "angle-range",
+    "contract": "FeatureSet",
+    "path": [
+      "left_knee_angle_deg"
+    ],
+    "operation": "set",
+    "value": 181
+  },
+  {
+    "id": "angle-negative",
+    "contract": "FeatureSet",
+    "path": [
+      "trunk_tilt_deg"
+    ],
+    "operation": "set",
+    "value": -1
+  },
+  {
+    "id": "null-not-zero",
+    "contract": "Landmark",
+    "path": [
+      "x"
+    ],
+    "operation": "set",
+    "value": null
+  },
+  {
+    "id": "extra-feature",
+    "contract": "FeatureSet",
+    "path": [
+      "knee_angle"
+    ],
+    "operation": "set",
+    "value": 90
+  },
+  {
+    "id": "unknown-event",
+    "contract": "SessionEvent",
+    "path": [
+      "type"
+    ],
+    "operation": "set",
+    "value": "CORRECT_POSTURE"
+  },
+  {
+    "id": "negative-count",
+    "contract": "SessionSummary",
+    "path": [
+      "completed_repetitions"
+    ],
+    "operation": "set",
+    "value": -1
+  },
+  {
+    "id": "fractional-count",
+    "contract": "SessionSummary",
+    "path": [
+      "completed_repetitions"
+    ],
+    "operation": "set",
+    "value": 1.5
+  },
+  {
+    "id": "unknown-schema",
+    "contract": "PoseFrame",
+    "path": [
+      "schema_version"
+    ],
+    "operation": "set",
+    "value": "2.0.0"
+  },
+  {
+    "id": "timezone-required",
+    "contract": "SessionSummary",
+    "path": [
+      "started_at"
+    ],
+    "operation": "set",
+    "value": "2026-10-17T14:00:00"
+  },
+  {
+    "id": "invalid-date",
+    "contract": "SessionSummary",
+    "path": [
+      "started_at"
+    ],
+    "operation": "set",
+    "value": "yesterday"
+  },
+  {
+    "id": "invalid-hash",
+    "contract": "SessionSummary",
+    "path": [
+      "configuration_sha256"
+    ],
+    "operation": "set",
+    "value": "abc"
+  },
+  {
+    "id": "evaluation-reason",
+    "contract": "SessionSummary",
+    "path": [
+      "evaluation",
+      "reason"
+    ],
+    "operation": "set",
+    "value": ""
+  },
+  {
+    "id": "configuration-status",
+    "contract": "ExerciseConfig",
+    "path": [
+      "validation_status"
+    ],
+    "operation": "set",
+    "value": "validated"
+  },
+  {
+    "id": "configuration-angle",
+    "contract": "ExerciseConfig",
+    "path": [
+      "thresholds",
+      0,
+      "value"
+    ],
+    "operation": "set",
+    "value": 181
+  },
+  {
+    "id": "configuration-alpha",
+    "contract": "ExerciseConfig",
+    "path": [
+      "smoothing",
+      "alpha"
+    ],
+    "operation": "set",
+    "value": 0
+  },
+  {
+    "id": "missing-required",
+    "contract": "PoseFrame",
+    "path": [
+      "timestamp_ms"
+    ],
+    "operation": "remove",
+    "value": null
+  },
+  {
+    "id": "Landmark-NaN",
+    "contract": "Landmark",
+    "path": [
+      "z"
+    ],
+    "operation": "nonfinite",
+    "value": "NaN"
+  },
+  {
+    "id": "FeatureSet-NaN",
+    "contract": "FeatureSet",
+    "path": [
+      "left_knee_angle_deg"
+    ],
+    "operation": "nonfinite",
+    "value": "NaN"
+  },
+  {
+    "id": "SessionEvent-NaN",
+    "contract": "SessionEvent",
+    "path": [
+      "metadata",
+      "observed_value"
+    ],
+    "operation": "nonfinite",
+    "value": "NaN"
+  },
+  {
+    "id": "ExerciseConfig-NaN",
+    "contract": "ExerciseConfig",
+    "path": [
+      "thresholds",
+      0,
+      "value"
+    ],
+    "operation": "nonfinite",
+    "value": "NaN"
+  },
+  {
+    "id": "Landmark-Infinity",
+    "contract": "Landmark",
+    "path": [
+      "z"
+    ],
+    "operation": "nonfinite",
+    "value": "Infinity"
+  },
+  {
+    "id": "FeatureSet-Infinity",
+    "contract": "FeatureSet",
+    "path": [
+      "left_knee_angle_deg"
+    ],
+    "operation": "nonfinite",
+    "value": "Infinity"
+  },
+  {
+    "id": "SessionEvent-Infinity",
+    "contract": "SessionEvent",
+    "path": [
+      "metadata",
+      "observed_value"
+    ],
+    "operation": "nonfinite",
+    "value": "Infinity"
+  },
+  {
+    "id": "ExerciseConfig-Infinity",
+    "contract": "ExerciseConfig",
+    "path": [
+      "thresholds",
+      0,
+      "value"
+    ],
+    "operation": "nonfinite",
+    "value": "Infinity"
+  },
+  {
+    "id": "Landmark--Infinity",
+    "contract": "Landmark",
+    "path": [
+      "z"
+    ],
+    "operation": "nonfinite",
+    "value": "-Infinity"
+  },
+  {
+    "id": "FeatureSet--Infinity",
+    "contract": "FeatureSet",
+    "path": [
+      "left_knee_angle_deg"
+    ],
+    "operation": "nonfinite",
+    "value": "-Infinity"
+  },
+  {
+    "id": "SessionEvent--Infinity",
+    "contract": "SessionEvent",
+    "path": [
+      "metadata",
+      "observed_value"
+    ],
+    "operation": "nonfinite",
+    "value": "-Infinity"
+  },
+  {
+    "id": "ExerciseConfig--Infinity",
+    "contract": "ExerciseConfig",
+    "path": [
+      "thresholds",
+      0,
+      "value"
+    ],
+    "operation": "nonfinite",
+    "value": "-Infinity"
+  },
+  {
+    "id": "configuration-transition-operator",
+    "contract": "ExerciseConfig",
+    "path": [
+      "transitions",
+      0,
+      "conditions",
+      0,
+      "operator"
+    ],
+    "operation": "set",
+    "value": "approximately"
+  }
+]
