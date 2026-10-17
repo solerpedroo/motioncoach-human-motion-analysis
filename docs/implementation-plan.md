@@ -301,5 +301,10 @@ com modelo/IndexedDB reais e câmera sintética. ADR-016 e
 O usuário autorizou avanço com a Onda 3 em revisão (ADR-015); a inspeção
 física continua aberta, sem aprovação humana implícita.
 
-Próxima ação: assumir [Onda 5](agentic/tasks/wave-5-python-video.md) em novo
-diff. Manter a pendência física da Onda 3 visível.
+A Onda 5 entregou port Python do motor, paridade cruzada (`test:parity`),
+decode/probe PyAV, adaptador MediaPipe opcional e CLI `motioncoach probe|analyze`
+sobre `pipeline.analyze`. ADR-017/018 e [cartão](agentic/tasks/wave-5-python-video.md)
+registram tolerância e evidências. Smoke de pose real permanece opt-in.
+
+Próxima ação: assumir [Onda 6](agentic/tasks/wave-6-jobs-api.md). Manter a
+inspeção física da Onda 3 visível (ADR-015).
