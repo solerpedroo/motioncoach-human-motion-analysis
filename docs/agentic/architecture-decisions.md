@@ -129,10 +129,50 @@ referenciar a anterior sem apagar o histórico.
   e prancha continuam fora do MVP. A seed não calibra altura de salto nem
   afirma que os pés saíram do chão.
 
+## ADR-011 — Implementação da fundação e contratos 1.0.0
+
+- Data: 2026-10-17. Estado: aceito e implementado na Onda 0.
+- Contexto: concretizar ADR-003 e ADR-009, sem antecipar captura ou motor.
+- Decisão: Next.js App Router; Python 3.12.15 e uv 0.12.24; Node 24.21.0 e
+  npm 11.19.0. Versões resolvidas: Next 16.4.2, React 19.3.1, TypeScript 7.0.2,
+  Tailwind 4.3.3, Biome 2.5.15, Vitest 5.0.5; Pydantic 2.14.1, FastAPI 0.143.3,
+  Uvicorn 0.54.0, Ruff 0.17.1 e pytest 9.1.1. Dependências npm diretas exatas;
+  Python travado por `uv.lock`. O extra `api` isola FastAPI do núcleo.
+- Decisão: JSON Schema 2020-12 versionado em `shared/` é normativo.
+  Adaptadores Pydantic mantidos explicitamente têm igualdade estrutural
+  verificada em teste. Tipos TypeScript são gerados por
+  `json-schema-to-typescript` 16.0.0; CI detecta deriva. Ajv 8.20.0 e jsonschema
+  4.26.0 verificam os mesmos exemplos e a matriz de erros. O checker Python
+  restringe números a finitos, porque JSON Schema puro presume números JSON.
+- Decisão: todos os payloads principais têm `schema_version: "1.0.0"`.
+  Eventos completam os exemplos abreviados do escopo com exercício, regra e
+  metadados. Resumos adicionam versão de configuração, lado, hashes anuláveis
+  e motivo de `not_evaluated`. `model_version`/hash podem ser `null` enquanto
+  não há modelo selecionado. Campos novos tornam explícita a auditoria já
+  exigida pelo plano. A fixture de resumo é ilustrativa, não reconcilia uma
+  timeline completa nem representa execução medida.
+- Decisão: configuração descreve features, thresholds com unidade, transições,
+  condições, histerese por nomes de thresholds, tempos, qualidade e feedback.
+  Referências semânticas entre nomes serão verificadas ao implementar a FSM na
+  Onda 2. A fixture de configuração é parcial e não é catálogo operacional.
+- Decisão: botão local com padrão shadcn/ui, Radix Slot e tokens CSS. Recharts
+  será instalado na Onda 7, que é dona dos gráficos; não há gráfico nesta onda.
+  Fonte de sistema equivalente a Inter evita download durante build.
+- Decisão: `agentRules: false` evita que `next dev` gere outro `AGENTS.md`;
+  o protocolo permanece no arquivo raiz. Documentação da versão instalada
+  pode ser consultada em `frontend/node_modules/next/dist/docs/`.
+- Consequências: nenhuma dependência de visão, câmera ou upload. A UI declara
+  preview; seletores não persistem nem pedem permissões. Health é liveness
+  apenas. Seeds e desempenho humano seguem sem validação. Documentação de
+  execução em português nesta fase; README de portfólio em inglês fica para
+  a Onda 9 conforme o plano.
+- Referências consultadas para integração: [Next App Router](https://nextjs.org/docs/app/getting-started/installation),
+  [Tailwind com Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs),
+  [botão shadcn/ui](https://ui.shadcn.com/docs/components/radix/button).
+
 ## Decisões pendentes
 
-- Onda 0: versões exatas, scripts e se o shell usa o App Router corrente do
-  Next.js instalado. Registrar no ADR de implementação da fundação.
+- Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
 - Onda 1: alfa da EMA e o contrato do filtro nomeado. One Euro permanece no
   experimento D.
 - Onda 2: seeds finais dos quatro exercícios, ainda não validadas. O
