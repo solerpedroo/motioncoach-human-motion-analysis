@@ -344,6 +344,82 @@ referenciar a anterior sem apagar o histórico.
   opt-in de Chromium com modelo real/câmera sintética e IndexedDB real.
   A pendência física da Onda 3 permanece visível; nenhuma acurácia foi inferida.
 
+## ADR-017 — Decode, PTS e pipeline local (2026-10-17)
+
+- Estado: aceito e implementado na Onda 5.
+- Contexto: extrair metadados/frames sem API de upload e preservar o relógio de
+  apresentação, inclusive VFR. Não há executável ffprobe no ambiente local.
+- Decisão: PyAV **19.0.1** e NumPy **2.5.4** no extra `video`, usando libavformat/libavcodec para
+  probe e decode pelo mesmo adaptador. Esta escolha substitui o executável
+  ffprobe sugerido no §9.4; não cria um segundo decoder nem depende de binary
+  externo no PATH. A CLI probe publica metadados, não garante decode completo.
+- PTS: `(frame.pts * frame.time_base - stream.start_time * stream.time_base)
+  * 1000`, com start_time ausente tratado como origem zero. A origem é fixa do
+  stream original, nunca da primeira amostra/recorte. Aritmética racional até
+  a fronteira do contrato numérico. Cada JSON PoseFrame mantém esse timestamp.
+  Source PTS/base são preservados pelo decoder. VFR é aceito e testado com
+  intervalos desiguais; average_fps serve só como metadado.
+- Sem PTS/base, PTS repetido/regressivo ou timestamp normalizado negativo:
+  falhar com erro estável. Nenhum fallback por FPS foi implementado. SDK Python
+  exige milissegundos inteiros: floor somente no adaptador de inferência; motor
+  e saída conservam PTS preciso. Colisão inteira falha, sem inventar tempo.
+- Amostragem: no máximo 30 análises/s por default, selecionando frames existentes
+  pelo PTS. Não renumera nem duplica amostra. Contador/suavização continuam
+  sujeitos ao max_gap_ms normativo; lacuna grande pode invalidar um ciclo.
+- Limites configuráveis de desenvolvimento: 200.000.000 bytes, 300.000 ms,
+  3.840×2.160 pixels, 36.000 frames decodificados; sample_fps positivo até 120.
+  Metadados são checados antes da pose; duração/resolução/frame count também
+  durante decode. Não são limites medidos de capacidade do servidor.
+- MP4/MOV/WebM passam por detecção do container real, não só extensão. Uma
+  stream de vídeo, sem leitura de áudio. Protocolo local file e formatos
+  permitidos são limitados na abertura. Rotação/display matrix e pixels não
+  quadrados são rejeitados explicitamente nesta versão; normalizar antes.
+- Recursos: decoder e modelo em context managers; fechamento em sucesso,
+  erro, cancelamento cooperativo e falha do consumidor. Cancelamento não é um
+  deadline nativo garantido: o isolamento/deadline do processo pertence à Onda 6.
+- Pipeline: mesmo `analyze` para CLI/futuro worker, frame_sink streaming,
+  progresso por frames/PTS reais. EOF invalida ciclo ativo como incompleto com
+  motivo end_of_video; não inventa perda de pose nem pausa do usuário.
+- Saída: diretório novo, temporário privado até sucesso. analysis.json contém
+  SessionSummary 1.0.0 e proveniência; frames.jsonl contém PoseFrame 1.0.0.
+  Sem imagens. Falha remove saída parcial; resultado existente não é sobrescrito
+  no fluxo local. Fila/SQLite/HTTP continuam fora da onda.
+- Fontes primárias: [tempo PyAV](https://pyav.basswood.io/docs/stable/api/time.html),
+  [containers](https://pyav.basswood.io/docs/stable/api/container.html) e
+  [vídeo/orientação](https://pyav.basswood.io/docs/stable/api/video.html).
+
+## ADR-018 — Port Python, paridade e modelo compartilhado (2026-10-17)
+
+- Estado: aceito e implementado na Onda 5.
+- Decisão: geometria, EMA, gate, features, FSM, lado e feedback portados para
+  Python puro. Sem FastAPI, React, NumPy ou modelo no import do motor.
+  Configuração JSON compartilhada sem recalibração. Código de voz é exclusivo
+  do navegador; candidatos/arbitragem/observações são comparados entre runtimes.
+- Paridade: contagens, eventos completos/metadados, timestamps, fase, qualidade,
+  null e estrutura exatos. Valores contínuos com atol=1e-9 e rtol=1e-9. Runner
+  executa ambos sobre as mesmas fixtures; primeiro desvio informa caminho,
+  valores e delta, sem afrouxar seed ou limiar. As fixtures continuam sintéticas.
+- Referências: geometria/EMA/quality/pipeline, 36 casos de FSM, quatro sequências
+  de landmarks com espelho e pause/resume, arbitragem e três casos de observação
+  da própria sessão. Runner `npm --prefix frontend run test:parity`; não é
+  benchmark de acurácia de pose ou biomecânica humana.
+- Modelo Python: `mediapipe` **1.1.1** no extra `pose`, CPU, VIDEO, num_poses=1,
+  sem segmentação e confidências 0,5. Usa o **mesmo Lite float16/1** do Web.
+  SHA-256 `59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a`.
+  Asset verificado antes de inicializar; normalização conserva x/y/z e
+  visibility/presence, omite pontos fora do quadro/inválidos, nunca faz clamp.
+- Manifesto único movido de frontend/features/pose-engine/model-manifest.json
+  para `shared/models/pose-landmarker-lite.json`. Web e Python leem o mesmo
+  arquivo, com versões dos SDKs/decoder. Esta migração atualiza a localização
+  do ADR-014 sem mudar o asset. Preparação explícita; CI nunca baixa modelo.
+- Empacotamento: wheel inclui os JSONs normativos de configuração/modelo/schema.
+  Loaders usam shared do checkout ou cópia gerada no wheel, sem cópia manual.
+  Instalação não editável do core foi testada sem runtimes HTTP/vídeo/pose.
+- CI instala apenas video para gerar vídeos minúsculos sem pessoa; pose real é
+  teste marcado, opt-in. O frontend CI roda a comparação cruzada com uv/Node.
+  Smoke real registra hash, versões, máquina e limites do que não foi avaliado.
+- Fonte primária: [Pose Landmarker Python](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/python).
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
@@ -351,8 +427,7 @@ referenciar a anterior sem apagar o histórico.
 - Onda 2 resolvida no ADR-013: seeds de desenvolvimento versionadas e ainda
   não validadas. Avaliação empírica permanece na Onda 8.
 - Onda 3: runtime Web decidido no ADR-014; inspeção física pendente.
-- Onda 5: pacote MediaPipe Python, variante e hash do asset, com paridade.
-- Onda 5: tolerância numérica da paridade TypeScript/Python e política de PTS.
+- Onda 5 resolvida nos ADR-017/018: pacote/modelo, port, PTS e paridade.
 - Onda 6: limites medidos de tamanho, duração, CPU e TTL. Partida sugerida pelo
   escopo: 200 MB, 5 minutos e exclusão em até 24 horas.
 - Onda 8: existência de um conjunto consentido ou de um dataset cuja licença
