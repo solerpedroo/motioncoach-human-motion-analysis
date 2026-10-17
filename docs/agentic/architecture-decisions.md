@@ -247,14 +247,50 @@ referenciar a anterior sem apagar o histórico.
   sintéticos em `shared/fixtures/repetitions/`; testes e comandos no
   [cartão da Onda 2](tasks/wave-2-exercise-fsms.md). Sem calibração humana.
 
+## ADR-014 — Captura local e Pose Landmarker Web (2026-10-17)
+
+- Estado: aceito para implementação; inspeção com câmera física pendente no cartão.
+- Dependência fixa: `@mediapipe/tasks-vision` **1.1.1**, npm lock com integridade.
+  Variante **Lite**, modelo **float16/1**, VIDEO, `numPoses: 1`, sem segmentação,
+  delegate CPU. Limiares de detecção/presença/tracking 0,5 são parâmetros de
+  desenvolvimento do detector, não validação das seeds de exercício.
+- Asset oficial:
+  [pose_landmarker_lite.task](https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task).
+  SHA-256 medido: `59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a`.
+  Manifesto em `frontend/features/pose-engine/model-manifest.json`.
+- Preparação local opt-in verifica SHA-256 e copia WASM do SDK travado.
+  Assets ignorados no Git; build/CI não baixam modelo nem vídeo. Em runtime
+  todos os assets vêm da mesma origem do frontend, sem POST de frame.
+- Worker como execução padrão. Um snapshot em voo, nenhuma fila de espera:
+  ocupado descarta captura; próximo slot livre observa a imagem atual.
+  Pause mantém o modelo e suspende capturas; Stop termina worker e tracks.
+- Evidência de compatibilidade: primeiro smoke real do build encontrou
+  `Cannot use import.meta outside a module` ao usar WASM de módulo dentro
+  do bootstrap clássico do Turbopack. Escolhido carregador WASM clássico
+  (`forVisionTasks(path, false)`), confirmado por smoke posterior com modelo
+  real. Isso mantém a inferência fora da UI; não foi necessário fallback na
+  thread principal. Falta de suporte encerra recursos e permite retry.
+- Vídeo e canvas usam a mesma caixa, contain e transformação de espelho.
+  O motor recebe coordenadas originais e timestamps monotônicos. Landmarks
+  inválidos/fora do quadro são omitidos; não se inventa ponto no limite.
+- Resultado antigo após pause/resume/stop é descartado. Ausência de resultado
+  por 500 ms entrega pose ausente à FSM. FPS e latência vêm de amostras da
+  sessão, em janela móvel de dois segundos, definida no README da captura.
+- Fonte primária consultada em 2026-10-17:
+  [guia Web oficial](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/web_js).
+  A documentação recomenda worker porque `detectForVideo` é síncrono.
+- Limite: smoke com câmera sintética valida carga e lifecycle, sem medir
+  acurácia humana ou alinhamento sobre uma pessoa. Onda 3 permanece em revisão
+  até a inspeção física registrada; a Onda 4 depende desse gate.
+
 ## Decisões pendentes
 
 - Onda 0 resolvida no ADR-011; comandos reais no README e evidências no cartão.
 - Onda 1 resolvida no ADR-012. One Euro permanece no experimento D.
 - Onda 2 resolvida no ADR-013: seeds de desenvolvimento versionadas e ainda
   não validadas. Avaliação empírica permanece na Onda 8.
-- Ondas 3 e 5: pacote MediaPipe, variante Lite como padrão candidato, hash do
-  asset e o fallback documentado se Web Worker for inviável.
+- Onda 3: runtime Web decidido no ADR-014; inspeção física pendente.
+- Onda 5: pacote MediaPipe Python, variante e hash do asset, com paridade.
 - Onda 5: tolerância numérica da paridade TypeScript/Python e política de PTS.
 - Onda 6: limites medidos de tamanho, duração, CPU e TTL. Partida sugerida pelo
   escopo: 200 MB, 5 minutos e exclusão em até 24 horas.
