@@ -1,7 +1,7 @@
 # Contrato HTTP
 
-Estado em 2026-10-17: `GET /api/health` implementado na Onda 0.
-As demais rotas continuam especificadas e esperam a onda indicada.
+Estado em 2026-10-17: health e as rotas de job da Onda 6 estão implementadas.
+`GET /api/analyses/{id}/export` continua na Onda 7.
 
 Não criar endpoint que receba frames de webcam.
 
@@ -44,6 +44,29 @@ TypeScript consome os mesmos exemplos de `shared/fixtures` usados nos testes
 da API.
 
 
+## Jobs implementados
+
+`POST /api/videos` recebe `multipart/form-data` com `file`, `exercise`,
+`camera_view` e, na rosca, `selected_side`. A resposta `202` traz o job em
+`QUEUED` depois da validação e do probe. Pose não roda nesse processo.
+
+`GET /api/jobs/{job_id}` devolve `status` e `stage`
+(`probe`, `pose`, `analysis`, `publication`).
+`DELETE /api/jobs/{job_id}` cancela um job na fila, pede cancelamento de um
+job em processamento ou apaga os arquivos de um job já terminado.
+`GET /api/jobs/{job_id}/artifacts/{name}` só aceita `analysis.json` e
+`frames.jsonl` de um job `COMPLETED`.
+
+Erros usam `{"error": {"code", "message"}}` sem stack trace. Códigos desta
+onda incluem `UNSUPPORTED_EXTENSION`, `FILE_TOO_LARGE`, `INVALID_VIDEO`,
+`QUEUE_FULL`, `JOB_NOT_FOUND`, `ANALYSIS_NOT_READY` e `WORKER_INTERRUPTED`.
+
+O worker é outro processo: `uv run --locked python -m backend.app.worker`.
+Variáveis: `MOTIONCOACH_DATA_DIR`, `MOTIONCOACH_MAX_BYTES`,
+`MOTIONCOACH_MAX_DURATION_MS`, `MOTIONCOACH_TTL_HOURS`,
+`MOTIONCOACH_STALE_SECONDS`, `MOTIONCOACH_MAX_ACTIVE_JOBS`,
+`MOTIONCOACH_MODEL_PATH`, `MOTIONCOACH_CORS_ORIGINS`.
+
 ## Health implementado
 
 `GET /api/health` → `200 application/json`:
@@ -52,8 +75,6 @@ da API.
 {"schema_version":"1.0.0","status":"ok","service":"motioncoach-api","version":"0.1.0"}
 ```
 
-Sem dependência de modelo, worker, filesystem de vídeo ou banco. O teste
-confere que `/openapi.json` só contém esse caminho e que `POST /api/videos`
-responde 404. A UI desta onda ainda não faz requests para a API; CORS não é
-necessário. A forma de health é um contrato HTTP local, separado do catálogo
-de domínio `shared/schemas/contracts.schema.json`.
+Health não depende de modelo, worker ou banco. CORS local libera o frontend
+em `127.0.0.1:3000` e `localhost:3000`. A forma de health continua separada
+do catálogo `shared/schemas/contracts.schema.json`.
