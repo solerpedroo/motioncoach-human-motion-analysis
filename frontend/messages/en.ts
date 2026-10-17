@@ -3,7 +3,7 @@ export const en = {
   tagline: "Understand your movement.",
   preview: "Interface preview",
   previewNotice:
-    "This page includes demonstration content. Local camera sessions are available in Live Workout; video upload and exported reports are not available yet.",
+    "Live sessions stay in this browser. Video upload uses the local API; charts and file export are not available yet.",
   privacy: "Your movement. Your data.",
   privacyDetail:
     "Live analysis is designed to stay in your browser. Recording and saving a session require separate choices.",
