@@ -1,0 +1,545 @@
+{
+  "schema_version": "1.0.0",
+  "common_config_version": "0.1.0",
+  "requirements": {
+    "required": [
+      11,
+      13,
+      15
+    ],
+    "optional": []
+  },
+  "metrics": [
+    {
+      "id": "left_elbow_angle_deg",
+      "landmarks": [
+        11,
+        13,
+        15
+      ],
+      "role": "transition"
+    }
+  ],
+  "cases": [
+    {
+      "id": "gap-clears-filter-and-old-jump-reference",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 90,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.4,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 50,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 126,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        },
+        {
+          "timestamp_ms": 300,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 300,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 90,
+              "interpolated": false
+            },
+            "can_transition": false,
+            "continuity_broken": true,
+            "reasons": [
+              "LONG_GAP"
+            ]
+          }
+        },
+        {
+          "timestamp_ms": 350,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.4,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 350,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 126,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "loss-and-jump-force-reacquisition",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 90,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.7,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.7,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.7,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 50,
+            "pose_quality": "INSUFFICIENT",
+            "features": {
+              "left_elbow_angle_deg": null,
+              "interpolated": false
+            },
+            "can_transition": false,
+            "continuity_broken": true,
+            "reasons": [
+              "LANDMARK_JUMP"
+            ]
+          }
+        },
+        {
+          "timestamp_ms": 100,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.7,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.7,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.7,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 100,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 180,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        },
+        {
+          "timestamp_ms": 150,
+          "landmarks": [],
+          "expected": {
+            "timestamp_ms": 150,
+            "pose_quality": "INSUFFICIENT",
+            "features": {
+              "left_elbow_angle_deg": null,
+              "interpolated": false
+            },
+            "can_transition": false,
+            "continuity_broken": true,
+            "reasons": [
+              "POSE_LOST"
+            ]
+          }
+        },
+        {
+          "timestamp_ms": 200,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 200,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 90,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "timestamps-rejected-without-state-change",
+      "samples": [
+        {
+          "timestamp_ms": 0,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 0,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 90,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        },
+        {
+          "timestamp_ms": -1,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.4,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": null,
+            "pose_quality": "INSUFFICIENT",
+            "features": {
+              "left_elbow_angle_deg": null,
+              "interpolated": false
+            },
+            "can_transition": false,
+            "continuity_broken": true,
+            "reasons": [
+              "INVALID_TIMESTAMP"
+            ]
+          }
+        },
+        {
+          "timestamp_ms": 0,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.4,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 0,
+            "pose_quality": "INSUFFICIENT",
+            "features": {
+              "left_elbow_angle_deg": null,
+              "interpolated": false
+            },
+            "can_transition": false,
+            "continuity_broken": true,
+            "reasons": [
+              "NON_MONOTONIC_TIMESTAMP"
+            ]
+          }
+        },
+        {
+          "timestamp_ms": 50,
+          "landmarks": [
+            {
+              "index": 11,
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 13,
+              "x": 0.4,
+              "y": 0.5,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            },
+            {
+              "index": 15,
+              "x": 0.4,
+              "y": 0.6,
+              "z": 0,
+              "visibility": 1,
+              "presence": null
+            }
+          ],
+          "expected": {
+            "timestamp_ms": 50,
+            "pose_quality": "GOOD",
+            "features": {
+              "left_elbow_angle_deg": 126,
+              "interpolated": false
+            },
+            "can_transition": true,
+            "continuity_broken": false,
+            "reasons": []
+          }
+        }
+      ]
+    }
+  ]
+}
