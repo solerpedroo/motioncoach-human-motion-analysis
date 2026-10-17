@@ -2,8 +2,8 @@
 
 ## Estado e início de sessão
 
-As Ondas 0 e 1 estão concluídas: fundação e cinemática TypeScript testada.
-A próxima tarefa é a [Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md). Estado:
+As Ondas 0–2 estão concluídas: fundação, cinemática e FSM dos quatro exercícios.
+A próxima tarefa é a [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md). Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
