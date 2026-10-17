@@ -2,8 +2,8 @@
 
 ## Estado e início de sessão
 
-Nenhuma onda de software foi iniciada. A próxima tarefa é a
-[Onda 0](docs/agentic/tasks/wave-0-foundation.md). Estado:
+A Onda 0 está concluída: contratos, health e shell navegável. A próxima tarefa é a
+[Onda 1](docs/agentic/tasks/wave-1-kinematics.md). Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
@@ -52,8 +52,8 @@ bloqueado ou continuação não óbvia. Conferir `git status` antes de retomar.
 
 ## Validação
 
-Os comandos reais passam a constar do README na Onda 0. Até lá, não citar um
-script como se já tivesse rodado. A direção de toolchain está no ADR-009:
+Os comandos reais estão no README; evidências no cartão da Onda 0. Não citar
+comando futuro como executado. Toolchain: ADR-009 e versões no ADR-011:
 Python 3.12 e uv; Node 24 e npm; Ruff e pytest; Biome, typecheck, Vitest e
 build no frontend.
 
