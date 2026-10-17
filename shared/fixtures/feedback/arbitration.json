@@ -1,0 +1,14 @@
+[
+  { "name": "capture precedes repetition and consistency", "samples": [
+    { "time": 0, "candidates": [{"rule":"consistency.smaller_range","category":"consistency"},{"rule":"rep.completed","category":"completed"},{"rule":"framing.joints_hidden","category":"capture"}], "selected":"framing.joints_hidden", "issued":true }
+  ]},
+  { "name": "cooldown is shared by class and inclusive at the boundary", "samples": [
+    { "time": 0, "candidates": [{"rule":"framing.joints_hidden","category":"capture"}], "selected":"framing.joints_hidden", "issued":true },
+    { "time": 2999, "candidates": [{"rule":"capture.unstable_view","category":"capture"}], "selected":"capture.unstable_view", "issued":false },
+    { "time": 3000, "candidates": [{"rule":"capture.unstable_view","category":"capture"}], "selected":"capture.unstable_view", "issued":true }
+  ]},
+  { "name": "partial observation precedes completion", "samples": [
+    { "time": 0, "candidates": [{"rule":"rep.completed","category":"completed"},{"rule":"rep.not_fully_observed","category":"observation"}], "selected":"rep.not_fully_observed", "issued":true },
+    { "time": 1, "candidates": [], "selected":null, "issued":false }
+  ]}
+]
