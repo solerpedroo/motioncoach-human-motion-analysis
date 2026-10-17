@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "validation_status": "unvalidated_seed",
+  "classes": { "capture": 0, "observation": 1, "completed": 2, "consistency": 3 },
+  "completed_rule": { "rule_id": "rep.completed", "message_key": "rep.completed", "priority": 2, "cooldown_ms": 1500 },
+  "consistency": { "minimum_baseline_repetitions": 3, "observation_ttl_ms": 4000, "history_limit": 20, "minimum_cycle_samples": 5, "smaller_range_ratio": 0.8, "elbow_offset_difference_normalized": 0.08 },
+  "voice": { "minimum_interval_ms": 1500, "window_ms": 15000, "maximum_utterances": 3 },
+  "session": { "maximum_events": 5000 }
+}
