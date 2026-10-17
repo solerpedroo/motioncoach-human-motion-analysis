@@ -2,8 +2,8 @@
 
 ## Estado e início de sessão
 
-A Onda 0 está concluída: contratos, health e shell navegável. A próxima tarefa é a
-[Onda 1](docs/agentic/tasks/wave-1-kinematics.md). Estado:
+As Ondas 0 e 1 estão concluídas: fundação e cinemática TypeScript testada.
+A próxima tarefa é a [Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md). Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
