@@ -1,0 +1,13 @@
+---
+description: Contexto compartilhado e entrega incremental do MotionCoach.
+alwaysApply: true
+---
+
+# Protocolo comum
+
+- Leia `AGENTS.md`, o cartão ativo, o workboard e os ADRs antes de implementar.
+- Siga `docs/implementation-plan.md`. Não inicie a onda seguinte no mesmo diff.
+- Documentação em português. Código, API, CLI e UI em inglês.
+- Registre evidência real. Não invente métrica, FPS ou teste executado.
+- Atualize cartão e workboard. Handoff só para continuação não óbvia.
+- Frame de webcam fica no navegador. Feedback descreve observação, não segurança.
