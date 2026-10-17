@@ -4,11 +4,12 @@ Assistente educacional de observação de movimento por webcam e vídeo.
 O MVP prevê agachamento, flexão, rosca bíceps e polichinelo, com contagem
 explicável, ângulos 2D e feedback condicionado à visibilidade.
 
-As **Ondas 0 e 1** estão concluídas: fundação instalável e cinemática
-TypeScript testada em fixtures sintéticas. Há contratos compartilhados, API
-de liveness, shell navegável, geometria 2D, EMA e quality gate. A interface
-está em inglês, em tema escuro, com estados demonstrativos. Contagem, câmera,
-modelo de pose, upload e relatórios medidos seguem nas ondas responsáveis.
+As **Ondas 0–2** estão concluídas: fundação, cinemática e contagem dos quatro
+exercícios em motor TypeScript puro, testado com fixtures sintéticas. Há
+contratos compartilhados, API de liveness, shell navegável, geometria 2D,
+EMA, quality gate e FSM declarativa. A interface permanece demonstrativa;
+a câmera será conectada ao motor na Onda 3. Pose real, upload e relatórios
+medidos seguem nas ondas responsáveis.
 
 ## Executar localmente
 
@@ -59,8 +60,10 @@ worker disponível ou análise de vídeo. O OpenAPI publica somente esse endpoin
 O motor TypeScript em `frontend/features/exercise-engine/` já contém geometria,
 EMA e quality gate, sem dependência de React. Seeds comuns estão em
 `shared/exercise-configs/` e fixtures em `shared/fixtures/kinematics/`.
-As máquinas de estado e a contagem entram na Onda 2. Algoritmos Python só
-entram na Onda 5, antes da API de upload. Veja o
+As máquinas de estado já contam ciclos sintéticos em `squat`, `push_up`,
+`biceps_curl` e `jumping_jack`, com configurações JSON e fixtures de repetição.
+Pausa/perda invalidam o ciclo e exigem readquisição; o lado fica fixo na sessão.
+Algoritmos Python só entram na Onda 5, antes da API de upload. Veja o
 [contrato operacional do motor](frontend/features/exercise-engine/README.md).
 
 ## Interface disponível
@@ -110,6 +113,7 @@ A suíte cinemática pode ser executada isoladamente:
 
 ```bash
 npm --prefix frontend test -- tests/kinematics.test.ts
+npm --prefix frontend test -- tests/exercise-fsms.test.ts
 ```
 
 A instalação do núcleo sem o extra `api` também é suportada:
@@ -121,7 +125,8 @@ uv sync --locked --no-dev
 Ela não inclui FastAPI. Para voltar ao ambiente completo, executar
 `uv sync --locked --extra api`. Evidências, resultados e limites dos checks
 estão nos cartões da [Onda 0](docs/agentic/tasks/wave-0-foundation.md) e
-[Onda 1](docs/agentic/tasks/wave-1-kinematics.md).
+[Onda 1](docs/agentic/tasks/wave-1-kinematics.md) e
+[Onda 2](docs/agentic/tasks/wave-2-exercise-fsms.md).
 A execução remota do GitHub Actions depende de publicar este diff.
 
 ## Evoluir os contratos
