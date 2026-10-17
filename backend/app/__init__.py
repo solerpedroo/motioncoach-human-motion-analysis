@@ -1,0 +1,1 @@
+"""MotionCoach API application."""
