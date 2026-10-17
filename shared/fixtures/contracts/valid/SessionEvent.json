@@ -1,0 +1,13 @@
+{
+  "contract": "SessionEvent",
+  "data": {
+    "schema_version": "1.0.0",
+    "type": "REP_COMPLETED",
+    "timestamp_ms": 6400,
+    "exercise": "squat",
+    "rule_id": "rep.completed",
+    "quality": "GOOD",
+    "rep_index": 1,
+    "metadata": {}
+  }
+}
