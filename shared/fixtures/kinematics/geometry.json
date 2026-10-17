@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "common_config_version": "0.1.0",
+  "coordinate_system": "normalized_image_2d",
+  "cases": [
+    {
+      "id": "right-angle",
+      "points": [
+        {
+          "x": 0.5,
+          "y": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 1,
+          "y": 0.5
+        }
+      ],
+      "angle_deg": 90
+    },
+    {
+      "id": "straight-angle",
+      "points": [
+        {
+          "x": 0,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 1,
+          "y": 0.5
+        }
+      ],
+      "angle_deg": 180
+    },
+    {
+      "id": "zero-angle-is-observed",
+      "points": [
+        {
+          "x": 0.5,
+          "y": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.25
+        }
+      ],
+      "angle_deg": 0
+    },
+    {
+      "id": "diagonal-angle",
+      "points": [
+        {
+          "x": 1,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 1,
+          "y": 1
+        }
+      ],
+      "angle_deg": 45
+    },
+    {
+      "id": "zero-first-vector",
+      "points": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 1,
+          "y": 0.5
+        }
+      ],
+      "angle_deg": null
+    },
+    {
+      "id": "zero-second-vector",
+      "points": [
+        {
+          "x": 0,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "angle_deg": null
+    },
+    {
+      "id": "missing-joint",
+      "points": [
+        {
+          "x": 0,
+          "y": 0.5
+        },
+        null,
+        {
+          "x": 1,
+          "y": 0.5
+        }
+      ],
+      "angle_deg": null
+    },
+    {
+      "id": "all-missing",
+      "points": [
+        null,
+        null,
+        null
+      ],
+      "angle_deg": null
+    }
+  ]
+}
