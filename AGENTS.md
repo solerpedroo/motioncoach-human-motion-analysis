@@ -2,10 +2,11 @@
 
 ## Estado e início de sessão
 
-Ondas 0–2 e 4–6 concluídas. A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md)
-permanece em revisão (câmera física pendente; ADR-015). A Onda 6 entregou a fila
-local e o worker. Próxima tarefa: [Onda 7](docs/agentic/tasks/wave-7-reports.md).
-Estado: [docs/agentic/workboard.md](docs/agentic/workboard.md).
+Ondas 0–2 e 4–7 concluídas. A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md)
+permanece em revisão (câmera física pendente; ADR-015). A Onda 7 entregou
+timeline, gráfico e exportação. Próxima tarefa:
+[Onda 8](docs/agentic/tasks/wave-8-evaluation.md). Estado:
+[docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
    e [o plano](docs/implementation-plan.md).
