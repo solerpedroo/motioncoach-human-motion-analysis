@@ -1,0 +1,14 @@
+---
+description: Texto de feedback, relatórios e limites não clínicos.
+globs: "{frontend/components,frontend/features/exercise-engine,shared/exercise-configs}/**/*"
+alwaysApply: false
+---
+
+# Limite do produto
+
+- Mensagem usa `rule_id`, prioridade e cooldown. Cor nunca é o único sinal.
+- Descrever visibilidade, fase ou amplitude observada na própria sessão.
+- Omitir frase de exercício seguro, postura correta, lesão, dor inferida ou carga.
+- Consistency score fica fora do MVP. Cobertura de pose não vira nota de execução.
+- Exemplo: amplitude menor que a mediana da sessão pode ser dita; “agachamento errado” não.
+- Voz é opcional, sintetizada e interrompível. O catálogo em inglês é a cópia canônica.
