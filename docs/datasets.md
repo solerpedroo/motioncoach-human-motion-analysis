@@ -1,7 +1,7 @@
 # Dados e anotações
 
-Estado: plano de aquisição em 2026-10-17. Nenhum vídeo foi baixado nem
-anotado neste repositório.
+Estado: aquisição ainda aberta em 2026-10-17. A Onda 8 não baixou vídeo nem
+auditou licença. Nenhum clipe foi anotado neste repositório.
 
 ## Regras
 
@@ -20,8 +20,9 @@ anotado neste repositório.
 - RepCount / TransRAC — ações repetitivas e ciclos temporais.
   https://github.com/SvipRepetitionCounting/TransRAC
 
-A menção no escopo não autoriza o download. A Onda 8 confirma termo, formato
-de anotação e se o rótulo serve para contagem, para pose ou para os dois.
+A menção no escopo não autoriza o download. Nesta sessão os termos de MM-Fit e
+RepCount não foram lidos. Sem essa auditoria e sem arquivo local, o rótulo não
+entra na avaliação.
 
 ## Anotação própria
 
