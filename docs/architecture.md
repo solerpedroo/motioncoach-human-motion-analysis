@@ -7,8 +7,8 @@ e o shell Next.js. A geometria, EMA e quality gate vivem em
 `frontend/features/exercise-engine`, junto às FSMs dos quatro exercícios.
 A Onda 3 conecta câmera, worker de inferência local e overlay ao motor; está em
 revisão até smoke com câmera física. `pose-engine/` possui lifecycle, transporte
-e métricas; `workers/pose.worker.ts` executa MediaPipe. Algoritmos Python, worker
-de jobs e pesquisa nascem nas ondas responsáveis.
+e métricas; `workers/pose.worker.ts` executa MediaPipe. O port Python e pipeline/CLI foram implementados na Onda 5. Worker de jobs e
+pesquisa continuam nas ondas responsáveis.
 
 ## Fronteiras
 
@@ -211,3 +211,18 @@ e leitura. Dashboard/detalhe carregam resumos, com exclusão individual/total.
 Nenhum frame, áudio ou evento vai para a API. Detalhes de tempo e armazenamento
 no README desse módulo. A exceção de sequência da Onda 4 está no ADR-015; o
 smoke físico da Onda 3 segue pendente.
+
+
+## Vídeo e port Python — Onda 5
+
+`motioncoach/geometry`, `temporal`, `quality` e `exercises` reproduzem o motor
+TypeScript com JSONs normativos e rastro cruzado. `video` usa PyAV para probe e
+decode; `pose` adapta o modelo Lite verificado; `pipeline` combina as etapas
+sem HTTP. A CLI probe/analyze chama esse pipeline, como o futuro worker.
+
+Frames são emitidos por sink streaming; resultado completo é publicado num
+diretório novo após sucesso. Limites em metadados e decode, PTS racionais,
+VFR, orientação rejeitada explicitamente e cleanup nos ADRs 017/018.
+Manifesto de modelo único em shared/models; extras video/pose não entram no
+core. O wheel inclui os JSONs normativos e foi validado em instalação não
+editável sem FastAPI/AV/MediaPipe. A API segue somente health nesta onda.
