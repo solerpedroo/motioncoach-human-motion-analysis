@@ -65,24 +65,29 @@ it("previews all named states with an explicit recovery or navigation action", a
   render(<WorkoutPreview mode="live" />);
   const select = screen.getByRole("combobox", { name: "Preview state" });
   for (const [state, message] of Object.entries(en.states)) {
-    await user.selectOptions(select, state);
+    await user.click(select);
+    await user.click(
+      screen.getByRole("option", { name: state.replaceAll("_", " ") }),
+    );
     expect(screen.getByRole("status")).toHaveTextContent(message.title);
     expect(
       screen.getByText(message.action, { selector: "button, a" }),
     ).toBeVisible();
   }
-  await user.selectOptions(select, "camera_denied");
+  await user.click(select);
+  await user.click(screen.getByRole("option", { name: "camera denied" }));
   await user.click(screen.getByRole("button", { name: "Back to setup" }));
-  expect(select).toHaveValue("idle");
+  expect(select).toHaveTextContent("idle");
 });
 
 it("selects all four exercises and keeps measurements unavailable", async () => {
   const user = userEvent.setup();
   render(<WorkoutPreview mode="live" />);
   const select = screen.getByRole("combobox", { name: "Exercise" });
-  for (const id of ["squat", "push_up", "biceps_curl", "jumping_jack"]) {
-    await user.selectOptions(select, id);
-    expect(select).toHaveValue(id);
+  for (const name of ["Squat", "Push-up", "Biceps curl", "Jumping jack"]) {
+    await user.click(select);
+    await user.click(screen.getByRole("option", { name }));
+    expect(select).toHaveTextContent(name);
     expect(screen.getByText("Not measured")).toBeVisible();
   }
   expect(
@@ -99,10 +104,9 @@ it("does not request media, upload files, or save data during preview interactio
     mediaDevices: { getUserMedia: media },
   });
   render(<WorkoutPreview mode="upload" />);
-  await userEvent.selectOptions(
-    screen.getByRole("combobox", { name: "Preview state" }),
-    "processing",
-  );
+  const preview = screen.getByRole("combobox", { name: "Preview state" });
+  await userEvent.click(preview);
+  await userEvent.click(screen.getByRole("option", { name: "processing" }));
   expect(fetchSpy).not.toHaveBeenCalled();
   expect(saveSpy).not.toHaveBeenCalled();
   expect(media).not.toHaveBeenCalled();
