@@ -16,9 +16,12 @@
     "test": "vitest run",
     "contracts:generate": "node scripts/generate-contracts.mjs",
     "contracts:check": "node scripts/generate-contracts.mjs --check",
-    "test:smoke": "node scripts/smoke-http.mjs"
+    "test:smoke": "node scripts/smoke-http.mjs",
+    "pose:prepare": "node scripts/prepare-pose.mjs",
+    "test:pose-browser": "node scripts/smoke-pose.mjs"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "1.1.1",
     "@radix-ui/react-slot": "1.5.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
@@ -42,6 +45,7 @@
     "ajv-formats": "3.0.1",
     "jsdom": "30.1.3",
     "json-schema-to-typescript": "16.0.0",
+    "playwright": "1.64.1",
     "postcss": "8.5.30",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
