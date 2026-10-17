@@ -131,9 +131,105 @@ try {
     requests.some(({ url }) => url.endsWith("vision_wasm_internal.wasm")),
     "WASM asset must load",
   );
+  // Wave 4: volatile summary, explicit saving, browser history and deletion.
+  await page
+    .getByRole("region", { name: "Workout summary", exact: true })
+    .waitFor();
+  await page.reload();
+  assert.equal(
+    await page
+      .getByRole("region", { name: "Workout summary", exact: true })
+      .count(),
+    0,
+  );
+  await page.goto(`${base}/dashboard`);
+  await page
+    .getByText("No saved sessions in this browser.", { exact: true })
+    .waitFor();
+  async function saveNewSession() {
+    await page.goto(`${base}/workout/live`);
+    await page
+      .getByRole("button", { name: "Start camera", exact: true })
+      .click();
+    await page.waitForFunction(
+      () =>
+        !Array.from(document.querySelectorAll("button")).find(
+          (button) => button.textContent === "Pause",
+        )?.disabled,
+      null,
+      { timeout: 45000 },
+    );
+    await page
+      .getByRole("button", { name: "Stop camera", exact: true })
+      .click();
+    await page
+      .getByRole("region", { name: "Workout summary", exact: true })
+      .waitFor();
+    await page
+      .getByRole("button", {
+        name: "Save summary in this browser",
+        exact: true,
+      })
+      .click();
+    await page
+      .getByRole("button", { name: "Summary saved", exact: true })
+      .waitFor();
+  }
+  await saveNewSession();
+  if (output)
+    await page.screenshot({
+      path: `${output}/session-summary-mobile.png`,
+      fullPage: true,
+    });
+  await page.goto(`${base}/dashboard`);
+  await page
+    .getByRole("button", { name: "Delete squat session", exact: true })
+    .waitFor();
+  const sessionLink = page.getByRole("link", { name: /^squat ·/ });
+  const savedUrl = await sessionLink.getAttribute("href");
+  await sessionLink.click();
+  await page
+    .getByRole("region", { name: "Workout summary", exact: true })
+    .waitFor();
+  await page.reload();
+  await page
+    .getByRole("region", { name: "Workout summary", exact: true })
+    .waitFor();
+  await page
+    .getByRole("button", { name: "Delete this session", exact: true })
+    .click();
+  await page
+    .getByText("Session unavailable in this browser.", { exact: true })
+    .waitFor();
+  await saveNewSession();
+  await page.goto(`${base}/dashboard`);
+  await page
+    .getByRole("button", { name: "Delete squat session", exact: true })
+    .waitFor();
+  await page
+    .getByRole("button", { name: "Delete all saved sessions", exact: true })
+    .click();
+  await page
+    .getByText("No saved sessions in this browser.", { exact: true })
+    .waitFor();
+  await page.reload();
+  await page
+    .getByText("No saved sessions in this browser.", { exact: true })
+    .waitFor();
+  await page.goto(`${base}${savedUrl}`);
+  await page
+    .getByText("Session unavailable in this browser.", { exact: true })
+    .waitFor();
+  assert(
+    requests.every(({ method }) => method === "GET"),
+    "Saving summaries must stay local",
+  );
+  assert(
+    requests.every(({ url }) => new URL(url).origin === new URL(base).origin),
+  );
   assert.deepEqual(errors, []);
   console.log(
-    "PASS: real worker/model; synthetic camera; measured inference; mirror and mobile bounds; pause/resume/stop; tracks ended; local GET-only traffic. Human alignment not evaluated.",
+    "PASS: real worker/model; synthetic camera; measured inference; mirror and mobile bounds; pause/resume/stop; tracks ended; local GET-only traffic; unsaved summary lost on reload; saved summary survives reload; single/all deletion survives reload. Human alignment not evaluated.",
   );
 } finally {
   await browser.close();
