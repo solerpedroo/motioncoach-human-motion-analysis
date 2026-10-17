@@ -26,6 +26,9 @@ def test_health_is_liveness_only():
     }
 
 
-def test_openapi_publishes_only_health():
-    assert set(request("GET", "/openapi.json").json()["paths"]) == {"/api/health"}
-    assert request("POST", "/api/videos").status_code == 404
+def test_openapi_publishes_health_and_job_routes():
+    paths = set(request("GET", "/openapi.json").json()["paths"])
+    assert "/api/health" in paths
+    assert "/api/videos" in paths
+    assert "/api/analyses/{job_id}/export" not in paths
+    assert request("POST", "/api/videos").status_code == 422
