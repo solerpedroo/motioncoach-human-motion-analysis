@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MovementDiagram } from "@/components/page-parts";
 import { Button } from "@/components/ui/button";
+import { MenuSelect } from "@/components/ui/menu-select";
 import { type ExerciseId, exercises } from "@/lib/exercises";
 import { en, type ScreenState } from "@/messages/en";
 
@@ -32,21 +33,15 @@ export function WorkoutPreview({
   return (
     <>
       <div className="setup-bar panel">
-        <label>
-          Exercise
-          <select
-            value={exerciseId}
-            onChange={(event) =>
-              setExerciseId(event.target.value as ExerciseId)
-            }
-          >
-            {exercises.map((item) => (
-              <option value={item.id} key={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <MenuSelect
+          label="Exercise"
+          value={exerciseId}
+          options={exercises.map((item) => ({
+            value: item.id,
+            label: item.name,
+          }))}
+          onChange={(id) => setExerciseId(id as ExerciseId)}
+        />
         <div className="setup-view">
           <span>Recommended framing</span>
           <strong>{exercise.view}</strong>
@@ -176,19 +171,15 @@ export function WorkoutPreview({
             <p className="eyebrow">INTERFACE STATES</p>
             <h2>Explore the session experience</h2>
           </div>
-          <label>
-            Preview state
-            <select
-              value={state}
-              onChange={(event) => setState(event.target.value as ScreenState)}
-            >
-              {Object.keys(en.states).map((item) => (
-                <option value={item} key={item}>
-                  {item.replaceAll("_", " ")}
-                </option>
-              ))}
-            </select>
-          </label>
+          <MenuSelect
+            label="Preview state"
+            value={state}
+            options={Object.keys(en.states).map((item) => ({
+              value: item,
+              label: item.replaceAll("_", " "),
+            }))}
+            onChange={(item) => setState(item as ScreenState)}
+          />
         </div>
         <div className="state-message" role="status">
           <span className="state-code">{state}</span>
