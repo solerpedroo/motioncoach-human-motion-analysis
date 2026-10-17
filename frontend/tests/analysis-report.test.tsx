@@ -42,9 +42,8 @@ it("seeks the player to the same timestamp shown on the repetition", () => {
     "currentTime",
     1.2,
   );
-  expect(
-    screen.getByText("Complete repetitions 1. Incomplete repetitions 1."),
-  ).toBeVisible();
+  expect(screen.getByText("Complete 1")).toBeVisible();
+  expect(screen.getByText("Incomplete 1")).toBeVisible();
   expect(screen.queryByRole("alert")).toBeNull();
 });
 
