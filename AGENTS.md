@@ -2,10 +2,10 @@
 
 ## Estado e início de sessão
 
-As Ondas 0–2 estão concluídas: fundação, cinemática e FSM dos quatro exercícios.
-A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md) está implementada em revisão;
-falta smoke qualitativo com câmera física. A Onda 4 está concluída após avanço
-por pedido explícito do usuário (ADR-015). Próxima tarefa: Onda 5. Estado:
+Ondas 0–2, 4 e 5 concluídas. A [Onda 3](docs/agentic/tasks/wave-3-webcam-pose.md)
+permanece em revisão (câmera física pendente; ADR-015). A Onda 5 entregou motor
+Python, paridade `test:parity` e CLI `motioncoach probe|analyze`. Próxima tarefa:
+[Onda 6](docs/agentic/tasks/wave-6-jobs-api.md). Estado:
 [docs/agentic/workboard.md](docs/agentic/workboard.md).
 
 1. Leia [o escopo](docs/project-scope.md), [a análise](docs/scope-analysis.md)
