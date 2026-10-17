@@ -1,0 +1,317 @@
+{
+  "schema_version": "1.0.0",
+  "version": "0.1.0",
+  "validation_status": "unvalidated_seed",
+  "quality": {
+    "min_visibility": 0.5,
+    "max_gap_ms": 200,
+    "max_jump_normalized": 0.45
+  },
+  "smoothing": {
+    "type": "ema",
+    "alpha": 0.4
+  },
+  "min_state_ms": 40,
+  "min_cycle_ms": 350,
+  "id": "jumping_jack",
+  "display_name": "Jumping jack",
+  "recommended_view": "front",
+  "side_selection": "bilateral",
+  "required_landmarks": [
+    11,
+    12,
+    13,
+    14,
+    23,
+    24,
+    27,
+    28
+  ],
+  "optional_landmarks": [
+    15,
+    16
+  ],
+  "features": [
+    {
+      "id": "left_shoulder_angle_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        23,
+        11,
+        13
+      ],
+      "role": "observation"
+    },
+    {
+      "id": "right_shoulder_angle_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        24,
+        12,
+        14
+      ],
+      "role": "observation"
+    },
+    {
+      "id": "arm_elevation_deg",
+      "kind": "angle_2d",
+      "landmarks": [
+        23,
+        11,
+        13,
+        24,
+        12,
+        14
+      ],
+      "role": "transition"
+    },
+    {
+      "id": "leg_spread_ratio",
+      "kind": "ratio",
+      "landmarks": [
+        27,
+        28,
+        23,
+        24
+      ],
+      "role": "transition"
+    }
+  ],
+  "states": [
+    "NOT_READY",
+    "CLOSED",
+    "OPENING",
+    "OPEN",
+    "CLOSING",
+    "UNCERTAIN",
+    "PAUSED"
+  ],
+  "initial_state": "NOT_READY",
+  "thresholds": [
+    {
+      "name": "closed_arm_enter_deg",
+      "value": 40,
+      "unit": "degree"
+    },
+    {
+      "name": "closed_arm_exit_deg",
+      "value": 55,
+      "unit": "degree"
+    },
+    {
+      "name": "open_arm_enter_deg",
+      "value": 140,
+      "unit": "degree"
+    },
+    {
+      "name": "open_arm_exit_deg",
+      "value": 125,
+      "unit": "degree"
+    },
+    {
+      "name": "closed_spread_enter",
+      "value": 1.15,
+      "unit": "ratio"
+    },
+    {
+      "name": "closed_spread_exit",
+      "value": 1.4,
+      "unit": "ratio"
+    },
+    {
+      "name": "open_spread_enter",
+      "value": 1.9,
+      "unit": "ratio"
+    },
+    {
+      "name": "open_spread_exit",
+      "value": 1.65,
+      "unit": "ratio"
+    },
+    {
+      "name": "min_hip_span_x",
+      "value": 0.08,
+      "unit": "normalized"
+    }
+  ],
+  "transitions": [
+    {
+      "from_state": "NOT_READY",
+      "to_state": "CLOSED",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "lte",
+          "threshold": "closed_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "lte",
+          "threshold": "closed_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "UNCERTAIN",
+      "to_state": "CLOSED",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "lte",
+          "threshold": "closed_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "lte",
+          "threshold": "closed_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "CLOSED",
+      "to_state": "OPENING",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "gte",
+          "threshold": "closed_arm_exit_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "gte",
+          "threshold": "closed_spread_exit"
+        }
+      ],
+      "match": "any",
+      "require_dwell": false,
+      "emit_event": "REP_STARTED"
+    },
+    {
+      "from_state": "OPENING",
+      "to_state": "OPEN",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "gte",
+          "threshold": "open_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "gte",
+          "threshold": "open_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    },
+    {
+      "from_state": "OPENING",
+      "to_state": "CLOSED",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "lte",
+          "threshold": "closed_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "lte",
+          "threshold": "closed_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_INCOMPLETE"
+    },
+    {
+      "from_state": "OPEN",
+      "to_state": "CLOSING",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "lte",
+          "threshold": "open_arm_exit_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "lte",
+          "threshold": "open_spread_exit"
+        }
+      ],
+      "match": "any",
+      "require_dwell": false,
+      "emit_event": null
+    },
+    {
+      "from_state": "CLOSING",
+      "to_state": "CLOSED",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "lte",
+          "threshold": "closed_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "lte",
+          "threshold": "closed_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": "REP_COMPLETED"
+    },
+    {
+      "from_state": "CLOSING",
+      "to_state": "OPEN",
+      "conditions": [
+        {
+          "feature": "arm_elevation_deg",
+          "operator": "gte",
+          "threshold": "open_arm_enter_deg"
+        },
+        {
+          "feature": "leg_spread_ratio",
+          "operator": "gte",
+          "threshold": "open_spread_enter"
+        }
+      ],
+      "match": "all",
+      "require_dwell": true,
+      "emit_event": null
+    }
+  ],
+  "feedback_rules": [
+    {
+      "rule_id": "framing.full_body_front",
+      "message_key": "framing.full_body_front",
+      "priority": 0,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "framing.prefer_front_view",
+      "message_key": "framing.prefer_front_view",
+      "priority": 1,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "rep.partial_movement",
+      "message_key": "rep.partial_movement",
+      "priority": 2,
+      "cooldown_ms": 3000
+    },
+    {
+      "rule_id": "consistency.smaller_range",
+      "message_key": "consistency.smaller_range",
+      "priority": 3,
+      "cooldown_ms": 3000
+    }
+  ]
+}
