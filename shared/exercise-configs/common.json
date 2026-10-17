@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "version": "0.1.0",
+  "validation_status": "unvalidated_seed",
+  "quality": {
+    "min_visibility": 0.5,
+    "max_gap_ms": 200,
+    "max_jump_normalized": 0.2
+  },
+  "smoothing": { "type": "ema", "alpha": 0.4 },
+  "min_state_ms": 80,
+  "min_cycle_ms": 400
+}
