@@ -1,0 +1,39 @@
+{
+  "contract": "SessionSummary",
+  "data": {
+    "schema_version": "1.0.0",
+    "id": "synthetic-contract-session",
+    "exercise": "squat",
+    "source": "webcam",
+    "started_at": "2026-10-17T14:00:00-03:00",
+    "duration_ms": 78000,
+    "camera_view": "side",
+    "selected_side": "left",
+    "completed_repetitions": 12,
+    "incomplete_repetitions": 1,
+    "discarded_repetitions": 0,
+    "pose_coverage_ratio": 0.91,
+    "algorithm_version": "contract-example-only",
+    "configuration_version": "0.0.0-fixture",
+    "configuration_sha256": null,
+    "model_variant": "lite",
+    "model_version": null,
+    "model_asset_sha256": null,
+    "evaluation": {
+      "status": "not_evaluated",
+      "reason": "Synthetic contract example; no human movement was measured."
+    },
+    "events": [
+      {
+        "schema_version": "1.0.0",
+        "type": "REP_COMPLETED",
+        "timestamp_ms": 6400,
+        "exercise": "squat",
+        "rule_id": "rep.completed",
+        "quality": "GOOD",
+        "rep_index": 1,
+        "metadata": {}
+      }
+    ]
+  }
+}
